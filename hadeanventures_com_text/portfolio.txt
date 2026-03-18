@@ -1,0 +1,21 @@
+The portfolio section presents a selection of companies in which Hadean Ventures has invested.  Each entry is summarised below.
+
+• **Actithera** – a radiopharmaceutical company.
+• **Alex Therapeutics** – a digital therapeutics (DTx) company based in Stockholm.
+• **Arthex Biotech** – a Spanish biopharmaceutical company developing advanced RNA treatments.
+• **Attgeno** – a pharmaceutical company based in Stockholm, Sweden.
+• **CardioMech** – a privately‑held Norwegian company developing an innovative technology to repair the mitral valve via a transcatheter approach.
+• **Cardior** – Cardior Pharmaceuticals is a leading clinical‑stage biopharmaceutical company.
+• **Complement Therapeutics** – Complement Therapeutics GmbH is a German‑headquartered biotechnology company.
+• **Contineum Therapeutics** – a San Diego‑based company focused on developing therapeutics for neurological diseases.
+• **Emergence Therapeutics** – a European biopharmaceutical company.
+• **Galecto** – a Danish drug development company based in Copenhagen.
+• **Neuro Event Labs** – a digital health company based in Tampere, Finland.
+• **Nisonic** – a medical device company from Trondheim, Norway.
+• **Oncoinvent** – a drug development company based in Oslo, Norway.
+• **Ribbon Bio** – Ribbon Biolabs is developing a technology to synthesise DNA molecules.
+• **SAGA Diagnostics** – a Lund, Sweden–based medical diagnostics company.
+• **Scirhom** – SciRhom GmbH is a German biotechnology company.
+• **Step Pharma** – developing novel therapeutics that inhibit the enzyme CTPS1.
+• **TargED** – TargED Biopharmaceuticals (“TargED”) is a private biotechnology company.
+• **Themis Bioscience** – a vaccine development company.
