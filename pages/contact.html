@@ -3,46 +3,183 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact – Hadean Ventures</title>
+  <title>Contact — Hadean Ventures</title>
+  <meta name="description" content="Get in touch with Hadean Ventures. Offices in Oslo, Norway and Stockholm, Sweden.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="../index.html">Home</a> |
-      <a href="portfolio.html">Portfolio</a> |
-      <a href="team.html">Team</a> |
-      <a href="impact.html">Impact</a> |
-      <a href="investors.html">Investors</a> |
-      <a href="news.html">News</a> |
-      <a href="events.html">Events</a> |
-      <a href="careers.html">Careers</a> |
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
 
-  <main>
-    <h1>Contact</h1>
+  <!-- NAVIGATION -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <img src="../hadean_images/logo.png" alt="Hadean Ventures">
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="impact.html">Impact</a></li>
+        <li><a href="investors.html">Investors</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="mailto:enquiries@hadeanventures.com" class="btn btn-primary btn-sm">Email Us</a>
+      </div>
+    </div>
+  </nav>
 
-    <h2>Oslo Office</h2>
-    <address>
-      Dronningen 1<br>
-      0287 Oslo<br>
-      Norway<br>
-      E-mail: <a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a>
-    </address>
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <span class="label">Reach Out</span>
+      <h1>Contact</h1>
+      <p class="lead">We would love to hear from you — whether you are a founder developing a transformative therapy, an investor, or a potential team member.</p>
+    </div>
+  </div>
 
-    <h2>Stockholm Office</h2>
-    <address>
-      Karolinska Institute Science Park<br>
-      Nanna Svartz väg 4, 171 65 Solna, Stockholm, Sweden<br>
-      E-mail: <a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a>
-    </address>
+  <!-- OFFICE CARDS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="label">Our Offices</span>
+        <h2 style="margin-top: 12px;">Two Nordic hubs for European healthcare innovation</h2>
+      </div>
+      <div class="contact-grid">
 
-    <p>
-      If you would like to tell us about your venture, please follow the link on the website.
-      Hadean Ventures notes that it may be able to help advance new treatments with impactful
-      clinical benefits for patients worldwide.
-    </p>
-  </main>
+        <div class="office-card">
+          <div class="office-flag">🇳🇴</div>
+          <h3>Oslo Office</h3>
+          <address>
+            Dronningen 1<br>
+            0287 Oslo<br>
+            Norway<br><br>
+            <a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a>
+          </address>
+        </div>
+
+        <div class="office-card">
+          <div class="office-flag">🇸🇪</div>
+          <h3>Stockholm Office</h3>
+          <address>
+            Karolinska Institute Science Park<br>
+            Nanna Svartz väg 4<br>
+            171 65 Solna, Stockholm<br>
+            Sweden<br><br>
+            <a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a>
+          </address>
+        </div>
+
+      </div>
+
+      <div class="contact-info-card">
+        <span class="label">Venture Submissions</span>
+        <h3 style="margin-top: 12px; margin-bottom: 16px;">Building a healthcare breakthrough?</h3>
+        <p>
+          If you would like to tell us about your venture, please reach out by email. Hadean Ventures notes that it may be able to help advance new treatments with impactful clinical benefits for patients worldwide. We review all submissions and will respond to those that align with our investment criteria.
+        </p>
+        <div style="margin-top: 28px;">
+          <a href="mailto:enquiries@hadeanventures.com" class="btn btn-primary">Send Us a Message</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK LINKS -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="label">More Information</span>
+        <h2 style="margin-top: 12px;">Explore Hadean Ventures</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto;">
+        <a href="portfolio.html" class="card" style="text-decoration: none; display: block; text-align: center; padding: 32px 24px;">
+          <div style="font-size: 2rem; margin-bottom: 12px;">💊</div>
+          <div style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Our Portfolio</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">19 companies across all healthcare verticals</div>
+        </a>
+        <a href="team.html" class="card" style="text-decoration: none; display: block; text-align: center; padding: 32px 24px;">
+          <div style="font-size: 2rem; margin-bottom: 12px;">👥</div>
+          <div style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Meet the Team</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Science-driven investors with deep operational expertise</div>
+        </a>
+        <a href="impact.html" class="card" style="text-decoration: none; display: block; text-align: center; padding: 32px 24px;">
+          <div style="font-size: 2rem; margin-bottom: 12px;">🌱</div>
+          <div style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Our Impact</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">ESG-led investing for sustainable value creation</div>
+        </a>
+        <a href="news.html" class="card" style="text-decoration: none; display: block; text-align: center; padding: 32px 24px;">
+          <div style="font-size: 2rem; margin-bottom: 12px;">📰</div>
+          <div style="font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px;">Latest News</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Portfolio milestones and company announcements</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <img src="../hadean_images/logo.png" alt="Hadean Ventures">
+          </a>
+          <p class="footer-tagline">Investing in the future of healthcare since 2017.</p>
+        </div>
+        <div>
+          <div class="footer-heading">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="impact.html">Impact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Company</div>
+          <ul class="footer-links">
+            <li><a href="news.html">News</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Contact</div>
+          <div class="footer-contact-item">Oslo, Norway<br><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
+          <div class="footer-contact-item">Stockholm, Sweden<br>Karolinska Institute Science Park</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copyright">© 2025 Hadean Ventures. All rights reserved.</span>
+        <div class="footer-accent"></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
+      const spans = toggle.querySelectorAll('span');
+      const isOpen = links.classList.contains('open');
+      spans[0].style.transform = isOpen ? 'translateY(7px) rotate(45deg)' : '';
+      spans[1].style.opacity = isOpen ? '0' : '';
+      spans[2].style.transform = isOpen ? 'translateY(-7px) rotate(-45deg)' : '';
+    });
+  </script>
 </body>
 </html>

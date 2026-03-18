@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Map — Hadean Ventures</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <style>
+    :root {
+      --navy:          #214274;
+      --navy-dark:     #172d50;
+      --navy-deeper:   #0f1e35;
+      --blue:          #3F5A83;
+      --blue-mid:      #4a6a96;
+      --light-blue:    #BFDCEC;
+      --light-blue-soft: #daedf7;
+      --accent:        #CE332D;
+
+      --ocean-0: #0f1e35;
+      --ocean-1: #172d50;
+      --ocean-2: #214274;
+
+      --panel: rgba(23, 45, 80, 0.88);
+      --panel-border: rgba(191, 220, 236, 0.28);
+      --text-main: #ffffff;
+      --text-soft: rgba(191, 220, 236, 0.85);
+
+      --marker-scan: #3ec9a7;
+      --marker-eu:   #3a8fd8;
+      --marker-world: #e8894a;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 18% 14%, rgba(63, 90, 131, 0.28), transparent 38%),
+        radial-gradient(circle at 76% 72%, rgba(33, 66, 116, 0.18), transparent 40%),
+        linear-gradient(160deg, var(--navy-deeper) 0%, var(--navy-dark) 50%, var(--navy) 100%);
+      color: var(--text-main);
+      overflow: hidden;
+    }
+
+    .frame {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 30% 35%, rgba(74, 106, 150, 0.22), transparent 40%),
+        radial-gradient(circle at 72% 76%, rgba(63, 90, 131, 0.16), transparent 34%),
+        linear-gradient(170deg, var(--ocean-0) 0%, var(--ocean-1) 48%, var(--ocean-2) 100%);
+    }
+
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 390;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(to right, rgba(191, 220, 236, 0.14) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(191, 220, 236, 0.14) 1px, transparent 1px);
+      background-size: 70px 70px;
+      mask-image: radial-gradient(circle at 52% 46%, black 34%, transparent 78%);
+      animation: drift 32s linear infinite;
+    }
+
+    .halo {
+      position: absolute;
+      width: min(78vw, 980px);
+      aspect-ratio: 1;
+      left: 50%;
+      top: 53%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 1px solid rgba(191, 220, 236, 0.14);
+      box-shadow:
+        0 0 0 40px rgba(33, 66, 116, 0.04),
+        0 0 110px rgba(23, 45, 80, 0.4),
+        inset 0 0 90px rgba(191, 220, 236, 0.04);
+      pointer-events: none;
+      z-index: 395;
+    }
+
+    /* ── Headline panel ── */
+    .headline {
+      position: absolute;
+      top: 22px;
+      left: 22px;
+      z-index: 1200;
+      max-width: min(520px, calc(100vw - 44px));
+      padding: 18px 20px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--panel-border);
+      background: var(--panel);
+      backdrop-filter: blur(12px);
+      box-shadow:
+        0 12px 36px rgba(10, 20, 40, 0.4),
+        inset 0 0 40px rgba(191, 220, 236, 0.03);
+    }
+
+    .headline .kicker {
+      margin: 0 0 8px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--light-blue);
+    }
+
+    .headline h1 {
+      margin: 0;
+      font-size: clamp(1.05rem, 1.4vw + 0.52rem, 1.6rem);
+      line-height: 1.22;
+      letter-spacing: 0.01em;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .headline p {
+      margin: 9px 0 0;
+      font-size: clamp(0.8rem, 0.4vw + 0.64rem, 0.94rem);
+      line-height: 1.5;
+      color: var(--text-soft);
+    }
+
+    .headline .dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      margin-right: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(206, 51, 45, 0.7);
+      animation: pulse 2.6s ease-in-out infinite;
+      vertical-align: middle;
+    }
+
+    /* ── Leaflet overrides ── */
+    .leaflet-container {
+      background: transparent;
+      outline: none;
+    }
+
+    .leaflet-control-zoom {
+      border: 1px solid rgba(191, 220, 236, 0.3);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(4, 9, 20, 0.4);
+      margin-top: 22px;
+      margin-right: 22px;
+    }
+
+    .leaflet-control-zoom a {
+      background: rgba(15, 30, 53, 0.9);
+      color: var(--light-blue);
+      border-bottom-color: rgba(191, 220, 236, 0.25);
+      transition: all 160ms ease;
+    }
+
+    .leaflet-control-zoom a:hover {
+      background: rgba(33, 66, 116, 0.95);
+      color: #fff;
+      box-shadow: inset 0 0 14px rgba(191, 220, 236, 0.2);
+    }
+
+    .leaflet-control-attribution {
+      margin: 0 14px 12px 0;
+      padding: 3px 8px;
+      border-radius: 7px;
+      border: 1px solid rgba(191, 220, 236, 0.2);
+      background: rgba(10, 20, 38, 0.6);
+      color: rgba(191, 220, 236, 0.65);
+      backdrop-filter: blur(4px);
+    }
+
+    .leaflet-control-attribution a {
+      color: rgba(191, 220, 236, 0.9);
+    }
+
+    /* ── Tooltips ── */
+    .leaflet-tooltip.country-popup {
+      background: rgba(15, 30, 53, 0.96);
+      color: #ffffff;
+      border: 1px solid rgba(191, 220, 236, 0.3);
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      padding: 10px 14px;
+    }
+
+    .leaflet-tooltip.country-popup::before {
+      border-top-color: rgba(15, 30, 53, 0.96);
+    }
+
+    /* ── Popups ── */
+    .country-popup .leaflet-popup-content-wrapper {
+      background: rgba(15, 30, 53, 0.96);
+      color: #ffffff;
+      border: 1px solid rgba(191, 220, 236, 0.28);
+      border-radius: 12px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
+    }
+
+    .country-popup .leaflet-popup-tip {
+      background: rgba(15, 30, 53, 0.96);
+    }
+
+    .country-popup strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    /* ── Legend ── */
+    .legend {
+      position: absolute;
+      right: 22px;
+      bottom: 34px;
+      z-index: 1200;
+      padding: 13px 15px;
+      border-radius: 12px;
+      border: 1px solid var(--panel-border);
+      background: var(--panel);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 28px rgba(4, 9, 20, 0.38);
+      min-width: 180px;
+    }
+
+    .legend-title {
+      margin: 0 0 10px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--light-blue);
+    }
+
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 6px 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .legend-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      box-shadow: 0 0 9px currentColor;
+      flex: 0 0 auto;
+    }
+
+    .legend-dot-scandinavia { color: var(--marker-scan); background: var(--marker-scan); }
+    .legend-dot-europe      { color: var(--marker-eu);   background: var(--marker-eu);   }
+    .legend-dot-world       { color: var(--marker-world);background: var(--marker-world);}
+
+    /* ── Company markers ── */
+    .company-marker {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      border: 1.8px solid rgba(255, 255, 255, 0.68);
+      box-shadow:
+        0 0 0 5px color-mix(in srgb, var(--marker-color) 16%, transparent),
+        0 0 18px color-mix(in srgb, var(--marker-color) 66%, transparent);
+      background: var(--marker-color);
+      animation: markerPulse 2.8s ease-in-out infinite;
+    }
+
+    .company-marker-scandinavia { --marker-color: var(--marker-scan);  }
+    .company-marker-europe      { --marker-color: var(--marker-eu);    }
+    .company-marker-world       { --marker-color: var(--marker-world); }
+
+    /* ── Tooltip content ── */
+    .company-tooltip {
+      min-width: 210px;
+      max-width: 300px;
+      margin: 0;
+      font-size: 0.84rem;
+      line-height: 1.48;
+      color: #eaf5ff;
+    }
+
+    .company-tooltip strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #ffffff;
+      font-size: 0.9rem;
+      letter-spacing: 0.01em;
+    }
+
+    .company-tooltip .meta {
+      display: block;
+      margin-top: 6px;
+      color: var(--light-blue);
+      font-size: 0.73rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* ── Animations ── */
+    @keyframes pulse {
+      0%, 100% { transform: scale(0.94); opacity: 0.75; }
+      50%       { transform: scale(1.18); opacity: 1; }
+    }
+
+    @keyframes drift {
+      from { transform: translate3d(0, 0, 0); }
+      to   { transform: translate3d(-70px, -70px, 0); }
+    }
+
+    @keyframes markerPulse {
+      0%, 100% { transform: scale(0.93); }
+      50%       { transform: scale(1.13); }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 760px) {
+      .headline {
+        top: 12px;
+        left: 12px;
+        right: 12px;
+        max-width: none;
+        padding: 14px;
+      }
+
+      .halo { width: 92vw; }
+
+      .leaflet-control-zoom {
+        margin-top: 12px;
+        margin-right: 12px;
+      }
+
+      .legend {
+        right: 12px;
+        left: 12px;
+        bottom: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="frame">
+    <div id="map" aria-label="Interactive world map of portfolio companies"></div>
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <div class="halo" aria-hidden="true"></div>
+
+    <section class="headline">
+      <p class="kicker"><span class="dot" aria-hidden="true"></span>Portfolio Reach</p>
+      <h1>Where we invest</h1>
+      <p>Hover over a company to learn more. Our portfolio spans Scandinavia, Europe and beyond.</p>
+    </section>
+
+    <aside class="legend" aria-label="Map legend">
+      <p class="legend-title">Regions</p>
+      <div class="legend-row"><span class="legend-dot legend-dot-scandinavia"></span>Scandinavia</div>
+      <div class="legend-row"><span class="legend-dot legend-dot-europe"></span>Europe</div>
+      <div class="legend-row"><span class="legend-dot legend-dot-world"></span>Rest of World</div>
+    </aside>
+  </main>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script>
+    const map = L.map("map", {
+      center: [18, 6],
+      zoom: 2,
+      minZoom: 2,
+      maxZoom: 7,
+      zoomControl: false,
+      preferCanvas: true,
+      attributionControl: true,
+      worldCopyJump: false,
+      maxBoundsViscosity: 0.7,
+      inertiaDeceleration: 2500
+    });
+
+    L.control.zoom({ position: "topright" }).addTo(map);
+
+    const bounds = L.latLngBounds(L.latLng(-68, -179.9), L.latLng(84, 179.9));
+    map.setMaxBounds(bounds);
+
+    const renderPane = map.createPane("landPane");
+    renderPane.style.zIndex = 410;
+
+    const companyLocations = [
+      {
+        name: "Actithera",
+        city: "Oslo, Norway",
+        region: "scandinavia",
+        coords: [59.9139, 10.7522],
+        info: "Radiopharmaceutical company developing targeted cancer therapies using alpha-emitting radionuclides."
+      },
+      {
+        name: "Alex Therapeutics",
+        city: "Stockholm, Sweden",
+        region: "scandinavia",
+        coords: [59.3293, 18.0686],
+        info: "Digital therapeutics company building AI-powered mental health treatment solutions."
+      },
+      {
+        name: "ARTHEx Biotech",
+        city: "Barcelona, Spain",
+        region: "europe",
+        coords: [41.3874, 2.1686],
+        info: "RNA therapeutics company focused on rare genetic diseases including DM1."
+      },
+      {
+        name: "Attgeno",
+        city: "Stockholm, Sweden",
+        region: "scandinavia",
+        coords: [59.3346, 18.0632],
+        info: "Pharmaceutical company developing treatments for acute life-threatening conditions."
+      },
+      {
+        name: "CardioMech",
+        city: "Trondheim, Norway",
+        region: "scandinavia",
+        coords: [63.4305, 10.3951],
+        info: "Medical device company developing transcatheter technology for mitral valve repair."
+      },
+      {
+        name: "Cardior Pharmaceuticals",
+        city: "Hannover, Germany",
+        region: "europe",
+        coords: [52.3759, 9.732],
+        info: "Clinical-stage RNA therapeutics company in cardiovascular disease. Acquired by Novo Nordisk."
+      },
+      {
+        name: "Complement Therapeutics",
+        city: "Munich, Germany",
+        region: "europe",
+        coords: [48.1374, 11.5755],
+        info: "Biotech developing complement pathway inhibitors for geographic atrophy and other indications."
+      },
+      {
+        name: "Contineum Therapeutics",
+        city: "San Diego, USA",
+        region: "world",
+        coords: [32.7157, -117.1611],
+        info: "Therapeutics company focused on neurological and inflammatory diseases."
+      },
+      {
+        name: "Emergence Therapeutics",
+        city: "Duisburg, Germany",
+        region: "europe",
+        coords: [51.4344, 6.7623],
+        info: "Biopharmaceutical company advancing a nectin-4 ADC programme in oncology."
+      },
+      {
+        name: "Galecto",
+        city: "Copenhagen, Denmark",
+        region: "scandinavia",
+        coords: [55.6761, 12.5683],
+        info: "Drug development company focused on galectin biology for fibrosis and oncology."
+      },
+      {
+        name: "Neuro Event Labs",
+        city: "Tampere, Finland",
+        region: "scandinavia",
+        coords: [61.4981, 23.7608],
+        info: "Digital health company behind AI-based seizure monitoring technology."
+      },
+      {
+        name: "Nisonic",
+        city: "Trondheim, Norway",
+        region: "scandinavia",
+        coords: [63.4305, 10.3951],
+        info: "Medical device company developing advanced ultrasound solutions for neurology."
+      },
+      {
+        name: "Oncoinvent",
+        city: "Oslo, Norway",
+        region: "scandinavia",
+        coords: [59.9139, 10.7522],
+        info: "Drug development company advancing Radspherin for peritoneal metastases."
+      },
+      {
+        name: "Ribbon Bio",
+        city: "Vienna, Austria",
+        region: "europe",
+        coords: [48.2082, 16.3738],
+        info: "Platform company synthesising long and complex DNA for advanced therapeutics."
+      },
+      {
+        name: "SAGA Diagnostics",
+        city: "Lund, Sweden",
+        region: "scandinavia",
+        coords: [55.7047, 13.191],
+        info: "Diagnostics company offering ultrasensitive MRD liquid biopsy testing."
+      },
+      {
+        name: "SciRhom",
+        city: "Munich, Germany",
+        region: "europe",
+        coords: [48.1374, 11.5755],
+        info: "Biotech developing iRhom2 inhibitors for inflammatory and autoimmune conditions."
+      },
+      {
+        name: "Step Pharma",
+        city: "Paris, France",
+        region: "europe",
+        coords: [48.8566, 2.3522],
+        info: "Developing CTPS1 inhibitors for T-cell malignancies and solid tumours."
+      },
+      {
+        name: "TargED Biopharmaceuticals",
+        city: "Oslo, Norway",
+        region: "scandinavia",
+        coords: [59.9139, 10.7522],
+        info: "Biotech developing targeted protein degradation therapies in oncology."
+      },
+      {
+        name: "Themis Bioscience",
+        city: "Vienna, Austria",
+        region: "europe",
+        coords: [48.2082, 16.3738],
+        info: "Vaccine development company acquired by MSD in 2020."
+      }
+    ];
+
+    fetch("https://raw.githubusercontent.com/datasets/geo-countries/main/data/countries.geojson")
+      .then((response) => response.json())
+      .then((geojson) => {
+        L.geoJSON(geojson, {
+          pane: "landPane",
+          interactive: false,
+          style: {
+            fillColor: "#b8cede",
+            fillOpacity: 0.9,
+            stroke: false,
+            smoothFactor: 0.8,
+            lineJoin: "round"
+          }
+        }).addTo(map);
+      })
+      .catch((error) => {
+        console.error("Map data failed to load:", error);
+        const fallback = document.createElement("div");
+        fallback.style.cssText = "position:absolute;bottom:16px;left:16px;z-index:1500;padding:10px 14px;border-radius:10px;background:rgba(23,45,80,0.9);border:1px solid rgba(191,220,236,0.3);color:#dceeff;font-family:Manrope,sans-serif;font-size:0.85rem;";
+        fallback.textContent = "Could not load map data. Please check your connection and try again.";
+        document.body.appendChild(fallback);
+      });
+
+    function markerClass(region) {
+      if (region === "scandinavia") return "company-marker company-marker-scandinavia";
+      if (region === "europe")      return "company-marker company-marker-europe";
+      return "company-marker company-marker-world";
+    }
+
+    function regionLabel(region) {
+      if (region === "scandinavia") return "Scandinavia";
+      if (region === "europe")      return "Europe";
+      return "Rest of World";
+    }
+
+    const cityOffsetCounter = new Map();
+    function adjustedCoords(company) {
+      const key = company.city;
+      const count = cityOffsetCounter.get(key) || 0;
+      cityOffsetCounter.set(key, count + 1);
+      if (count === 0) return company.coords;
+      const angle = count * 2.399963229728653;
+      const distance = 0.22 + Math.floor(count / 5) * 0.08;
+      return [
+        company.coords[0] + Math.sin(angle) * distance,
+        company.coords[1] + Math.cos(angle) * distance
+      ];
+    }
+
+    companyLocations.forEach((company) => {
+      const icon = L.divIcon({
+        className: "",
+        html: `<div class="${markerClass(company.region)}"></div>`,
+        iconSize: [13, 13],
+        iconAnchor: [6, 6]
+      });
+
+      const marker = L.marker(adjustedCoords(company), { icon }).addTo(map);
+      const infoHtml =
+        `<p class="company-tooltip">` +
+        `<strong>${company.name}</strong>` +
+        `${company.info}` +
+        `<span class="meta">${company.city} · ${regionLabel(company.region)}</span>` +
+        `</p>`;
+
+      marker.bindTooltip(infoHtml, {
+        direction: "top",
+        offset: [0, -10],
+        opacity: 0.97,
+        className: "country-popup",
+        sticky: true
+      });
+      marker.bindPopup(infoHtml, { className: "country-popup", offset: [0, -10] });
+    });
+
+    map.fitBounds(bounds, { padding: [12, 12] });
+
+    L.control
+      .attribution({ prefix: "" })
+      .addAttribution('Leaflet | <a href="https://github.com/datasets/geo-countries" target="_blank" rel="noopener noreferrer">geo-countries</a>')
+      .addTo(map);
+  </script>
+</body>
+</html>

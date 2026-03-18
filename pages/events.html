@@ -3,30 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Events – Hadean Ventures</title>
+  <title>Events — Hadean Ventures</title>
+  <meta name="description" content="Hadean Ventures annual events for registered users.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="../index.html">Home</a> |
-      <a href="portfolio.html">Portfolio</a> |
-      <a href="team.html">Team</a> |
-      <a href="impact.html">Impact</a> |
-      <a href="investors.html">Investors</a> |
-      <a href="news.html">News</a> |
-      <a href="events.html">Events</a> |
-      <a href="careers.html">Careers</a> |
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
 
-  <main>
-    <h1>Hadean Ventures Annual Events</h1>
-    <p>
-      This section of the website announces Hadean Ventures' annual events. Access is restricted to registered
-      users; to view the content you need to log in. For password requests or assistance, please contact
-      <a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a>.
-    </p>
-  </main>
+  <!-- NAVIGATION -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <img src="../hadean_images/logo.png" alt="Hadean Ventures">
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="impact.html">Impact</a></li>
+        <li><a href="investors.html">Investors</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="events.html" class="active">Events</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="contact.html" class="btn btn-primary btn-sm">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <span class="label">Annual Gatherings</span>
+      <h1>Events</h1>
+      <p class="lead">Hadean Ventures brings together its network for annual events — exclusive gatherings at the intersection of science, investment, and healthcare innovation.</p>
+    </div>
+  </div>
+
+  <!-- RESTRICTED CONTENT -->
+  <section class="section">
+    <div class="container">
+      <div class="restricted-box">
+        <div class="restricted-icon">🔒</div>
+        <h3>Access Restricted</h3>
+        <p>
+          This section announces Hadean Ventures' annual events. Access is restricted to registered users and invited guests. To view event details you need to be logged in.
+        </p>
+        <p style="margin-bottom: 32px; font-size: 0.9rem;">
+          For password requests, access enquiries, or to find out more about Hadean events, please contact us at <a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a>.
+        </p>
+        <a href="mailto:enquiries@hadeanventures.com" class="btn btn-primary">Request Access</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <img src="../hadean_images/logo.png" alt="Hadean Ventures">
+          </a>
+          <p class="footer-tagline">Investing in the future of healthcare since 2017.</p>
+        </div>
+        <div>
+          <div class="footer-heading">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="impact.html">Impact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Company</div>
+          <ul class="footer-links">
+            <li><a href="news.html">News</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Contact</div>
+          <div class="footer-contact-item">Oslo, Norway<br><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
+          <div class="footer-contact-item">Stockholm, Sweden<br>Karolinska Institute Science Park</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copyright">© 2025 Hadean Ventures. All rights reserved.</span>
+        <div class="footer-accent"></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
+      const spans = toggle.querySelectorAll('span');
+      const isOpen = links.classList.contains('open');
+      spans[0].style.transform = isOpen ? 'translateY(7px) rotate(45deg)' : '';
+      spans[1].style.opacity = isOpen ? '0' : '';
+      spans[2].style.transform = isOpen ? 'translateY(-7px) rotate(-45deg)' : '';
+    });
+  </script>
 </body>
 </html>
