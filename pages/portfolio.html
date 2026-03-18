@@ -3,48 +3,288 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio – Hadean Ventures</title>
+  <title>Portfolio — Hadean Ventures</title>
+  <link rel="icon" type="image/png" href="../hadean_images/logo.png">
+  <meta name="description" content="Hadean Ventures portfolio — 19+ companies across therapeutics, diagnostics, digital health, and medical devices.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="../index.html">Home</a> |
-      <a href="portfolio.html">Portfolio</a> |
-      <a href="team.html">Team</a> |
-      <a href="impact.html">Impact</a> |
-      <a href="investors.html">Investors</a> |
-      <a href="news.html">News</a> |
-      <a href="events.html">Events</a> |
-      <a href="careers.html">Careers</a> |
-      <a href="contact.html">Contact</a>
-    </nav>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header site-header--solid">
+    <div class="container">
+      <a href="../index.html" class="site-logo">
+        <img src="../hadean_images/logo.png" alt="Hadean Ventures">
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-main">
+        <a href="../index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="team.html">Team</a>
+        <a href="portfolio.html" class="active">Portfolio</a>
+        <a href="impact.html">Impact</a>
+        <a href="news.html">News</a>
+        <a href="../map.html">Map</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <h1>Portfolio</h1>
-    <p>The portfolio section presents a selection of companies in which Hadean Ventures has invested.</p>
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="label label--warm">Portfolio</span>
+      <h1>Building tomorrow's healthcare companies</h1>
+      <p class="lead">We partner with exceptional founders across therapeutics, diagnostics, digital health, and medical devices — from early stage to growth.</p>
+    </div>
+  </section>
 
-    <ul>
-      <li><strong>Actithera</strong> – a radiopharmaceutical company.</li>
-      <li><strong>Alex Therapeutics</strong> – a digital therapeutics (DTx) company based in Stockholm.</li>
-      <li><strong>Arthex Biotech</strong> – a Spanish biopharmaceutical company developing advanced RNA treatments.</li>
-      <li><strong>Attgeno</strong> – a pharmaceutical company based in Stockholm, Sweden.</li>
-      <li><strong>CardioMech</strong> – a privately-held Norwegian company developing an innovative technology to repair the mitral valve via a transcatheter approach.</li>
-      <li><strong>Cardior</strong> – Cardior Pharmaceuticals is a leading clinical-stage biopharmaceutical company.</li>
-      <li><strong>Complement Therapeutics</strong> – Complement Therapeutics GmbH is a German-headquartered biotechnology company.</li>
-      <li><strong>Contineum Therapeutics</strong> – a San Diego-based company focused on developing therapeutics for neurological diseases.</li>
-      <li><strong>Emergence Therapeutics</strong> – a European biopharmaceutical company.</li>
-      <li><strong>Galecto</strong> – a Danish drug development company based in Copenhagen.</li>
-      <li><strong>Neuro Event Labs</strong> – a digital health company based in Tampere, Finland.</li>
-      <li><strong>Nisonic</strong> – a medical device company from Trondheim, Norway.</li>
-      <li><strong>Oncoinvent</strong> – a drug development company based in Oslo, Norway.</li>
-      <li><strong>Ribbon Bio</strong> – Ribbon Biolabs is developing a technology to synthesise DNA molecules.</li>
-      <li><strong>SAGA Diagnostics</strong> – a Lund, Sweden-based medical diagnostics company.</li>
-      <li><strong>Scirhom</strong> – SciRhom GmbH is a German biotechnology company.</li>
-      <li><strong>Step Pharma</strong> – developing novel therapeutics that inhibit the enzyme CTPS1.</li>
-      <li><strong>TargED</strong> – TargED Biopharmaceuticals is a private biotechnology company.</li>
-      <li><strong>Themis Bioscience</strong> – a vaccine development company.</li>
-    </ul>
-  </main>
+  <!-- ===== PORTFOLIO STATS ===== -->
+  <section class="section section--compact">
+    <div class="container">
+      <div class="stats-row reveal">
+        <div class="stat">
+          <div class="stat__number" data-count="19" data-suffix="+">19+</div>
+          <div class="stat__label">Portfolio Companies</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number" data-count="8" data-suffix="+">8+</div>
+          <div class="stat__label">Countries</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number" data-count="2">2</div>
+          <div class="stat__label">Notable Exits</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number" data-count="10" data-suffix="+">10+</div>
+          <div class="stat__label">Clinical-Stage Programs</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FILTERS & GRID ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="filters reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="therapeutics">Therapeutics</button>
+        <button class="filter-btn" data-filter="diagnostics">Diagnostics &amp; Devices</button>
+        <button class="filter-btn" data-filter="digital">Digital Health</button>
+        <button class="filter-btn" data-filter="platform">Platform</button>
+        <button class="filter-btn" data-filter="exit">Exits</button>
+      </div>
+
+      <div class="portfolio-full-grid reveal">
+
+        <!-- EXITS -->
+        <div class="portfolio-full-card" data-category="exit">
+          <span class="pfc__tag pfc__tag--exit">Exit — Acquired by Novo Nordisk (2024)</span>
+          <div class="pfc__name">Cardior Pharmaceuticals</div>
+          <p class="pfc__desc">Leading clinical-stage biopharmaceutical company pioneering RNA therapeutics to treat cardiac disease. Raised &euro;64M Series B before acquisition.</p>
+          <span class="pfc__badge">Cardiovascular</span>
+        </div>
+
+        <div class="portfolio-full-card" data-category="exit">
+          <span class="pfc__tag pfc__tag--exit">Exit — Acquired by MSD (2020)</span>
+          <div class="pfc__name">Themis Bioscience</div>
+          <p class="pfc__desc">Vienna-based vaccine development company. Partnered with Institut Pasteur on COVID-19 vaccine development before acquisition by Merck (MSD).</p>
+          <span class="pfc__badge">Vaccines</span>
+        </div>
+
+        <!-- THERAPEUTICS -->
+        <div class="portfolio-full-card" data-category="therapeutics">
+          <span class="pfc__tag">Series B — $87M</span>
+          <div class="pfc__name">ARTHEx Biotech</div>
+          <p class="pfc__desc">Spanish biopharmaceutical company developing advanced targeted RNA medicines. Lead program ATX-01 in Phase I-IIa for myotonic dystrophy type 1.</p>
+          <span class="pfc__badge">Rare Disease</span>
+        </div>
+
+        <div class="portfolio-full-card" data-category="therapeutics">
+          <span class="pfc__tag">Series C — &euro;38M</span>
+          <div class="pfc__name">Step Pharma</div>
+          <p class="pfc__desc">Developing first-in-class therapeutics that inhibit CTPS1. Lead compound dencatistat in Phase 1 trials for T-cell and B-cell lymphomas and solid tumours.</p>
+          <span class="pfc__badge">Oncology</span>
+        </div>
+
+        <div class="portfolio-full-card" data-category="therapeutics">
+          <span class="pfc__tag">Series A — &euro;72M</span>
+          <div class="pfc__name">Complement Therapeutics</div>
+          <p class="pfc__desc">German biotechnology company advancing complement-targeted therapies. FDA IND clearance for CTx001 in Phase I/II for geographic atrophy secondary to AMD.</p>
+          <span class="pfc__badge">Ophthalmology</span>
+        </div>
+
+        <div class="portfolio-full-card" data-category="therapeutics">
+          <span class="pfc__tag">Series B — SEK 347M</span>
+          <div class="pfc__name">Gesynta Pharma</div>
+          <p class="pfc__desc">Developing first-in-class mPGES-1 inhibitor vipoglanstat for endometriosis and systemic sclerosis. First patient dosed in endometriosis trial (2026). FDA orphan-drug designation.</p>
+          <span class="pfc__badge">Inflammation</span>
+        </div>
+
+        <div class="portfolio-full-card" data-category="therapeutics">
+          <span class="pfc__tag">FDA Fast-Track</span>
+          <div class="pfc__name">Oncoinvent</div>
+          <p class="pfc__desc">Oslo-based company developing Radspherin, a radiopharmaceutical for cancer treatment. FDA fast-track designation granted. Positive Phase 1/2a data in colorectal peritoneal metastases.</p>
+          <span class="pfc__badge">Oncology</span>
+        </div>
+
+        <div class="portfolio-full-card" data-category="therapeutics">
+          <div class="pfc__name">Actithera</div>
+          <p class="pfc__desc">Radiopharmaceutical company developing next-generation targeted radionuclide therapies for cancer treatment.</p>
+          <span class="pfc__badge">Oncology</span>
+        </div>
+
+        <div class="portfolio-full-card" data-category="therapeutics">
+          <span class="pfc__tag">Series A — &euro;87M</span>
+          <div class="pfc__name">Emergence Therapeutics</div>
+          <p class="pfc__desc">European biopharmaceutical company advancing a nectin-4 antibody-drug conjugate (ADC) pipeline for cancer treatment.</p>
+          <span class="pfc__badge">Oncology</span>
+        </div>
+
+        <div class="portfolio-full-card" data-category="therapeutics">
+          <span class="pfc__tag">Series A — &euro;39M</span>
+          <div class="pfc__name">TargED Biopharmaceuticals</div>
+          <p class="pfc__desc">Private biotechnology company advancing TGD001 through Phase 1 clinical trials — a targeted approach to difficult-to-treat cancers.</p>
+          <span class="pfc__badge">Oncology</span>
+        </div>
+
+        <div class="portfolio-full-card" data-category="therapeutics">
+          <span class="pfc__tag">First-in-Man</span>
+          <div class="pfc__name">SciRhom</div>
+          <p class="pfc__desc">German biotechnology company with lead program SR-878 in first-in-man clinical studies — targeting iRhom2 for inflammatory and autoimmune diseases.</p>
+          <span class="pfc__badge">Immunology</span>
+        </div>
+
+        <div class="portfolio-full-card" data-category="therapeutics">
+          <span class="pfc__tag">Phase 2a</span>
+          <div class="pfc__name">Galecto</div>
+          <p class="pfc__desc">Copenhagen-based drug development company focused on galectin biology. GB0139 Phase 2a results in idiopathic pulmonary fibrosis published in the European Respiratory Journal.</p>
+          <span class="pfc__badge">Respiratory</span>
+        </div>
+
+        <div class="portfolio-full-card" data-category="therapeutics">
+          <span class="pfc__tag">Phase II Positive</span>
+          <div class="pfc__name">Attgeno</div>
+          <p class="pfc__desc">Stockholm-based pharmaceutical company developing Supernitro for acute life-threatening conditions. Positive Phase II results in acute pulmonary hypertension.</p>
+          <span class="pfc__badge">Cardiovascular</span>
+        </div>
+
+        <div class="portfolio-full-card" data-category="therapeutics">
+          <div class="pfc__name">Contineum Therapeutics</div>
+          <p class="pfc__desc">San Diego-based company focused on developing novel therapeutics for neurological diseases with high unmet need.</p>
+          <span class="pfc__badge">Neurology</span>
+        </div>
+
+        <!-- DIAGNOSTICS & DEVICES -->
+        <div class="portfolio-full-card" data-category="diagnostics">
+          <span class="pfc__tag">Medicare Coverage</span>
+          <div class="pfc__name">SAGA Diagnostics</div>
+          <p class="pfc__desc">Lund, Sweden-based medical diagnostics company. Pathlight MRD test achieved Medicare coverage for breast cancer across all subtypes — advancing ultrasensitive cancer liquid biopsies.</p>
+          <span class="pfc__badge">Diagnostics</span>
+        </div>
+
+        <div class="portfolio-full-card" data-category="diagnostics">
+          <div class="pfc__name">CardioMech</div>
+          <p class="pfc__desc">Norwegian company developing an innovative transcatheter technology to repair the mitral valve — a minimally invasive approach to a prevalent cardiac condition.</p>
+          <span class="pfc__badge">Medical Device</span>
+        </div>
+
+        <div class="portfolio-full-card" data-category="diagnostics">
+          <div class="pfc__name">Nisonic</div>
+          <p class="pfc__desc">Trondheim-based medical device company developing advanced ultrasound technology for neurological conditions.</p>
+          <span class="pfc__badge">Medical Device</span>
+        </div>
+
+        <!-- DIGITAL HEALTH -->
+        <div class="portfolio-full-card" data-category="digital">
+          <span class="pfc__tag">FDA 510(k) &amp; Breakthrough Device</span>
+          <div class="pfc__name">Neuro Event Labs</div>
+          <p class="pfc__desc">Finnish digital health company with AI-powered seizure monitoring. Nelli system holds FDA 510(k) clearance, Breakthrough Device designation, and European MDR certification.</p>
+          <span class="pfc__badge">Digital Health</span>
+        </div>
+
+        <div class="portfolio-full-card" data-category="digital">
+          <div class="pfc__name">Alex Therapeutics</div>
+          <p class="pfc__desc">Stockholm-based digital therapeutics company developing software-based treatments. Pilot study showed nearly 50% reduction in anxiety. Exclusive agreement with Navamedic for commercialisation.</p>
+          <span class="pfc__badge">Digital Therapeutics</span>
+        </div>
+
+        <!-- PLATFORM -->
+        <div class="portfolio-full-card" data-category="platform">
+          <span class="pfc__tag">Series A — &euro;18M</span>
+          <div class="pfc__name">Ribbon Biolabs</div>
+          <p class="pfc__desc">Developing breakthrough technology to synthesise long DNA molecules at scale — enabling next-generation gene therapies. Strategic collaborations with Scala Biodesign and Syngoi Technologies.</p>
+          <span class="pfc__badge">Synthetic Biology</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta">
+    <div class="cta__bg" style="background-image: url('../hadean_images/hero-parachute-sunset.png');"></div>
+    <div class="container reveal">
+      <h2>Building something that could change healthcare?</h2>
+      <p>We invest across all healthcare verticals and stages. Tell us about your venture.</p>
+      <a href="contact.html" class="btn btn--primary btn--lg">
+        Get in Touch <span class="btn__arrow">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer__brand">
+          <a href="../index.html" class="site-logo">
+            <img src="../hadean_images/logo.png" alt="Hadean Ventures">
+          </a>
+          <p>European life science venture capital. Making a difference by investing in the future of healthcare.</p>
+        </div>
+        <div>
+          <div class="footer__heading">Navigate</div>
+          <div class="footer__links">
+            <a href="about.html">About</a>
+            <a href="team.html">Team</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="impact.html">Impact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">Resources</div>
+          <div class="footer__links">
+            <a href="news.html">News</a>
+            <a href="../map.html">Map</a>
+            <a href="careers.html">Careers</a>
+            <a href="events.html">Events</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">Offices</div>
+          <div class="footer__links">
+            <a>Oslo, Norway</a>
+            <a>Stockholm, Sweden</a>
+          </div>
+          <div class="footer__heading mt-xl">Contact</div>
+          <div class="footer__links">
+            <a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div class="footer__copyright">&copy; 2026 Hadean Ventures. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
 </body>
 </html>

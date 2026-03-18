@@ -3,31 +3,400 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hadean Ventures</title>
+  <title>Hadean Ventures — Investing in the Future of Healthcare</title>
+  <link rel="icon" type="image/png" href="hadean_images/logo.png">
+  <meta name="description" content="European life science venture capital. ~EUR 230 million under management. Backing transformative science from molecule to medicine.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="index.html">Home</a> |
-      <a href="pages/portfolio.html">Portfolio</a> |
-      <a href="pages/team.html">Team</a> |
-      <a href="pages/impact.html">Impact</a> |
-      <a href="pages/investors.html">Investors</a> |
-      <a href="pages/news.html">News</a> |
-      <a href="pages/events.html">Events</a> |
-      <a href="pages/careers.html">Careers</a> |
-      <a href="pages/contact.html">Contact</a>
-    </nav>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-logo"><img src="hadean_images/logo.png" alt="Hadean Ventures"></a>
+      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="nav-main">
+        <a href="index.html">Home</a>
+        <a href="pages/about.html">About</a>
+        <a href="pages/team.html">Team</a>
+        <a href="pages/portfolio.html">Portfolio</a>
+        <a href="pages/impact.html">Impact</a>
+        <a href="pages/news.html">News</a>
+        <a href="map.html">Map</a>
+        <a href="pages/contact.html">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <h1>Investing in the future of healthcare</h1>
-    <p>
-      Hadean Ventures is a European life science venture capital fund manager with approximately
-      EUR 230 million of assets under management. The firm invests across all healthcare verticals
-      and stages in products with the potential to address unmet medical needs. The stated purpose
-      of the firm is to make a difference by investing in the future of healthcare.
-    </p>
-  </main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg" style="background-image: url('hadean_images/hero-ocean-dusk.png');"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="label" style="margin-bottom: 1.5rem;">European Life Science Venture Capital</p>
+      <h1 class="hero__title">Investing in<br>the <em>future</em><br>of healthcare</h1>
+      <div class="hero__meta">
+        <div class="hero__meta-item"><strong>~&euro;230M</strong> Under management</div>
+        <div class="hero__meta-item"><strong>19+</strong> Portfolio companies</div>
+        <div class="hero__meta-item"><strong>2</strong> Notable exits</div>
+      </div>
+    </div>
+    <div class="hero__scroll">Scroll<span></span></div>
+  </section>
+
+  <!-- INTRO SPLIT -->
+  <section class="split">
+    <div class="split__text">
+      <div class="reveal">
+        <span class="label">Our Purpose</span>
+        <h2 style="margin: 1.5rem 0;">Where transformative science begins</h2>
+        <hr class="divider">
+        <p>Hadean Ventures invests across all healthcare verticals and stages — from breakthrough therapeutics to innovative diagnostics and digital health. We partner with exceptional founders to advance products that address the world's most pressing unmet medical needs.</p>
+        <p style="color: var(--text-muted);">Founded in Oslo, present in Stockholm. Deep scientific expertise. Long-term commitment.</p>
+        <a href="pages/about.html" class="link mt-lg">Our approach <span class="btn__arrow">&rarr;</span></a>
+      </div>
+    </div>
+    <div class="split__image">
+      <img src="hadean_images/hero-parachute-sunset.png" alt="Bold vision">
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-row reveal">
+    <div class="stat">
+      <div class="stat__number" data-count="230" data-prefix="~€" data-suffix="M">~&euro;0M</div>
+      <div class="stat__label">Assets under management</div>
+    </div>
+    <div class="stat">
+      <div class="stat__number" data-count="19" data-suffix="+">0+</div>
+      <div class="stat__label">Portfolio companies</div>
+    </div>
+    <div class="stat">
+      <div class="stat__number" data-count="2">0</div>
+      <div class="stat__label">Funds raised</div>
+    </div>
+    <div class="stat">
+      <div class="stat__number" data-count="2">0</div>
+      <div class="stat__label">Notable exits</div>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO HORIZONTAL SCROLL -->
+  <section class="section">
+    <div class="container reveal">
+      <span class="label">Portfolio</span>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin: 1.5rem 0 2.5rem;">
+        <h2>Selected investments</h2>
+        <a href="pages/portfolio.html" class="link" style="flex-shrink: 0;">View all <span class="btn__arrow">&rarr;</span></a>
+      </div>
+    </div>
+    <div class="portfolio-scroll">
+      <div class="portfolio-scroll__card">
+        <div>
+          <div class="psc__tag psc__tag--exit">Exit &mdash; Novo Nordisk (2024)</div>
+          <div class="psc__name">Cardior Pharmaceuticals</div>
+          <p class="psc__desc">Clinical-stage biopharmaceutical company pioneering RNA therapeutics for cardiac disease. &euro;64M Series B before acquisition.</p>
+        </div>
+        <div class="psc__badges">
+          <span class="psc__badge">Cardiovascular</span>
+          <span class="psc__badge psc__badge--exit">Exit</span>
+        </div>
+      </div>
+      <div class="portfolio-scroll__card">
+        <div>
+          <div class="psc__tag">Series B &mdash; $87M</div>
+          <div class="psc__name">ARTHEx Biotech</div>
+          <p class="psc__desc">Advanced targeted RNA medicines. Lead program ATX-01 in Phase I-IIa for myotonic dystrophy type 1.</p>
+        </div>
+        <div class="psc__badges"><span class="psc__badge">Rare Disease</span></div>
+      </div>
+      <div class="portfolio-scroll__card">
+        <div>
+          <div class="psc__tag">Series C &mdash; &euro;38M</div>
+          <div class="psc__name">Step Pharma</div>
+          <p class="psc__desc">First-in-class CTPS1 inhibitors. Lead compound dencatistat in Phase 1 for lymphomas and solid tumours.</p>
+        </div>
+        <div class="psc__badges"><span class="psc__badge">Oncology</span></div>
+      </div>
+      <div class="portfolio-scroll__card">
+        <div>
+          <div class="psc__tag">Series A &mdash; &euro;72M</div>
+          <div class="psc__name">Complement Therapeutics</div>
+          <p class="psc__desc">Complement-targeted therapies. FDA IND clearance for CTx001 in geographic atrophy secondary to AMD.</p>
+        </div>
+        <div class="psc__badges"><span class="psc__badge">Ophthalmology</span></div>
+      </div>
+      <div class="portfolio-scroll__card">
+        <div>
+          <div class="psc__tag">FDA 510(k) cleared</div>
+          <div class="psc__name">Neuro Event Labs</div>
+          <p class="psc__desc">AI-powered seizure monitoring. Nelli system holds FDA 510(k) clearance, Breakthrough Device designation, and European MDR certification.</p>
+        </div>
+        <div class="psc__badges"><span class="psc__badge">Digital Health</span></div>
+      </div>
+      <div class="portfolio-scroll__card">
+        <div>
+          <div class="psc__tag psc__tag--exit">Exit &mdash; MSD (2020)</div>
+          <div class="psc__name">Themis Bioscience</div>
+          <p class="psc__desc">Vaccine development. Partnered with Institut Pasteur on COVID-19 before acquisition by Merck (MSD).</p>
+        </div>
+        <div class="psc__badges">
+          <span class="psc__badge">Vaccines</span>
+          <span class="psc__badge psc__badge--exit">Exit</span>
+        </div>
+      </div>
+      <div class="portfolio-scroll__card">
+        <div>
+          <div class="psc__tag">Series B &mdash; SEK 347M</div>
+          <div class="psc__name">Gesynta Pharma</div>
+          <p class="psc__desc">First-in-class mPGES-1 inhibitor vipoglanstat. First patient dosed in endometriosis trial (March 2026). FDA orphan-drug designation.</p>
+        </div>
+        <div class="psc__badges"><span class="psc__badge">Inflammation</span></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="scroll-hint">
+        <div class="scroll-hint__line"></div>
+        <div class="scroll-hint__text">Scroll to explore</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OCEAN IMAGE BREAK -->
+  <div class="image-section">
+    <video autoplay muted loop playsinline aria-label="DNA double helix animation">
+      <source src="HadeanVideo/DNA_Double_Helix_Rotation_Animation.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- NEWS + IMPACT SIDE BY SIDE -->
+  <section class="section">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 4rem; align-items: start;">
+        <!-- News -->
+        <div class="reveal">
+          <span class="label">Latest News</span>
+          <h2 style="margin: 1.5rem 0 2.5rem;">Milestones</h2>
+          <div class="news-card news-card--featured" style="grid-column: auto; margin-bottom: 1.5rem;">
+            <div>
+              <div class="news-card__date">March 11, 2026</div>
+              <div class="news-card__title">First patient dosed in Gesynta Pharma's endometriosis trial of vipoglanstat</div>
+              <p class="news-card--featured .news-card__desc" style="font-size: 0.88rem; color: var(--text-dim); margin-top: 0.75rem;">A major milestone for the first-in-class mPGES-1 inhibitor program, backed by Hadean Growth Fund.</p>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0;">
+            <div class="news-list-item">
+              <div class="news-list-item__date">Nov 25, 2025</div>
+              <div class="news-list-item__title">Neuro Event Labs receives FDA 510(k) clearance for Nelli</div>
+            </div>
+            <div class="news-list-item">
+              <div class="news-list-item__date">Oct 15, 2025</div>
+              <div class="news-list-item__title">Step Pharma completes &euro;38M Series C</div>
+            </div>
+            <div class="news-list-item">
+              <div class="news-list-item__date">Oct 10, 2025</div>
+              <div class="news-list-item__title">Complement Therapeutics receives FDA IND clearance for CTx001</div>
+            </div>
+            <div class="news-list-item">
+              <div class="news-list-item__date">Sep 17, 2025</div>
+              <div class="news-list-item__title">ARTHEx Biotech upsizes Series B to $87M</div>
+            </div>
+          </div>
+          <a href="pages/news.html" class="link mt-lg">All news <span class="btn__arrow">&rarr;</span></a>
+        </div>
+
+        <!-- Impact card -->
+        <div class="reveal reveal-delay-2">
+          <div style="background: var(--surface); border: 1px solid var(--border); padding: 3rem;">
+            <span class="label" style="display: block; margin-bottom: 2rem;">Impact</span>
+            <h3 style="margin-bottom: 1.5rem;">Responsible investing as a catalyst for value</h3>
+            <hr class="divider">
+            <p style="font-size: 0.9rem; line-height: 1.8;">ESG is embedded in our investment process — from due diligence through board governance. We believe that addressing society's greatest health challenges is both our purpose and our competitive advantage.</p>
+            <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+              <div style="font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 0.75rem;">UN SDGs we impact</div>
+              <p style="font-size: 0.85rem; color: var(--text-dim); line-height: 2;">Good Health &amp; Well-Being &middot; Gender Equality &middot; Industry &amp; Innovation &middot; Responsible Consumption</p>
+            </div>
+            <a href="pages/impact.html" class="link mt-lg">Our impact <span class="btn__arrow">&rarr;</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM MARQUEE -->
+  <section class="section section--compact section--surface">
+    <div class="container reveal">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1rem;">
+        <div>
+          <span class="label">Our Team</span>
+          <h2 style="margin-top: 1rem;">Science meets<br>investment expertise</h2>
+        </div>
+        <a href="pages/team.html" class="link">Meet the team <span class="btn__arrow">&rarr;</span></a>
+      </div>
+    </div>
+    <div class="marquee-wrap">
+      <div class="marquee">
+        <!-- First set -->
+        <div class="marquee__item">
+          <img src="hadean_images/Ingrid-Teigland-Akay-227x230.jpg" alt="Ingrid Teigland Akay" class="marquee__photo">
+          <div class="marquee__name">Ingrid Teigland Akay</div>
+          <div class="marquee__role">Managing Partner</div>
+        </div>
+        <div class="marquee__item">
+          <img src="hadean_images/2023-12-12-HV-walter-stockinger-553-sh-1-scaled-230x230.jpg" alt="Walter Stockinger" class="marquee__photo">
+          <div class="marquee__name">Walter Stockinger</div>
+          <div class="marquee__role">Managing Partner</div>
+        </div>
+        <div class="marquee__item">
+          <img src="hadean_images/2023-12-12-HV-roger-franklin-402-sh-scaled-230x230.jpg" alt="Roger Franklin" class="marquee__photo">
+          <div class="marquee__name">Roger Franklin</div>
+          <div class="marquee__role">Partner</div>
+        </div>
+        <div class="marquee__item">
+          <img src="hadean_images/Georgina-Askeland.png" alt="Georgina Askeland" class="marquee__photo">
+          <div class="marquee__name">Georgina Askeland</div>
+          <div class="marquee__role">Principal</div>
+        </div>
+        <div class="marquee__item">
+          <img src="hadean_images/2023-12-12-HV-miao-he-677-sh-scaled-230x230.jpg" alt="Miao He" class="marquee__photo">
+          <div class="marquee__name">Miao He</div>
+          <div class="marquee__role">Sr. Investment Associate</div>
+        </div>
+        <div class="marquee__item">
+          <img src="hadean_images/markus-dietrich-230x230.jpg" alt="Markus Dietrich" class="marquee__photo">
+          <div class="marquee__name">Markus Dietrich</div>
+          <div class="marquee__role">Sr. Investment Associate</div>
+        </div>
+        <div class="marquee__item">
+          <img src="hadean_images/2023-12-12-HV-yun-yang-113-sh-scaled-230x230.jpg" alt="Yun Yang" class="marquee__photo">
+          <div class="marquee__name">Yun Yang</div>
+          <div class="marquee__role">Investment Associate</div>
+        </div>
+        <div class="marquee__item">
+          <img src="hadean_images/Camilla_Olsen_BW-scaled-230x230.jpg" alt="Camilla Olsen" class="marquee__photo">
+          <div class="marquee__name">Camilla Olsen</div>
+          <div class="marquee__role">Impact &amp; ESG Manager</div>
+        </div>
+        <div class="marquee__item">
+          <img src="hadean_images/2023-12-12-HV-silje-ervik-728-sh-scaled-230x230.jpg" alt="Silje Ervik" class="marquee__photo">
+          <div class="marquee__name">Silje C. L. Ervik</div>
+          <div class="marquee__role">Head of Legal</div>
+        </div>
+        <div class="marquee__item">
+          <img src="hadean_images/2023-12-12-HV-florian-eckhardt-605-sh-scaled-230x230.jpg" alt="Florian Eckhardt" class="marquee__photo">
+          <div class="marquee__name">Florian Eckhardt</div>
+          <div class="marquee__role">Senior Advisor</div>
+        </div>
+        <!-- Duplicate set for seamless loop -->
+        <div class="marquee__item">
+          <img src="hadean_images/Ingrid-Teigland-Akay-227x230.jpg" alt="Ingrid Teigland Akay" class="marquee__photo">
+          <div class="marquee__name">Ingrid Teigland Akay</div>
+          <div class="marquee__role">Managing Partner</div>
+        </div>
+        <div class="marquee__item">
+          <img src="hadean_images/2023-12-12-HV-walter-stockinger-553-sh-1-scaled-230x230.jpg" alt="Walter Stockinger" class="marquee__photo">
+          <div class="marquee__name">Walter Stockinger</div>
+          <div class="marquee__role">Managing Partner</div>
+        </div>
+        <div class="marquee__item">
+          <img src="hadean_images/2023-12-12-HV-roger-franklin-402-sh-scaled-230x230.jpg" alt="Roger Franklin" class="marquee__photo">
+          <div class="marquee__name">Roger Franklin</div>
+          <div class="marquee__role">Partner</div>
+        </div>
+        <div class="marquee__item">
+          <img src="hadean_images/Georgina-Askeland.png" alt="Georgina Askeland" class="marquee__photo">
+          <div class="marquee__name">Georgina Askeland</div>
+          <div class="marquee__role">Principal</div>
+        </div>
+        <div class="marquee__item">
+          <img src="hadean_images/2023-12-12-HV-miao-he-677-sh-scaled-230x230.jpg" alt="Miao He" class="marquee__photo">
+          <div class="marquee__name">Miao He</div>
+          <div class="marquee__role">Sr. Investment Associate</div>
+        </div>
+        <div class="marquee__item">
+          <img src="hadean_images/markus-dietrich-230x230.jpg" alt="Markus Dietrich" class="marquee__photo">
+          <div class="marquee__name">Markus Dietrich</div>
+          <div class="marquee__role">Sr. Investment Associate</div>
+        </div>
+        <div class="marquee__item">
+          <img src="hadean_images/2023-12-12-HV-yun-yang-113-sh-scaled-230x230.jpg" alt="Yun Yang" class="marquee__photo">
+          <div class="marquee__name">Yun Yang</div>
+          <div class="marquee__role">Investment Associate</div>
+        </div>
+        <div class="marquee__item">
+          <img src="hadean_images/Camilla_Olsen_BW-scaled-230x230.jpg" alt="Camilla Olsen" class="marquee__photo">
+          <div class="marquee__name">Camilla Olsen</div>
+          <div class="marquee__role">Impact &amp; ESG Manager</div>
+        </div>
+        <div class="marquee__item">
+          <img src="hadean_images/2023-12-12-HV-silje-ervik-728-sh-scaled-230x230.jpg" alt="Silje Ervik" class="marquee__photo">
+          <div class="marquee__name">Silje C. L. Ervik</div>
+          <div class="marquee__role">Head of Legal</div>
+        </div>
+        <div class="marquee__item">
+          <img src="hadean_images/2023-12-12-HV-florian-eckhardt-605-sh-scaled-230x230.jpg" alt="Florian Eckhardt" class="marquee__photo">
+          <div class="marquee__name">Florian Eckhardt</div>
+          <div class="marquee__role">Senior Advisor</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta__bg" style="background-image: url('hadean_images/hero-ocean-dusk.png');"></div>
+    <div class="container reveal">
+      <h2>Have a venture that could<br>transform healthcare?</h2>
+      <p>We're always looking for exceptional science and the founders behind it.</p>
+      <a href="pages/contact.html" class="btn btn--gold">Get in touch <span class="btn__arrow">&rarr;</span></a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer__brand">
+          <a href="index.html" class="site-logo"><img src="hadean_images/logo.png" alt="Hadean Ventures"></a>
+          <p>European life science venture capital. Making a difference by investing in the future of healthcare.</p>
+        </div>
+        <div>
+          <div class="footer__heading">Navigate</div>
+          <div class="footer__links">
+            <a href="pages/about.html">About</a>
+            <a href="pages/team.html">Team</a>
+            <a href="pages/portfolio.html">Portfolio</a>
+            <a href="pages/impact.html">Impact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">Resources</div>
+          <div class="footer__links">
+            <a href="pages/news.html">News</a>
+            <a href="map.html">Map</a>
+            <a href="pages/careers.html">Careers</a>
+            <a href="pages/contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">Offices</div>
+          <div class="footer__links">
+            <a>Oslo, Norway</a>
+            <a>Stockholm, Sweden</a>
+          </div>
+          <div class="footer__heading" style="margin-top: 2rem;">Email</div>
+          <div class="footer__links">
+            <a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">&copy; 2026 Hadean Ventures. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -3,67 +3,213 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Impact – Hadean Ventures</title>
+  <title>Impact — Hadean Ventures</title>
+  <link rel="icon" type="image/png" href="../hadean_images/logo.png">
+  <meta name="description" content="Hadean Ventures is committed to responsible investing, ESG integration, diversity, and the UN Sustainable Development Goals.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="../index.html">Home</a> |
-      <a href="portfolio.html">Portfolio</a> |
-      <a href="team.html">Team</a> |
-      <a href="impact.html">Impact</a> |
-      <a href="investors.html">Investors</a> |
-      <a href="news.html">News</a> |
-      <a href="events.html">Events</a> |
-      <a href="careers.html">Careers</a> |
-      <a href="contact.html">Contact</a>
-    </nav>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header site-header--solid">
+    <div class="container">
+      <a href="../index.html" class="site-logo">
+        <img src="../hadean_images/logo.png" alt="Hadean Ventures">
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-main">
+        <a href="../index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="team.html">Team</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="impact.html" class="active">Impact</a>
+        <a href="news.html">News</a>
+        <a href="../map.html">Map</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <h1>The Hadean Impact</h1>
-    <p>Hadean Ventures has a strong commitment to being a driver for positive changes in society as a whole.</p>
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="label label--warm">The Hadean Impact</span>
+      <h1>Responsible investing as a catalyst for value</h1>
+      <p class="lead">We believe addressing society's greatest health challenges is both our purpose and our competitive advantage.</p>
+    </div>
+  </section>
 
-    <h2>Responsible investing = Value creation</h2>
-    <p>
-      The firm contributes to increased wealth, better health and improved living conditions across the globe
-      through support of research and development and with a strong focus on environmental, social and
-      governance (ESG) matters.
-    </p>
-    <p>
-      Hadean Ventures welcomes the Sustainable Finance Disclosure Regulation (SFDR), which links the UN's
-      2030 Agenda for Sustainable Development and the Paris Agreement on climate change to the due-diligence
-      processes and investment-making decisions of financial institutions. These regulations make finance a
-      powerful tool for creating overall value.
-    </p>
-    <p>
-      The investment due-diligence process has been tailored to meet high ESG standards and technical standards
-      will continue to be implemented. Through impactful positions such as board directorships, Hadean Ventures
-      uses its influence to implement ESG policies and standard operating procedures in portfolio companies.
-    </p>
+  <!-- ===== ESG INTEGRATION — SPLIT ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-2" style="gap: 4rem; align-items: start;">
 
-    <h2>Strong focus on diversity and gender equality</h2>
-    <p>
-      The firm's ESG policy guides its consideration of environmental, social and governance factors within both
-      the investment firm itself and the companies it invests in. Lack of diversity and gender equality is
-      identified as a major challenge in the investment industry and start-up community. Hadean Ventures works
-      for an inclusive and diverse environment within its firm and portfolio companies and promotes diversity
-      and equal opportunity in recruitment processes.
-    </p>
-    <p>
-      Programs are in place to help increase diversity both in start-ups and in investment roles. Hadean Ventures
-      participates in cross-firm, cross-border initiatives such as Level20, which it helped launch in the Nordics
-      in 2019 together with several other private-equity firms.
-    </p>
+        <!-- Left: ESG copy -->
+        <div class="reveal">
+          <span class="label">ESG Integration</span>
+          <h2>Responsible investing = value creation</h2>
+          <hr class="divider">
+          <p class="lead" style="color: var(--text);">
+            Hadean Ventures contributes to increased wealth, better health, and improved living conditions across the globe through support of research and development — with a strong focus on environmental, social, and governance matters.
+          </p>
+          <p style="color: var(--text-dim);">
+            We welcome the Sustainable Finance Disclosure Regulation (SFDR), which links the UN's 2030 Agenda for Sustainable Development and the Paris Agreement to the investment decisions of financial institutions. These regulations make finance a powerful tool for creating overall value.
+          </p>
+          <p style="color: var(--text-dim);">
+            Our investment due-diligence process has been tailored to meet high ESG standards. Through board directorships and impactful governance positions, we implement ESG policies and standard operating procedures across our portfolio companies.
+          </p>
+        </div>
 
-    <h2>Sustainability goals</h2>
-    <p>
-      The UN Sustainable Development Goals directly impacted by the firm include good health and well-being,
-      gender equality, industry and innovation, and responsible consumption and production. The launch of the
-      SDGs in 2015 underscored the role of the private sector in solving global challenges. Following the launch
-      of the SFDR in the EU/EEA, financial market participants are encouraged to contribute to sustainable
-      investments through their business activities, asset allocation and investment decisions (UNPRI).
-    </p>
-  </main>
+        <!-- Right: SDG list -->
+        <div class="reveal reveal-delay-2">
+          <h6 style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em;">UN Sustainable Development Goals</h6>
+
+          <div class="sdg">
+            <div class="sdg__num" style="background: #4c9f38;">3</div>
+            <div class="sdg__text">
+              <strong>Good Health &amp; Well-Being</strong>
+              <span>Advancing treatments for unmet medical needs</span>
+            </div>
+          </div>
+
+          <div class="sdg">
+            <div class="sdg__num" style="background: #ff3a21;">5</div>
+            <div class="sdg__text">
+              <strong>Gender Equality</strong>
+              <span>Promoting diversity in investment and start-ups</span>
+            </div>
+          </div>
+
+          <div class="sdg">
+            <div class="sdg__num" style="background: #fd6925;">9</div>
+            <div class="sdg__text">
+              <strong>Industry &amp; Innovation</strong>
+              <span>Funding breakthrough R&amp;D and technology</span>
+            </div>
+          </div>
+
+          <div class="sdg">
+            <div class="sdg__num" style="background: #bf8b2e;">12</div>
+            <div class="sdg__text">
+              <strong>Responsible Consumption</strong>
+              <span>Sustainable practices across the portfolio</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DIVERSITY & INCLUSION ===== -->
+  <section class="section section--surface">
+    <div class="container">
+      <div class="reveal">
+        <span class="label">Diversity &amp; Inclusion</span>
+        <h2>Driving change in the industry</h2>
+        <hr class="divider">
+      </div>
+      <div class="grid-2" style="gap: 4rem; align-items: start; margin-top: 3rem;">
+        <div class="reveal reveal-delay-1">
+          <p class="lead" style="color: var(--text);">
+            Lack of diversity and gender equality is a major challenge in the investment industry and start-up community. Hadean Ventures works for an inclusive and diverse environment within its firm and portfolio companies, promoting equal opportunity in all recruitment processes.
+          </p>
+          <p style="color: var(--text-dim);">
+            Programs are in place to help increase diversity both in start-ups and in investment roles. We participate in cross-firm, cross-border initiatives such as Level 20 — which we helped co-launch in the Nordics in 2019 together with several other private equity firms.
+          </p>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <img src="../hadean_images/kvinner-i-finans.jpg" alt="Kvinner i Finans Charter" style="width: 100%; border-radius: var(--radius);">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURE ROW ===== -->
+  <section class="section--compact">
+    <div class="feature-row">
+      <div class="feature-block reveal">
+        <div class="feature-block__icon">&#9878;</div>
+        <h4>SFDR Compliant</h4>
+        <p>Investment process aligned with the EU Sustainable Finance Disclosure Regulation</p>
+      </div>
+      <div class="feature-block reveal reveal-delay-1">
+        <div class="feature-block__icon">&#9881;</div>
+        <h4>Active Governance</h4>
+        <p>ESG policies implemented through board directorships and standard operating procedures</p>
+      </div>
+      <div class="feature-block reveal reveal-delay-2">
+        <div class="feature-block__icon">&#9851;</div>
+        <h4>UNPRI Aligned</h4>
+        <p>Contributing to sustainable investments through asset allocation and investment decisions</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta">
+    <div class="cta__bg" style="background-image: url('../hadean_images/hero-parachute-sunset.png');"></div>
+    <div class="container reveal">
+      <h2>Want to learn more about our approach?</h2>
+      <p>We welcome dialogue on ESG, sustainability, and responsible investment practices.</p>
+      <a href="contact.html" class="btn btn--gold">
+        Contact Us <span class="btn__arrow">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer__brand">
+          <a href="../index.html" class="site-logo">
+            <img src="../hadean_images/logo.png" alt="Hadean Ventures">
+          </a>
+          <p>European life science venture capital. Making a difference by investing in the future of healthcare.</p>
+        </div>
+        <div>
+          <div class="footer__heading">Navigate</div>
+          <div class="footer__links">
+            <a href="about.html">About</a>
+            <a href="team.html">Team</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="impact.html">Impact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">Resources</div>
+          <div class="footer__links">
+            <a href="news.html">News</a>
+            <a href="../map.html">Map</a>
+            <a href="careers.html">Careers</a>
+            <a href="events.html">Events</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__heading">Offices</div>
+          <div class="footer__links">
+            <a>Oslo, Norway</a>
+            <a>Stockholm, Sweden</a>
+          </div>
+          <div class="footer__heading mt-xl">Contact</div>
+          <div class="footer__links">
+            <a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div class="footer__copyright">&copy; 2026 Hadean Ventures. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
 </body>
 </html>
