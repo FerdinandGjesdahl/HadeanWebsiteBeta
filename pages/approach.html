@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Approach — Hadean Ventures</title>
+  <meta name="description" content="Our approach at Hadean Ventures: forging long-term value from early-stage life science innovation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+
+    /* ── VIDEO HERO ─────────────────────────────────────────── */
+    .approach-hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 80px;
+    }
+
+    .approach-hero__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      z-index: 0;
+    }
+
+    /* layered gradient: dark at top (for nav), transparent mid, dark at bottom */
+    .approach-hero__overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom,
+          rgba(10, 17, 30, 0.70) 0%,
+          rgba(10, 17, 30, 0.10) 40%,
+          rgba(10, 17, 30, 0.55) 75%,
+          rgba(10, 17, 30, 0.88) 100%
+        );
+      z-index: 1;
+    }
+
+    .approach-hero__content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .approach-hero__eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--light-blue);
+      border: 1px solid rgba(191, 220, 236, 0.35);
+      border-radius: var(--radius-full);
+      padding: 5px 16px;
+      margin-bottom: 22px;
+    }
+
+    .approach-hero__title {
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.12;
+      margin-bottom: 20px;
+      max-width: 14ch;
+    }
+
+    .approach-hero__title em {
+      font-style: normal;
+      color: var(--light-blue);
+    }
+
+    .approach-hero__sub {
+      font-size: 1.05rem;
+      color: rgba(191, 220, 236, 0.80);
+      max-width: 52ch;
+      line-height: 1.65;
+      margin-bottom: 0;
+    }
+
+    .approach-hero__scroll {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.55;
+      animation: approachBounce 2.2s ease-in-out infinite;
+    }
+
+    .approach-hero__scroll span {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--light-blue);
+    }
+
+    .approach-hero__scroll svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--light-blue);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @keyframes approachBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+
+    /* ── STORY SECTION ─────────────────────────────────────── */
+    .approach-story {
+      background: var(--white);
+      padding: var(--section-py) 0;
+    }
+
+    .approach-story__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .approach-story__label {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 400;
+      margin-bottom: 18px;
+    }
+
+    .approach-story__heading {
+      font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+      font-weight: 300;
+      line-height: 1.22;
+      color: var(--navy-deeper);
+      margin-bottom: 28px;
+    }
+
+    .approach-story__body p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.78;
+      margin-bottom: 16px;
+    }
+
+    .approach-story__body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* right panel — dark philosophy card */
+    .approach-philosophy {
+      background: linear-gradient(150deg, var(--navy-deeper) 0%, #1a3060 55%, var(--navy) 100%);
+      border-radius: var(--radius-xl);
+      padding: 44px;
+      color: var(--white);
+      box-shadow: var(--shadow-xl);
+      position: sticky;
+      top: calc(var(--nav-height) + 24px);
+    }
+
+    .approach-philosophy__quote {
+      font-size: 1.22rem;
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.93);
+      margin-bottom: 28px;
+      padding-left: 20px;
+      border-left: 3px solid var(--light-blue);
+    }
+
+    .approach-philosophy__principles {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .approach-philosophy__principle {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .approach-philosophy__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--light-blue);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    .approach-philosophy__principle p {
+      font-size: 0.92rem;
+      color: rgba(191,220,236,0.80);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .approach-philosophy__kicker {
+      padding-top: 24px;
+      border-top: 1px solid rgba(191,220,236,0.20);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(191,220,236,0.55);
+    }
+
+
+    /* ── TIMELINE STRIP ────────────────────────────────────── */
+    .approach-timeline {
+      background: var(--surface);
+      padding: var(--section-py) 0;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .approach-timeline__header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .approach-timeline__eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 400;
+      margin-bottom: 14px;
+    }
+
+    .approach-timeline__heading {
+      font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+      font-weight: 300;
+      color: var(--navy-deeper);
+      max-width: 42ch;
+      margin: 0 auto;
+      line-height: 1.3;
+    }
+
+    .approach-timeline__track {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      position: relative;
+    }
+
+    .approach-timeline__track::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: calc(16.666% + 16px);
+      right: calc(16.666% + 16px);
+      height: 1px;
+      background: linear-gradient(to right, var(--border), var(--blue), var(--border));
+      z-index: 0;
+    }
+
+    .approach-timeline__step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .approach-timeline__node {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .approach-timeline__node--geo {
+      background: linear-gradient(135deg, #ff6b35 0%, #c0392b 50%, #7b2d2d 100%);
+      box-shadow: 0 0 32px rgba(192,57,43,0.35), 0 4px 16px rgba(0,0,0,0.20);
+    }
+
+    .approach-timeline__node--trans {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue-mid) 100%);
+      box-shadow: var(--shadow-md);
+    }
+
+    .approach-timeline__node--result {
+      background: linear-gradient(135deg, var(--navy-deeper) 0%, var(--navy) 100%);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .approach-timeline__step-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+
+    .approach-timeline__step-title {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--navy-deeper);
+      margin-bottom: 10px;
+    }
+
+    .approach-timeline__step-body {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+
+    /* ── FUNDS SECTION ─────────────────────────────────────── */
+    .approach-funds {
+      background: var(--white);
+      padding: var(--section-py) 0;
+    }
+
+    .approach-funds__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .approach-funds__text .approach-story__heading {
+      margin-bottom: 18px;
+    }
+
+    .approach-funds__text p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .approach-funds__stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .approach-funds__stat {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .approach-funds__stat:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .approach-funds__stat--wide {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, var(--navy-deeper) 0%, var(--navy) 100%);
+      border-color: transparent;
+    }
+
+    .approach-funds__stat-value {
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .approach-funds__stat--wide .approach-funds__stat-value {
+      color: var(--white);
+      font-size: 2.6rem;
+    }
+
+    .approach-funds__stat-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    .approach-funds__stat--wide .approach-funds__stat-label {
+      color: rgba(191,220,236,0.65);
+    }
+
+
+    /* ── STRATEGY SECTION ──────────────────────────────────── */
+    .approach-strategy {
+      background: var(--surface);
+      padding: var(--section-py) 0;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .approach-strategy__header {
+      max-width: 640px;
+      margin-bottom: 48px;
+    }
+
+    .approach-strategy__heading {
+      font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+      font-weight: 300;
+      color: var(--navy-deeper);
+      margin-top: 14px;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .approach-strategy__intro {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      line-height: 1.72;
+    }
+
+    .approach-strategy__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .approach-strategy__card {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      padding: 36px 32px;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .approach-strategy__card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--light-blue);
+    }
+
+    .approach-strategy__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--surface-alt);
+      border: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .approach-strategy__card-title {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--navy-deeper);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .approach-strategy__card-body {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.72;
+      flex: 1;
+    }
+
+
+    /* ── CTA STRIP ─────────────────────────────────────────── */
+    .approach-cta {
+      background: linear-gradient(135deg, var(--navy-deeper) 0%, var(--navy) 60%, var(--blue) 100%);
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .approach-cta__eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--light-blue);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .approach-cta__heading {
+      font-size: clamp(1.6rem, 3vw, 2.6rem);
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 20px;
+      line-height: 1.22;
+    }
+
+    .approach-cta__sub {
+      font-size: 1rem;
+      color: rgba(191,220,236,0.75);
+      margin-bottom: 36px;
+      max-width: 50ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .approach-cta .btn-primary {
+      background: var(--white);
+      color: var(--navy-deeper);
+      border-color: var(--white);
+    }
+
+    .approach-cta .btn-primary:hover {
+      background: var(--light-blue);
+      border-color: var(--light-blue);
+    }
+
+
+    /* ── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .approach-story__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .approach-philosophy {
+        position: static;
+      }
+
+      .approach-funds__inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .approach-strategy__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .approach-timeline__track {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .approach-timeline__track::before {
+        display: none;
+      }
+
+      .approach-timeline__step {
+        flex-direction: row;
+        text-align: left;
+        gap: 20px;
+      }
+
+      .approach-timeline__node {
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .approach-hero {
+        height: 85vh;
+        padding-bottom: 60px;
+      }
+
+      .approach-hero__title {
+        max-width: none;
+      }
+
+      .approach-strategy__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .approach-funds__stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .approach-philosophy {
+        padding: 28px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <img src="../hadean_images/logo.png" alt="Hadean Ventures">
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="approach.html" class="active">Approach</a></li>
+        <li><a href="investors.html">Investors</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="contact.html" class="btn btn-primary btn-sm">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ① VIDEO HERO -->
+  <section class="approach-hero">
+    <video
+      class="approach-hero__video"
+      src="../HadeanVideo2/HadeanFlytendeTilFast.mp4"
+      autoplay
+      muted
+      playsinline
+      preload="auto"
+    ></video>
+
+    <div class="approach-hero__overlay"></div>
+
+    <div class="container approach-hero__content">
+      <span class="approach-hero__eyebrow">Our Approach</span>
+      <h1 class="approach-hero__title">From<br>turbulence<br>to <em>structure</em></h1>
+      <p class="approach-hero__sub">
+        4.5 billion years ago, Earth was molten chaos. Today it sustains life.
+        We see the same arc in every great life science company.
+      </p>
+    </div>
+
+    <div class="approach-hero__scroll">
+      <span>Scroll</span>
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+
+
+  <!-- ② THE HADEAN STORY -->
+  <section class="approach-story">
+    <div class="container">
+      <div class="approach-story__grid">
+
+        <div>
+          <span class="approach-story__label">The Hadean Story</span>
+          <h2 class="approach-story__heading">The same forces that shaped Earth shape transformative medicine</h2>
+          <div class="approach-story__body">
+            <p>
+              The name "Hadean" is drawn from Earth's earliest geological eon — a period of extreme heat, volatility, and seemingly destructive chaos. Yet beneath that turbulence, the fundamental building blocks of a habitable planet were being laid down. Over hundreds of millions of years, the molten surface cooled, solidified, and became the stable world that makes complex life possible.
+            </p>
+            <p>
+              At Hadean Ventures, we see this same arc in early-stage life science. Breakthrough science is inherently volatile: hypotheses fail, trials pivot, regulatory paths shift. The companies that endure are those with partners who understand that volatility is not the enemy — it is the raw material.
+            </p>
+            <p>
+              Our mission is to provide the structure, strategic guidance, and capital needed to transform raw scientific potential into solid, clinically meaningful, and commercially valuable companies.
+            </p>
+          </div>
+        </div>
+
+        <div class="approach-philosophy">
+          <blockquote class="approach-philosophy__quote">
+            "We invest where breakthrough science can become real patient impact — and we stay active through every stage of that transformation."
+          </blockquote>
+          <div class="approach-philosophy__principles">
+            <div class="approach-philosophy__principle">
+              <div class="approach-philosophy__dot"></div>
+              <p>Deep scientific diligence before every investment decision</p>
+            </div>
+            <div class="approach-philosophy__principle">
+              <div class="approach-philosophy__dot"></div>
+              <p>Hands-on operational support: board, talent, syndication</p>
+            </div>
+            <div class="approach-philosophy__principle">
+              <div class="approach-philosophy__dot"></div>
+              <p>Long-term capital with the endurance to follow through clinical cycles</p>
+            </div>
+            <div class="approach-philosophy__principle">
+              <div class="approach-philosophy__dot"></div>
+              <p>European roots, global network — Nordic and DACH stronghold</p>
+            </div>
+          </div>
+          <div class="approach-philosophy__kicker">Raw innovation &nbsp;·&nbsp; Structured build &nbsp;·&nbsp; Enduring value</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ③ TIMELINE: GEOLOGY → VENTURE -->
+  <section class="approach-timeline">
+    <div class="container">
+      <div class="approach-timeline__header">
+        <span class="approach-timeline__eyebrow">The Parallel</span>
+        <h2 class="approach-timeline__heading">From geological eon to venture journey — the same transformation</h2>
+      </div>
+
+      <div class="approach-timeline__track">
+
+        <div class="approach-timeline__step">
+          <div class="approach-timeline__node approach-timeline__node--geo">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.90)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c0 0-4 4-4 8a4 4 0 0 0 8 0c0-4-4-8-4-8z"/><path d="M9 14c0 0-3 1-3 4h12c0-3-3-4-3-4"/></svg>
+          </div>
+          <div>
+            <div class="approach-timeline__step-label">Hadean Eon</div>
+            <div class="approach-timeline__step-title">Molten & Volatile</div>
+            <p class="approach-timeline__step-body">
+              Earth's surface: liquid rock, meteoric bombardment, extreme heat. The ingredients of a world exist — but in chaotic, unformed states.
+            </p>
+          </div>
+        </div>
+
+        <div class="approach-timeline__step">
+          <div class="approach-timeline__node approach-timeline__node--trans">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.90)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v4L6 17a2 2 0 0 0 1.86 2.73h8.28A2 2 0 0 0 18 17L14 7V3"/><line x1="6" y1="14" x2="18" y2="14"/></svg>
+          </div>
+          <div>
+            <div class="approach-timeline__step-label">The Transition</div>
+            <div class="approach-timeline__step-title">Structure Emerges</div>
+            <p class="approach-timeline__step-body">
+              Cooling, crystallisation, differentiation. Hadean Ventures enters here — providing the capital, expertise, and discipline that turns raw potential into viable companies.
+            </p>
+          </div>
+        </div>
+
+        <div class="approach-timeline__step">
+          <div class="approach-timeline__node approach-timeline__node--result">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.90)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div>
+            <div class="approach-timeline__step-label">The Outcome</div>
+            <div class="approach-timeline__step-title">Solid & Life-Sustaining</div>
+            <p class="approach-timeline__step-body">
+              A stable, clinically meaningful company with validated science, a clear path to patients, and long-term commercial value.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ④ OUR FUNDS -->
+  <section class="approach-funds">
+    <div class="container">
+      <div class="approach-funds__inner">
+
+        <div class="approach-funds__text">
+          <span class="approach-story__label">Our Funds</span>
+          <h2 class="approach-story__heading">Capital with staying power</h2>
+          <p>
+            We are a leading European life science venture capital firm managing approximately €230 million in assets. Our capital is deployed through two distinct funds, including Hadean Capital I and our recently oversubscribed Hadean Capital II, which closed at €144 million — substantially above its target.
+          </p>
+          <p>
+            Backed by leading private and institutional investors from Europe and the US, we possess the financial endurance to support companies through the full arc of clinical development.
+          </p>
+        </div>
+
+        <div class="approach-funds__stats">
+          <div class="approach-funds__stat">
+            <div class="approach-funds__stat-value">€230M</div>
+            <div class="approach-funds__stat-label">Assets Under Management</div>
+          </div>
+          <div class="approach-funds__stat">
+            <div class="approach-funds__stat-value">€144M</div>
+            <div class="approach-funds__stat-label">Hadean Capital II</div>
+          </div>
+          <div class="approach-funds__stat approach-funds__stat--wide">
+            <div class="approach-funds__stat-value">EU + US</div>
+            <div class="approach-funds__stat-label">Institutional &amp; Private LP Base</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ⑤ INVESTMENT STRATEGY -->
+  <section class="approach-strategy">
+    <div class="container">
+      <div class="approach-strategy__header">
+        <span class="approach-story__label">Investment Strategy</span>
+        <h2 class="approach-strategy__heading">Rooted in domain expertise and global health ambition</h2>
+        <p class="approach-strategy__intro">
+          We invest across all healthcare verticals and stages, with a core focus on pharmaceuticals, biotechnology, medical technology, diagnostics, and digital health.
+        </p>
+      </div>
+
+      <div class="approach-strategy__grid">
+
+        <article class="approach-strategy__card">
+          <div class="approach-strategy__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <h3 class="approach-strategy__card-title">Solving Unmet Medical Needs</h3>
+          <p class="approach-strategy__card-body">
+            We exclusively target products and scientific breakthroughs with true potential to address significant unmet medical needs. If it does not move the needle for patients, it does not fit our thesis.
+          </p>
+        </article>
+
+        <article class="approach-strategy__card">
+          <div class="approach-strategy__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3 class="approach-strategy__card-title">European Focus, Global Reach</h3>
+          <p class="approach-strategy__card-body">
+            While healthcare markets are global, our deal sourcing strongly emphasises the life science ecosystems in Europe — with a particular stronghold in the Nordic region and DACH countries.
+          </p>
+        </article>
+
+        <article class="approach-strategy__card">
+          <div class="approach-strategy__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 11H7a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2z"/><path d="M12 11V7"/><path d="M8.5 7.5 12 4l3.5 3.5"/></svg>
+          </div>
+          <h3 class="approach-strategy__card-title">Active, Operator-First Ownership</h3>
+          <p class="approach-strategy__card-body">
+            We provide more than capital. Our team combines in-depth clinical backgrounds with venture and operational experience. Board participation, executive hiring, and syndication of future rounds — we work hands-on through every stage of complexity.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ⑥ CTA STRIP -->
+  <section class="approach-cta">
+    <div class="container">
+      <span class="approach-cta__eyebrow">Ready to build</span>
+      <h2 class="approach-cta__heading">Let's forge something together</h2>
+      <p class="approach-cta__sub">We partner with founders from the earliest stages. If your science can change lives, we want to hear from you.</p>
+      <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <img src="../hadean_images/logo.png" alt="Hadean Ventures">
+          </a>
+          <p class="footer-tagline">Investing in the future of healthcare since 2017.</p>
+        </div>
+        <div>
+          <div class="footer-heading">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="approach.html">Approach</a></li>
+            <li><a href="investors.html">Investors</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Company</div>
+          <ul class="footer-links">
+            <li><a href="news.html">News</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Contact</div>
+          <div class="footer-contact-item">Oslo, Norway<br><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
+          <div class="footer-contact-item">Stockholm, Sweden<br>Karolinska Institute Science Park</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copyright">© 2025 Hadean Ventures. All rights reserved.</span>
+        <div class="footer-accent"></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll behaviour
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+
+    // Mobile nav toggle
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
+      const spans = toggle.querySelectorAll('span');
+      const isOpen = links.classList.contains('open');
+      spans[0].style.transform = isOpen ? 'translateY(7px) rotate(45deg)' : '';
+      spans[1].style.opacity   = isOpen ? '0' : '';
+      spans[2].style.transform = isOpen ? 'translateY(-7px) rotate(-45deg)' : '';
+    });
+
+    // Hide scroll indicator once user scrolls
+    const scrollHint = document.querySelector('.approach-hero__scroll');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) scrollHint.style.opacity = '0';
+    }, { passive: true });
+  </script>
+</body>
+</html>

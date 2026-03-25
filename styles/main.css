@@ -1387,7 +1387,9 @@ p {
 }
 
 .team-marquee-header {
-  text-align: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
   margin-bottom: 48px;
   padding: 0 40px;
 }
@@ -1395,6 +1397,22 @@ p {
 .team-marquee-header .label {
   display: block;
   margin-bottom: 12px;
+}
+
+.team-arrow-link {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  white-space: nowrap;
+  padding-bottom: 4px;
+  transition: opacity 0.2s;
+}
+
+.team-arrow-link:hover {
+  opacity: 0.7;
 }
 
 .marquee-track-wrapper {

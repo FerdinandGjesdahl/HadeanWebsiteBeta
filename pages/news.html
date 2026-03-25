@@ -4,11 +4,223 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>News — Hadean Ventures</title>
-  <meta name="description" content="A chronological list of announcements relating to Hadean Ventures and its portfolio companies.">
+  <meta name="description" content="Portfolio milestones and company news from Hadean Ventures.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    /* ── PAGE HEADER ── */
+    .news-hero {
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: var(--navy-deep, #0f1e35);
+    }
+    .news-hero-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      opacity: 0.35;
+    }
+    .news-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,18,36,0.92) 0%, rgba(10,18,36,0.4) 60%, transparent 100%);
+    }
+    .news-hero-content {
+      position: relative; z-index: 2;
+      width: 100%;
+      padding: 80px 0 64px;
+    }
+    .news-hero-content .label { color: var(--accent); }
+    .news-hero-content h1 {
+      color: #fff;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      margin: 14px 0 20px;
+      line-height: 1.15;
+    }
+    .news-hero-content p {
+      color: rgba(255,255,255,0.65);
+      max-width: 52ch;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* ── FEATURED CARDS ── */
+    .news-featured {
+      padding: 72px 0 48px;
+      background: var(--surface, #f7f8fa);
+    }
+    .news-featured-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+    }
+    .news-card {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 2px 16px rgba(15,30,60,0.08);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.25s ease;
+    }
+    .news-card.visible { opacity: 1; transform: translateY(0); }
+    .news-card:nth-child(2) { transition-delay: 0.08s; }
+    .news-card:nth-child(3) { transition-delay: 0.16s; }
+    .news-card:nth-child(4) { transition-delay: 0.24s; }
+    .news-card:nth-child(5) { transition-delay: 0.32s; }
+    .news-card:hover { box-shadow: 0 8px 32px rgba(15,30,60,0.14); }
+    .news-card-img {
+      width: 100%; height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+    .news-card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+    .news-card-date {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .news-card-text {
+      font-size: 0.97rem;
+      line-height: 1.6;
+      color: var(--text-main, #1a2642);
+      flex: 1;
+    }
+
+    /* ── TIMELINE LIST ── */
+    .news-timeline-section {
+      padding: 64px 0 96px;
+    }
+    .news-timeline-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 40px;
+      display: block;
+    }
+    .news-timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+    .news-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent) 0%, rgba(206,51,45,0.15) 100%);
+    }
+    .news-titem {
+      position: relative;
+      padding: 0 0 36px 32px;
+      opacity: 0;
+      transform: translateX(-16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .news-titem.visible { opacity: 1; transform: translateX(0); }
+    .news-titem::before {
+      content: '';
+      position: absolute;
+      left: -5px; top: 6px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid var(--border-light, #d4dce8);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .news-titem:hover::before {
+      border-color: var(--accent);
+      background: var(--accent);
+    }
+    .news-titem.milestone::before {
+      border-color: var(--accent);
+      background: var(--accent);
+      width: 12px; height: 12px;
+      left: -6px;
+    }
+    .news-titem-date {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted, #8a97b0);
+      margin-bottom: 6px;
+    }
+    .news-titem-text {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--text-main, #1a2642);
+    }
+    .news-titem.milestone .news-titem-text {
+      font-weight: 600;
+      color: var(--navy, #214274);
+    }
+
+    /* ── YEAR DIVIDER ── */
+    .news-year-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 8px 0 32px -28px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .news-year-divider.visible { opacity: 1; }
+    .news-year-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--text-muted, #8a97b0);
+      white-space: nowrap;
+    }
+    .news-year-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border-light, #d4dce8);
+    }
+
+    /* ── IMAGE BREAK ── */
+    .news-img-break {
+      margin: 40px 0 40px -28px;
+      width: calc(100% + 28px);
+      height: 220px;
+      border-radius: 10px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .news-img-break.visible { opacity: 1; transform: translateY(0); }
+    .news-img-break img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+
+    @media (max-width: 768px) {
+      .news-featured-grid { grid-template-columns: 1fr; }
+      .news-timeline { padding-left: 20px; }
+      .news-year-divider { margin-left: -20px; }
+      .news-img-break { margin-left: -20px; width: calc(100% + 20px); }
+    }
+    @media (max-width: 1024px) {
+      .news-featured-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .news-featured-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
 </head>
 <body>
 
@@ -25,7 +237,7 @@
         <li><a href="../index.html">Home</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="team.html">Team</a></li>
-        <li><a href="impact.html">Impact</a></li>
+        <li><a href="approach.html">Approach</a></li>
         <li><a href="investors.html">Investors</a></li>
         <li><a href="news.html" class="active">News</a></li>
         <li><a href="events.html">Events</a></li>
@@ -38,511 +250,563 @@
     </div>
   </nav>
 
-  <!-- PAGE HEADER -->
-  <div class="page-header-img">
-    <img class="ph-bg" src="../PotentialNewImages/image_2.png" alt="Dandelion seeds in soft teal light">
-    <div class="ph-overlay"></div>
-    <div class="container">
-      <span class="label">Latest Updates</span>
-      <h1>News</h1>
-      <p class="lead">A chronological record of announcements relating to Hadean Ventures and its portfolio companies — from fund closes and clinical milestones to regulatory designations and exits.</p>
+  <!-- HERO HEADER -->
+  <div class="news-hero">
+    <img class="news-hero-bg" src="../PotentialNewImages/Sea.png" alt="">
+    <div class="news-hero-overlay"></div>
+    <div class="news-hero-content container">
+      <span class="label">News &amp; Milestones</span>
+      <h1>Portfolio milestones &amp;<br>company news</h1>
+      <p>Clinical advances, financings, regulatory milestones, and strategic developments from across our portfolio.</p>
     </div>
   </div>
 
+  <!-- FEATURED CARDS -->
+  <section class="news-featured">
+    <div class="container">
+      <div class="news-featured-grid">
 
-  <!-- NEWS LIST -->
-  <section class="section">
-    <div class="container" style="max-width: 900px;">
-      <div class="news-list">
-
-        <div class="news-item">
-          <div class="news-date">March 11, 2026</div>
-          <div class="news-text">First patient dosed in Gesynta Pharma's endometriosis trial of vipoglanstat.</div>
+        <div class="news-card">
+          <img class="news-card-img" src="../News/news1png.png" alt="">
+          <div class="news-card-body">
+            <div class="news-card-date">March 11, 2026</div>
+            <div class="news-card-text">First patient dosed in Gesynta Pharma's endometriosis trial of vipoglanstat.</div>
+          </div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">November 25, 2025</div>
-          <div class="news-text">Neuro Event Labs Receives FDA 510(k) Clearance for the Nelli® Seizure Monitoring System.</div>
+        <div class="news-card">
+          <img class="news-card-img" src="../News/news2.png" alt="">
+          <div class="news-card-body">
+            <div class="news-card-date">November 25, 2025</div>
+            <div class="news-card-text">Neuro Event Labs Receives FDA 510(k) Clearance for the Nelli® Seizure Monitoring System.</div>
+          </div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">October 15, 2025</div>
-          <div class="news-text">Step Pharma announces completion of €38 million Series C financing.</div>
+        <div class="news-card">
+          <img class="news-card-img" src="../News/news3.png" alt="">
+          <div class="news-card-body">
+            <div class="news-card-date">October 15, 2025</div>
+            <div class="news-card-text">Step Pharma announces completion of €38 million Series C financing.</div>
+          </div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">October 10, 2025</div>
-          <div class="news-text">Complement Therapeutics receives FDA IND clearance to advance CTx001 into Opti-GAIN, a Phase I/II clinical trial in geographic atrophy secondary to AMD.</div>
+        <div class="news-card">
+          <img class="news-card-img" src="../News/newsImage4.png" alt="">
+          <div class="news-card-body">
+            <div class="news-card-date">October 10, 2025</div>
+            <div class="news-card-text">Complement Therapeutics receives FDA IND clearance to advance CTx001 into Opti-GAIN Phase I/II trial.</div>
+          </div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">October 3, 2025</div>
-          <div class="news-text">Ribbon Bio and Scala Biodesign enter a partnership focused on customers.</div>
+        <div class="news-card">
+          <img class="news-card-img" src="../News/Newsimage5.png" alt="">
+          <div class="news-card-body">
+            <div class="news-card-date">September 17, 2025</div>
+            <div class="news-card-text">ARTHEx Biotech upsizes Series B to $87 million to advance ATX-01 for myotonic dystrophy type 1.</div>
+          </div>
         </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FULL TIMELINE -->
+  <section class="news-timeline-section">
+    <div class="container" style="max-width: 780px;">
+      <span class="news-timeline-label">All updates</span>
+      <div class="news-timeline">
 
-        <div class="news-item">
-          <div class="news-date">September 17, 2025</div>
-          <div class="news-text">ARTHEx Biotech upsizes its Series B financing round to $87 million to advance lead program ATX-01 for myotonic dystrophy type 1 and to expand its pipeline of targeted RNA medicines.</div>
+        <!-- 2026 -->
+        <div class="news-year-divider"><span class="news-year-label">2026</span><div class="news-year-line"></div></div>
+
+        <div class="news-titem">
+          <div class="news-titem-date">March 11, 2026</div>
+          <div class="news-titem-text">First patient dosed in Gesynta Pharma's endometriosis trial of vipoglanstat.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">August 5, 2025</div>
-          <div class="news-text">Gesynta Pharma announces second closing of its Series B, now totalling SEK 347 million; HealthCap and Hadean Growth Fund join the investor syndicate.</div>
+        <!-- 2025 -->
+        <div class="news-year-divider"><span class="news-year-label">2025</span><div class="news-year-line"></div></div>
+
+        <div class="news-titem">
+          <div class="news-titem-date">November 25, 2025</div>
+          <div class="news-titem-text">Neuro Event Labs Receives FDA 510(k) Clearance for the Nelli® Seizure Monitoring System.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">July 31, 2025</div>
-          <div class="news-text">SAGA Diagnostics® announces Medicare coverage for its Pathlight™ MRD test in breast cancer across all subtypes.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">October 15, 2025</div>
+          <div class="news-titem-text">Step Pharma announces completion of €38 million Series C financing.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">June 18, 2025</div>
-          <div class="news-text">Oncoinvent announces positive final data from its Phase 1/2a trial of Radspherin® in patients with colorectal peritoneal metastases.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">October 10, 2025</div>
+          <div class="news-titem-text">Complement Therapeutics receives FDA IND clearance to advance CTx001 into Opti-GAIN, a Phase I/II clinical trial in geographic atrophy secondary to AMD.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">March 12, 2025</div>
-          <div class="news-text">Ribbon Bio and Syngoi Technologies commence a strategic collaboration to advance gene therapies with synthetic DNA.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">October 3, 2025</div>
+          <div class="news-titem-text">Ribbon Bio and Scala Biodesign enter a partnership focused on customers.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">February 25, 2025</div>
-          <div class="news-text">Pharming Technologies B.V. declares unconditional and completes the recommended cash offer to the shareholders of Abliva AB and extends the acceptance period.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">September 17, 2025</div>
+          <div class="news-titem-text">ARTHEx Biotech upsizes its Series B financing round to $87 million to advance lead program ATX-01 for myotonic dystrophy type 1 and to expand its pipeline of targeted RNA medicines.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">February 14, 2025</div>
-          <div class="news-text">Neuro Event Labs Oy raises €2.0 million for commercial expansion in Europe and US market entry of its AI-powered seizure detection device for epilepsy.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">August 5, 2025</div>
+          <div class="news-titem-text">Gesynta Pharma announces second closing of its Series B, now totalling SEK 347 million; HealthCap and Hadean Growth Fund join the investor syndicate.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">December 20, 2024</div>
-          <div class="news-text">Neuro Event Labs' Nelli® device receives European MDR certification as a Class IIa medical device.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">July 31, 2025</div>
+          <div class="news-titem-text">SAGA Diagnostics® announces Medicare coverage for its Pathlight™ MRD test in breast cancer across all subtypes.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">December 19, 2024</div>
-          <div class="news-text">TargED Biopharmaceuticals doses the first participant in a Phase 1 clinical trial of TGD001.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">June 18, 2025</div>
+          <div class="news-titem-text">Oncoinvent announces positive final data from its Phase 1/2a trial of Radspherin® in patients with colorectal peritoneal metastases.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">October 18, 2024</div>
-          <div class="news-text">ARTHEx Biotech announces first patient dosed in the Phase I–IIa ArthemiR™ trial for myotonic dystrophy type 1.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">March 12, 2025</div>
+          <div class="news-titem-text">Ribbon Bio and Syngoi Technologies commence a strategic collaboration to advance gene therapies with synthetic DNA.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">October 17, 2024</div>
-          <div class="news-text">SciRhom initiates dosing in a first-in-man clinical study evaluating its lead development program SR-878.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">February 25, 2025</div>
+          <div class="news-titem-text">Pharming Technologies B.V. declares unconditional and completes the recommended cash offer to the shareholders of Abliva AB and extends the acceptance period.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">September 24, 2024</div>
-          <div class="news-text">Step Pharma announces first patient dosed in a Phase 1 trial of dencatistat for patients with solid tumours.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">February 14, 2025</div>
+          <div class="news-titem-text">Neuro Event Labs Oy raises €2.0 million for commercial expansion in Europe and US market entry of its AI-powered seizure detection device for epilepsy.</div>
         </div>
+
+        <!-- 2024 -->
+        <div class="news-year-divider"><span class="news-year-label">2024</span><div class="news-year-line"></div></div>
 
-        <div class="news-item">
-          <div class="news-date">September 12, 2024</div>
-          <div class="news-text">Alex Therapeutics signs an exclusive agreement with Navamedic.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">December 20, 2024</div>
+          <div class="news-titem-text">Neuro Event Labs' Nelli® device receives European MDR certification as a Class IIa medical device.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">June 27, 2024</div>
-          <div class="news-text">Attgeno announces positive results from its Supernitro Phase II study.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">December 19, 2024</div>
+          <div class="news-titem-text">TargED Biopharmaceuticals doses the first participant in a Phase 1 clinical trial of TGD001.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">June 24, 2024</div>
-          <div class="news-text">Oncoinvent receives FDA fast-track designation for Radspherin®.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">October 18, 2024</div>
+          <div class="news-titem-text">ARTHEx Biotech announces first patient dosed in the Phase I–IIa ArthemiR™ trial for myotonic dystrophy type 1.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">March 25, 2024</div>
-          <div class="news-text" style="font-weight: 600;">Novo Nordisk to acquire Cardior Pharmaceuticals and strengthen its pipeline in cardiovascular disease.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">October 17, 2024</div>
+          <div class="news-titem-text">SciRhom initiates dosing in a first-in-man clinical study evaluating its lead development program SR-878.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">February 28, 2024</div>
-          <div class="news-text">ARTHEx Biotech receives IND clearance from the FDA to initiate a Phase I–IIa trial.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">September 24, 2024</div>
+          <div class="news-titem-text">Step Pharma announces first patient dosed in a Phase 1 trial of dencatistat for patients with solid tumours.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">January 4, 2024</div>
-          <div class="news-text">Alex Therapeutics reports positive results from a randomised-controlled trial.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">September 12, 2024</div>
+          <div class="news-titem-text">Alex Therapeutics signs an exclusive agreement with Navamedic.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">December 21, 2023</div>
-          <div class="news-text" style="font-weight: 600;">Hadean Ventures announces oversubscribed final close of Hadean Capital II.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">June 27, 2024</div>
+          <div class="news-titem-text">Attgeno announces positive results from its Supernitro Phase II study.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">December 8, 2023</div>
-          <div class="news-text">Ribbon Biolabs appoints Jodi Barrientos as chief executive officer.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">June 24, 2024</div>
+          <div class="news-titem-text">Oncoinvent receives FDA fast-track designation for Radspherin®.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">November 9, 2023</div>
-          <div class="news-text">Complement Therapeutics enrols the first US participant in a clinical study.</div>
+        <div class="news-titem milestone">
+          <div class="news-titem-date">March 25, 2024</div>
+          <div class="news-titem-text">Novo Nordisk to acquire Cardior Pharmaceuticals and strengthen its pipeline in cardiovascular disease.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">October 11, 2023</div>
-          <div class="news-text">Abliva achieves an important milestone in the ongoing FALCON study.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">February 28, 2024</div>
+          <div class="news-titem-text">ARTHEx Biotech receives IND clearance from the FDA to initiate a Phase I–IIa trial.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">September 5, 2023</div>
-          <div class="news-text">Abliva's lead candidate KL1333 receives FDA fast-track designation.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">January 4, 2024</div>
+          <div class="news-titem-text">Alex Therapeutics reports positive results from a randomised-controlled trial.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">May 3, 2023</div>
-          <div class="news-text">ARTHEx Biotech announces closing of a €42 million Series B financing.</div>
+        <!-- 2023 -->
+        <div class="news-year-divider"><span class="news-year-label">2023</span><div class="news-year-line"></div></div>
+
+        <div class="news-titem milestone">
+          <div class="news-titem-date">December 21, 2023</div>
+          <div class="news-titem-text">Hadean Ventures announces oversubscribed final close of Hadean Capital II.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">April 17, 2023</div>
-          <div class="news-text">Complement Therapeutics secures €72 million in Series A financing.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">December 8, 2023</div>
+          <div class="news-titem-text">Ribbon Biolabs appoints Jodi Barrientos as chief executive officer.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">March 5, 2023</div>
-          <div class="news-text">Alex Therapeutics extends its financing round to €4.75 million with a leading life-science venture capital firm.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">November 9, 2023</div>
+          <div class="news-titem-text">Complement Therapeutics enrols the first US participant in a clinical study.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">December 6, 2022</div>
-          <div class="news-text">Alex Therapeutics and Vicore Pharma announce the first study subject enrolled in the pivotal COMPANION study evaluating Almee™.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">October 11, 2023</div>
+          <div class="news-titem-text">Abliva achieves an important milestone in the ongoing FALCON study.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">October 24, 2022</div>
-          <div class="news-text">Step Pharma announces the first patient dosed with STP938, the world's most advanced CTPS1 inhibitor, in a Phase 1/2 trial for T-cell and B-cell lymphomas.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">September 5, 2023</div>
+          <div class="news-titem-text">Abliva's lead candidate KL1333 receives FDA fast-track designation.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">October 21, 2022</div>
-          <div class="news-text">Gesynta Pharma prepares a Phase II study of GS-248 in endometriosis following ground-breaking preclinical data.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">May 3, 2023</div>
+          <div class="news-titem-text">ARTHEx Biotech announces closing of a €42 million Series B financing.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">October 14, 2022</div>
-          <div class="news-text">Alex Therapeutics presents results from a digital-therapeutic pilot study showing nearly 50 percent reduction in anxiety.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">April 17, 2023</div>
+          <div class="news-titem-text">Complement Therapeutics secures €72 million in Series A financing.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">July 27, 2022</div>
-          <div class="news-text">Cardior announces first patient dosed in a Phase 2 study.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">March 5, 2023</div>
+          <div class="news-titem-text">Alex Therapeutics extends its financing round to €4.75 million with a leading life-science venture capital firm.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">July 15, 2022</div>
-          <div class="news-text">Gesynta Pharma completes patient enrolment in its Phase II study in systemic sclerosis.</div>
+        <!-- 2022 -->
+        <div class="news-year-divider"><span class="news-year-label">2022</span><div class="news-year-line"></div></div>
+
+        <div class="news-titem">
+          <div class="news-titem-date">December 6, 2022</div>
+          <div class="news-titem-text">Alex Therapeutics and Vicore Pharma announce the first study subject enrolled in the pivotal COMPANION study evaluating Almee™.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">July 3, 2022</div>
-          <div class="news-text">Attgeno AB announces a fully subscribed share issue to complete a Phase II study in acute pulmonary hypertension.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">October 24, 2022</div>
+          <div class="news-titem-text">Step Pharma announces the first patient dosed with STP938, the world's most advanced CTPS1 inhibitor, in a Phase 1/2 trial for T-cell and B-cell lymphomas.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">June 2, 2022</div>
-          <div class="news-text">Attgeno announces approval to initiate a Phase 2 clinical trial of Supernitro in patients with acute pulmonary hypertension.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">October 21, 2022</div>
+          <div class="news-titem-text">Gesynta Pharma prepares a Phase II study of GS-248 in endometriosis following ground-breaking preclinical data.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">June 1, 2022</div>
-          <div class="news-text">Abliva decides on a SEK 200 million financing to fund a Phase 2/3 study of KL1333 to interim analysis and to bring in new global life-science and institutional investors.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">October 14, 2022</div>
+          <div class="news-titem-text">Alex Therapeutics presents results from a digital-therapeutic pilot study showing nearly 50 percent reduction in anxiety.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">April 27, 2022</div>
-          <div class="news-text">Gesynta Pharma's drug candidate GS-248 is granted orphan-drug designation by the FDA.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">July 27, 2022</div>
+          <div class="news-titem-text">Cardior announces first patient dosed in a Phase 2 study.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">April 6, 2022</div>
-          <div class="news-text">Alex Therapeutics raises €3.5 million in an oversubscribed financing round.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">July 15, 2022</div>
+          <div class="news-titem-text">Gesynta Pharma completes patient enrolment in its Phase II study in systemic sclerosis.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">February 22, 2022</div>
-          <div class="news-text">TargED Biopharmaceuticals raises €39 million in Series A financing.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">July 3, 2022</div>
+          <div class="news-titem-text">Attgeno AB announces a fully subscribed share issue to complete a Phase II study in acute pulmonary hypertension.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">January 31, 2022</div>
-          <div class="news-text">Ribbon Biolabs raises €18 million in its Series A financing.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">June 2, 2022</div>
+          <div class="news-titem-text">Attgeno announces approval to initiate a Phase 2 clinical trial of Supernitro in patients with acute pulmonary hypertension.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">December 10, 2021</div>
-          <div class="news-text">Emergence Therapeutics raises €87 million Series A financing to advance a nectin-4 antibody-drug conjugate.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">June 1, 2022</div>
+          <div class="news-titem-text">Abliva decides on a SEK 200 million financing to fund a Phase 2/3 study of KL1333 to interim analysis and to bring in new global life-science and institutional investors.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">September 27, 2021</div>
-          <div class="news-text" style="font-weight: 600;">Hadean Ventures announces the first closing of EUR 90 million for its second fund.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">April 27, 2022</div>
+          <div class="news-titem-text">Gesynta Pharma's drug candidate GS-248 is granted orphan-drug designation by the FDA.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">August 26, 2021</div>
-          <div class="news-text">Cardior raises €64 million Series B to advance a clinical pipeline of RNA therapeutics to treat cardiac disease.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">April 6, 2022</div>
+          <div class="news-titem-text">Alex Therapeutics raises €3.5 million in an oversubscribed financing round.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">July 8, 2021</div>
-          <div class="news-text">Attgeno appoints Björn Westberg as chief financial officer.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">February 22, 2022</div>
+          <div class="news-titem-text">TargED Biopharmaceuticals raises €39 million in Series A financing.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">June 29, 2021</div>
-          <div class="news-text">SAGA Diagnostics raises SEK 106 million (€10.5 million).</div>
+        <div class="news-titem">
+          <div class="news-titem-date">January 31, 2022</div>
+          <div class="news-titem-text">Ribbon Biolabs raises €18 million in its Series A financing.</div>
         </div>
+
+        <!-- 2021 -->
+        <div class="news-year-divider"><span class="news-year-label">2021</span><div class="news-year-line"></div></div>
 
-        <div class="news-item">
-          <div class="news-date">June 29, 2021</div>
-          <div class="news-text">Oncoinvent secures NOK 250 million in an oversubscribed pre-IPO funding round.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">December 10, 2021</div>
+          <div class="news-titem-text">Emergence Therapeutics raises €87 million Series A financing to advance a nectin-4 antibody-drug conjugate.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">June 15, 2021</div>
-          <div class="news-text">Gesynta Pharma announces significant progress across its development program for first-in-class drug candidate GS-248.</div>
+        <div class="news-titem milestone">
+          <div class="news-titem-date">September 27, 2021</div>
+          <div class="news-titem-text">Hadean Ventures announces the first closing of EUR 90 million for its second fund.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">May 19, 2021</div>
-          <div class="news-text">Abliva reports positive clinical Phase 1a/b results for KL1333, including signs of efficacy in patients with primary mitochondrial disease (PMD).</div>
+        <div class="news-titem">
+          <div class="news-titem-date">August 26, 2021</div>
+          <div class="news-titem-text">Cardior raises €64 million Series B to advance a clinical pipeline of RNA therapeutics to treat cardiac disease.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">April 30, 2021</div>
-          <div class="news-text">Join Hadean Ventures! — recruitment announcement.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">July 8, 2021</div>
+          <div class="news-titem-text">Attgeno appoints Björn Westberg as chief financial officer.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">April 9, 2021</div>
-          <div class="news-text">Safety Monitoring Committee approves 7 MBq as the recommended clinical dose for Radspherin®.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">June 29, 2021</div>
+          <div class="news-titem-text">SAGA Diagnostics raises SEK 106 million (€10.5 million).</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">March 24, 2021</div>
-          <div class="news-text">Step Pharma raises €35 million in Series B financing to advance a first-in-class CTPS1 inhibitor into the clinic for T-cell malignancies.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">June 29, 2021</div>
+          <div class="news-titem-text">Oncoinvent secures NOK 250 million in an oversubscribed pre-IPO funding round.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">March 11, 2021</div>
-          <div class="news-text">Oncoinvent announces progression of Radspherin® to the third dose-level cohort in the ongoing RAD-18-001 Phase 1 trial.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">June 15, 2021</div>
+          <div class="news-titem-text">Gesynta Pharma announces significant progress across its development program for first-in-class drug candidate GS-248.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">February 11, 2021</div>
-          <div class="news-text">Pipeline Therapeutics completes an $80 million Series C financing.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">May 19, 2021</div>
+          <div class="news-titem-text">Abliva reports positive clinical Phase 1a/b results for KL1333, including signs of efficacy in patients with primary mitochondrial disease (PMD).</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">February 5, 2021</div>
-          <div class="news-text">"Ekspertenes biotekfavoritter i urolige tider" — an article on E24.no featuring biotech favourites in turbulent times.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">April 9, 2021</div>
+          <div class="news-titem-text">Safety Monitoring Committee approves 7 MBq as the recommended clinical dose for Radspherin®.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">January 26, 2021</div>
-          <div class="news-text">Gesynta Pharma initiates a Phase II study of its first-in-class drug candidate GS-248 in patients with systemic sclerosis.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">March 24, 2021</div>
+          <div class="news-titem-text">Step Pharma raises €35 million in Series B financing to advance a first-in-class CTPS1 inhibitor into the clinic for T-cell malignancies.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">January 21, 2021</div>
-          <div class="news-text">Abliva appoints Ellen Donnelly as new chief executive officer as the company enters a new development stage.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">March 11, 2021</div>
+          <div class="news-titem-text">Oncoinvent announces progression of Radspherin® to the third dose-level cohort in the ongoing RAD-18-001 Phase 1 trial.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">January 11, 2021</div>
-          <div class="news-text">Oncoinvent announces advancement of Radspherin® to the final dose-level cohort in its ongoing RAD-18-002 Phase 1 trial in colorectal-cancer patients.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">February 11, 2021</div>
+          <div class="news-titem-text">Pipeline Therapeutics completes an $80 million Series C financing.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">January 3, 2021</div>
-          <div class="news-text">"Helsestartups får stryk på mangfold" — an article on E24.no about diversity challenges among health start-ups.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">January 26, 2021</div>
+          <div class="news-titem-text">Gesynta Pharma initiates a Phase II study of its first-in-class drug candidate GS-248 in patients with systemic sclerosis.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">December 1, 2020</div>
-          <div class="news-text">Galecto publishes GB0139 Phase 2a (IPF) results in the European Respiratory Journal.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">January 21, 2021</div>
+          <div class="news-titem-text">Abliva appoints Ellen Donnelly as new chief executive officer as the company enters a new development stage.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">November 17, 2020</div>
-          <div class="news-text">Abliva receives positive regulatory feedback from the UK MHRA on its KL1333 Phase II/III study plan.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">January 11, 2021</div>
+          <div class="news-titem-text">Oncoinvent announces advancement of Radspherin® to the final dose-level cohort in its ongoing RAD-18-002 Phase 1 trial in colorectal-cancer patients.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">November 10, 2020</div>
-          <div class="news-text">Abliva initiates a drug-drug interaction study and paves the way for a KL1333 pivotal study in 2021.</div>
+        <!-- 2020 -->
+        <div class="news-year-divider"><span class="news-year-label">2020</span><div class="news-year-line"></div></div>
+
+        <div class="news-titem">
+          <div class="news-titem-date">December 1, 2020</div>
+          <div class="news-titem-text">Galecto publishes GB0139 Phase 2a (IPF) results in the European Respiratory Journal.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">October 29, 2020</div>
-          <div class="news-text">Oncoinvent advances Radspherin® to the third dose level in an ongoing Phase 1 clinical trial.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">November 17, 2020</div>
+          <div class="news-titem-text">Abliva receives positive regulatory feedback from the UK MHRA on its KL1333 Phase II/III study plan.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">October 28, 2020</div>
-          <div class="news-text">Galecto announces pricing of its initial public offering.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">November 10, 2020</div>
+          <div class="news-titem-text">Abliva initiates a drug-drug interaction study and paves the way for a KL1333 pivotal study in 2021.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">October 22, 2020</div>
-          <div class="news-text">Neuro Event Labs receives FDA Breakthrough Device Designation for Nelli®.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">October 29, 2020</div>
+          <div class="news-titem-text">Oncoinvent advances Radspherin® to the third dose level in an ongoing Phase 1 clinical trial.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">October 8, 2020</div>
-          <div class="news-text">Abliva doses the first patient in its KL1333 Phase Ia/b clinical study.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">October 28, 2020</div>
+          <div class="news-titem-text">Galecto announces pricing of its initial public offering.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">September 25, 2020</div>
-          <div class="news-text">Hadean Ventures invests in Galecto's $64 million equity-financing round.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">October 22, 2020</div>
+          <div class="news-titem-text">Neuro Event Labs receives FDA Breakthrough Device Designation for Nelli®.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">September 14, 2020</div>
-          <div class="news-text">Ingrid Teigland Akay included in Business Insider's list of 100 people transforming business in Europe.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">October 8, 2020</div>
+          <div class="news-titem-text">Abliva doses the first patient in its KL1333 Phase Ia/b clinical study.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">September 9, 2020</div>
-          <div class="news-text">Abliva intends to start a pivotal KL1333 study in the second half of 2021.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">September 25, 2020</div>
+          <div class="news-titem-text">Hadean Ventures invests in Galecto's $64 million equity-financing round.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">September 4, 2020</div>
-          <div class="news-text">Oncoinvent advances Radspherin® to the second dose level in its ongoing Phase 1 clinical trial.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">September 14, 2020</div>
+          <div class="news-titem-text">Ingrid Teigland Akay included in Business Insider's list of 100 people transforming business in Europe.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">August 14, 2020</div>
-          <div class="news-text">PEWIN (Private Equity Women Investor Network) member highlight 2020: Ingrid Teigland Akay.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">September 9, 2020</div>
+          <div class="news-titem-text">Abliva intends to start a pivotal KL1333 study in the second half of 2021.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">August 6, 2020</div>
-          <div class="news-text">CardioMech AS announces a $18.5 million Series A for its transcatheter mitral-valve repair technology.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">September 4, 2020</div>
+          <div class="news-titem-text">Oncoinvent advances Radspherin® to the second dose level in its ongoing Phase 1 clinical trial.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">July 28, 2020</div>
-          <div class="news-text">Abliva receives positive FDA feedback on its KL1333 development plan.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">August 6, 2020</div>
+          <div class="news-titem-text">CardioMech AS announces a $18.5 million Series A for its transcatheter mitral-valve repair technology.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">July 28, 2020</div>
-          <div class="news-text">Pipeline Therapeutics initiates a Phase 1/2a clinical trial of PIPE-505 in sensorineural hearing loss.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">July 28, 2020</div>
+          <div class="news-titem-text">Abliva receives positive FDA feedback on its KL1333 development plan.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">July 28, 2020</div>
-          <div class="news-text">Gesynta raises SEK 190 million in a round led by Hadean Ventures to accelerate development of its first-in-class mPGES-1 inhibitor GS-248 for systemic sclerosis.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">July 28, 2020</div>
+          <div class="news-titem-text">Pipeline Therapeutics initiates a Phase 1/2a clinical trial of PIPE-505 in sensorineural hearing loss.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">June 18, 2020</div>
-          <div class="news-text">€1.9 million EU funding takes Nelli® available for all epilepsy patients.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">July 28, 2020</div>
+          <div class="news-titem-text">Gesynta raises SEK 190 million in a round led by Hadean Ventures to accelerate development of its first-in-class mPGES-1 inhibitor GS-248 for systemic sclerosis.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">June 15, 2020</div>
-          <div class="news-text">Abliva completes a directed issue of MSEK 20 to Hadean Ventures.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">June 18, 2020</div>
+          <div class="news-titem-text">€1.9 million EU funding takes Nelli® available for all epilepsy patients.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">June 11, 2020</div>
-          <div class="news-text">Oncoinvent announces dosing of the first patient with Radspherin® in a second Phase 1 clinical trial.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">June 15, 2020</div>
+          <div class="news-titem-text">Abliva completes a directed issue of MSEK 20 to Hadean Ventures.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">June 2, 2020</div>
-          <div class="news-text">Oncoinvent announces dosing of the first patient with Radspherin® in a Phase 1 clinical trial.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">June 11, 2020</div>
+          <div class="news-titem-text">Oncoinvent announces dosing of the first patient with Radspherin® in a second Phase 1 clinical trial.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">May 26, 2020</div>
-          <div class="news-text" style="font-weight: 600;">MSD to acquire Themis Bioscience.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">June 2, 2020</div>
+          <div class="news-titem-text">Oncoinvent announces dosing of the first patient with Radspherin® in a Phase 1 clinical trial.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">April 22, 2020</div>
-          <div class="news-text">NeuroVive makes a MSEK 20 directed share issue to leading Nordic life-science investor Hadean Ventures.</div>
+        <div class="news-titem milestone">
+          <div class="news-titem-date">May 26, 2020</div>
+          <div class="news-titem-text">MSD to acquire Themis Bioscience.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">April 16, 2020</div>
-          <div class="news-text">"Varsler massive coronakjøp" — a report in Finansavisen about large coronavirus-related purchases.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">April 22, 2020</div>
+          <div class="news-titem-text">NeuroVive makes a MSEK 20 directed share issue to leading Nordic life-science investor Hadean Ventures.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">April 9, 2020</div>
-          <div class="news-text">Neuro Event Labs Oy closes a €3.9 million Series A investment round from Hadean Ventures, SHS Gesellschaft für Beteiligungsmanagement and Maki.vc.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">April 9, 2020</div>
+          <div class="news-titem-text">Neuro Event Labs Oy closes a €3.9 million Series A investment round from Hadean Ventures, SHS Gesellschaft für Beteiligungsmanagement and Maki.vc.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">March 20, 2020</div>
-          <div class="news-text">Themis and Institut Pasteur join the coronavirus vaccine hunt.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">March 20, 2020</div>
+          <div class="news-titem-text">Themis and Institut Pasteur join the coronavirus vaccine hunt.</div>
         </div>
+
+        <!-- 2019 and earlier -->
+        <div class="news-year-divider"><span class="news-year-label">2019</span><div class="news-year-line"></div></div>
 
-        <div class="news-item">
-          <div class="news-date">December 18, 2019</div>
-          <div class="news-text">Pipeline Therapeutics completes a $30 million Series B financing.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">December 18, 2019</div>
+          <div class="news-titem-text">Pipeline Therapeutics completes a $30 million Series B financing.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">November 27, 2019</div>
-          <div class="news-text">Hadean Ventures receives the Rising Star Award at the 10th edition of the Private Equity Exchange &amp; Awards in Paris.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">November 27, 2019</div>
+          <div class="news-titem-text">Hadean Ventures receives the Rising Star Award at the 10th edition of the Private Equity Exchange &amp; Awards in Paris.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">September 18, 2019</div>
-          <div class="news-text">Hadean Ventures invests in Themis Bioscience GmbH's €40 million Series D financing round.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">September 18, 2019</div>
+          <div class="news-titem-text">Hadean Ventures invests in Themis Bioscience GmbH's €40 million Series D financing round.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">June 11, 2019</div>
-          <div class="news-text">Hadean Ventures leads a 40 million SEK (€3.7 million) investment round into SAGA to advance ultrasensitive cancer liquid biopsies.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">June 11, 2019</div>
+          <div class="news-titem-text">Hadean Ventures leads a 40 million SEK (€3.7 million) investment round into SAGA to advance ultrasensitive cancer liquid biopsies.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">March 26, 2019</div>
-          <div class="news-text">Hadean Ventures' Ingrid Teigland Akay receives the Investor of the Year award at the SHE conference.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">March 26, 2019</div>
+          <div class="news-titem-text">Hadean Ventures' Ingrid Teigland Akay receives the Investor of the Year award at the SHE conference.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">March 26, 2019</div>
-          <div class="news-text">Level 20 selects Ingrid Teigland Akay as one of nine inspiring women in European private equity.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">March 26, 2019</div>
+          <div class="news-titem-text">Level 20 selects Ingrid Teigland Akay as one of nine inspiring women in European private equity.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">November 6, 2018</div>
-          <div class="news-text">Hadean Ventures announces the appointment of Roger Franklin PhD as partner to be based at the Karolinska Institute Science Park in Stockholm.</div>
+        <div class="news-year-divider"><span class="news-year-label">2018</span><div class="news-year-line"></div></div>
+
+        <div class="news-titem">
+          <div class="news-titem-date">November 6, 2018</div>
+          <div class="news-titem-text">Hadean Ventures announces the appointment of Roger Franklin PhD as partner to be based at the Karolinska Institute Science Park in Stockholm.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">July 13, 2018</div>
-          <div class="news-text">Hadean Ventures, SINTEF Venture V and Investinor invest in Nisonic AS to develop advanced ultrasound technology for neurological conditions.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">July 13, 2018</div>
+          <div class="news-titem-text">Hadean Ventures, SINTEF Venture V and Investinor invest in Nisonic AS to develop advanced ultrasound technology for neurological conditions.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">June 16, 2018</div>
-          <div class="news-text">Investorview: plugging knowledge gaps to accelerate life-science start-up development.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">June 16, 2018</div>
+          <div class="news-titem-text">Investorview: plugging knowledge gaps to accelerate life-science start-up development.</div>
         </div>
 
-        <div class="news-item">
-          <div class="news-date">May 22, 2018</div>
-          <div class="news-text">Hadean Ventures invests in AttgeNO AB, a Swedish pharmaceutical company developing treatments for acute life-threatening conditions.</div>
+        <div class="news-titem">
+          <div class="news-titem-date">May 22, 2018</div>
+          <div class="news-titem-text">Hadean Ventures invests in AttgeNO AB, a Swedish pharmaceutical company developing treatments for acute life-threatening conditions.</div>
         </div>
+
+        <div class="news-year-divider"><span class="news-year-label">2017</span><div class="news-year-line"></div></div>
 
-        <div class="news-item">
-          <div class="news-date">December 18, 2017</div>
-          <div class="news-text" style="font-weight: 600;">Hadean Ventures launches a new fund to leverage the untapped potential of European life-science start-ups.</div>
+        <div class="news-titem milestone">
+          <div class="news-titem-date">December 18, 2017</div>
+          <div class="news-titem-text">Hadean Ventures launches a new fund to leverage the untapped potential of European life-science start-ups.</div>
         </div>
 
       </div>
@@ -554,8 +818,8 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <a href="../index.html" class="nav-logo">
-            <img src="../hadean_images/logo.png" alt="Hadean Ventures">
+          <a href="../index.html" style="display: inline-block; margin-bottom: 16px;">
+            <img src="../hadean_images/logo.png" alt="Hadean Ventures" style="height: 48px; width: auto;">
           </a>
           <p class="footer-tagline">Investing in the future of healthcare since 2017.</p>
         </div>
@@ -564,7 +828,7 @@
           <ul class="footer-links">
             <li><a href="portfolio.html">Portfolio</a></li>
             <li><a href="team.html">Team</a></li>
-            <li><a href="impact.html">Impact</a></li>
+            <li><a href="approach.html">Approach</a></li>
             <li><a href="investors.html">Investors</a></li>
           </ul>
         </div>
@@ -579,12 +843,21 @@
         </div>
         <div>
           <div class="footer-heading">Contact</div>
-          <div class="footer-contact-item">Oslo, Norway<br><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
-          <div class="footer-contact-item">Stockholm, Sweden<br>Karolinska Institute Science Park</div>
+          <div class="footer-contact-item">
+            <strong style="color: rgba(255,255,255,0.7); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;">Oslo</strong><br>
+            Dronningen 1<br>0287 Oslo, Norway<br>
+            <a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a>
+          </div>
+          <div class="footer-contact-item" style="margin-top: 16px;">
+            <strong style="color: rgba(255,255,255,0.7); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;">Stockholm</strong><br>
+            Karolinska Institute Science Park<br>
+            Nanna Svartz väg 4, 171 65 Solna<br>
+            <a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a>
+          </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <span class="footer-copyright">© 2025 Hadean Ventures. All rights reserved.</span>
+        <span class="footer-copyright">© 2026 Hadean Ventures. All rights reserved.</span>
         <div class="footer-accent"></div>
       </div>
     </div>
@@ -603,6 +876,19 @@
       spans[1].style.opacity = isOpen ? '0' : '';
       spans[2].style.transform = isOpen ? 'translateY(-7px) rotate(-45deg)' : '';
     });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.news-card, .news-titem, .news-year-divider, .news-img-break')
+      .forEach(el => observer.observe(el));
   </script>
 </body>
 </html>

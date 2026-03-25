@@ -27,7 +27,7 @@
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="pages/portfolio.html">Portfolio</a></li>
         <li><a href="pages/team.html">Team</a></li>
-        <li><a href="pages/impact.html">Impact</a></li>
+        <li><a href="pages/approach.html">Approach</a></li>
         <li><a href="pages/investors.html">Investors</a></li>
         <li><a href="pages/news.html">News</a></li>
         <li><a href="pages/events.html">Events</a></li>
@@ -96,7 +96,7 @@
           </p>
           <div style="margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap;">
             <a href="pages/team.html" class="btn btn-primary">Our Team</a>
-            <a href="pages/impact.html" class="btn btn-outline">Our Approach</a>
+            <a href="pages/approach.html" class="btn btn-outline">Our Approach</a>
           </div>
         </div>
         <div class="reveal from-right">
@@ -109,15 +109,8 @@
   </section>
 
   <!-- PORTFOLIO MAP -->
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <span class="label">Global Reach</span>
-        <h2 style="margin-top: 12px;">Where we invest</h2>
-        <p style="margin-top: 16px; max-width: 56ch;">Our portfolio companies span Scandinavia, Europe and beyond. Hover over a marker to learn more about each company.</p>
-      </div>
-    </div>
-    <div style="margin-top: 40px; width: 100%; height: 560px; overflow: hidden; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+  <section class="section section-alt" style="padding: 0;">
+    <div id="mapContainer" style="width: 100%; height: 600px; overflow: hidden; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); transform: scale(1.12); opacity: 0; transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.0s ease;">
       <iframe
         src="worldmap.html"
         style="width: 100%; height: 100%; border: none; display: block;"
@@ -130,8 +123,14 @@
   <!-- TEAM MARQUEE -->
   <section class="team-marquee">
     <div class="team-marquee-header">
-      <span class="label">Our People</span>
-      <h2 style="margin-top: 10px;">The team behind the work</h2>
+      <div style="flex: 1;"></div>
+      <div style="flex: 1; text-align: center;">
+        <span class="label">Our Team</span>
+        <h2 style="margin-top: 10px;">Science meets<br>investment expertise</h2>
+      </div>
+      <div style="flex: 1; display: flex; justify-content: flex-end; align-items: flex-end;">
+        <a href="pages/team.html" class="team-arrow-link">Meet the team &rarr;</a>
+      </div>
     </div>
     <div class="marquee-track-wrapper">
       <div class="marquee-track">
@@ -279,9 +278,6 @@
         </div>
       </div>
     </div>
-    <div style="text-align: center; margin-top: 48px;">
-      <a href="pages/team.html" class="btn btn-primary">Meet the Full Team</a>
-    </div>
   </section>
 
   <!-- GET IN TOUCH — CTA with mountain image -->
@@ -301,8 +297,8 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <a href="index.html" class="nav-logo">
-            <img src="hadean_images/logo.png" alt="Hadean Ventures">
+          <a href="index.html" style="display: inline-block; margin-bottom: 16px;">
+            <img src="hadean_images/logo.png" alt="Hadean Ventures" style="height: 48px; width: auto;">
           </a>
           <p class="footer-tagline">Investing in the future of healthcare since 2017.</p>
         </div>
@@ -311,7 +307,7 @@
           <ul class="footer-links">
             <li><a href="pages/portfolio.html">Portfolio</a></li>
             <li><a href="pages/team.html">Team</a></li>
-            <li><a href="pages/impact.html">Impact</a></li>
+            <li><a href="pages/approach.html">Approach</a></li>
             <li><a href="pages/investors.html">Investors</a></li>
           </ul>
         </div>
@@ -326,12 +322,21 @@
         </div>
         <div>
           <div class="footer-heading">Contact</div>
-          <div class="footer-contact-item">Oslo, Norway<br><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
-          <div class="footer-contact-item">Stockholm, Sweden<br>Karolinska Institute Science Park</div>
+          <div class="footer-contact-item">
+            <strong style="color: rgba(255,255,255,0.7); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;">Oslo</strong><br>
+            Dronningen 1<br>0287 Oslo, Norway<br>
+            <a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a>
+          </div>
+          <div class="footer-contact-item" style="margin-top: 16px;">
+            <strong style="color: rgba(255,255,255,0.7); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;">Stockholm</strong><br>
+            Karolinska Institute Science Park<br>
+            Nanna Svartz väg 4, 171 65 Solna<br>
+            <a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a>
+          </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <span class="footer-copyright">© 2025 Hadean Ventures. All rights reserved.</span>
+        <span class="footer-copyright">© 2026 Hadean Ventures. All rights reserved.</span>
         <div class="footer-accent"></div>
       </div>
     </div>
@@ -367,6 +372,21 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Map zoom-in animation on scroll
+    const mapContainer = document.getElementById('mapContainer');
+    if (mapContainer) {
+      const mapObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            mapContainer.style.transform = 'scale(1)';
+            mapContainer.style.opacity = '1';
+            mapObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      mapObserver.observe(mapContainer);
+    }
 
     // Counter animation for hero stats
     function animateCounter(el) {

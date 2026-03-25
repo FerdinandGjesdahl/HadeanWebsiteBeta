@@ -9,6 +9,327 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .portfolio-summary {
+      margin-top: -44px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .portfolio-summary-card {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ffffff 0%, #f5f9fc 62%, #edf5fb 100%);
+      border: 1px solid #d6e6f1;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      padding: 42px 44px;
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 34px;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    .portfolio-summary-card::before {
+      content: '';
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      top: -150px;
+      right: -120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(191,220,236,0.5) 0%, rgba(191,220,236,0) 70%);
+      pointer-events: none;
+    }
+
+    .portfolio-summary-card::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--light-blue) 0%, var(--navy) 40%, rgba(33,66,116,0) 100%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .portfolio-summary-card.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .portfolio-summary-main {
+      position: relative;
+      z-index: 1;
+    }
+
+    .portfolio-summary-main .label {
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .portfolio-summary-main h2 {
+      margin: 0 0 16px;
+      font-size: clamp(1.7rem, 3vw, 2.55rem);
+      line-height: 1.14;
+      max-width: 20ch;
+    }
+
+    .portfolio-summary-main p {
+      margin: 0;
+      max-width: 56ch;
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+
+    .portfolio-focus-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .portfolio-focus-item {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      border: 1px solid #d2e3ef;
+      background: rgba(255,255,255,0.8);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .portfolio-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(98px, 1fr));
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .portfolio-stat {
+      position: relative;
+      overflow: hidden;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid #d2e3ef;
+      border-radius: var(--radius-md);
+      padding: 18px 14px 16px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(33,66,116,0.06);
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .portfolio-stat::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--light-blue), rgba(191,220,236,0));
+    }
+
+    .portfolio-stat:hover {
+      transform: translateY(-2px);
+      border-color: var(--light-blue);
+      box-shadow: 0 12px 28px rgba(33,66,116,0.1);
+    }
+
+    .portfolio-stat-value {
+      display: block;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .portfolio-stat-label {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 700;
+      line-height: 1.34;
+    }
+
+    .portfolio-grid-v2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .portfolio-item {
+      position: relative;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      box-shadow: var(--shadow-sm);
+      padding: 24px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease), box-shadow var(--transition), border-color var(--transition);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    .portfolio-item::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--light-blue) 0%, rgba(191,220,236,0) 85%);
+      opacity: 0.8;
+    }
+
+    .portfolio-item.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--light-blue);
+    }
+
+    .portfolio-logo-wrap {
+      height: 78px;
+      border: 1px solid var(--border-light);
+      background: var(--white);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      padding: 10px 14px;
+    }
+
+    .portfolio-logo-wrap img {
+      max-width: 88%;
+      max-height: 50px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      transition: transform var(--transition);
+    }
+
+    .portfolio-item:hover .portfolio-logo-wrap img {
+      transform: scale(1.04);
+    }
+
+    .portfolio-item h3 {
+      font-size: 1.06rem;
+      line-height: 1.25;
+      margin-bottom: 10px;
+      color: var(--navy);
+    }
+
+    .portfolio-item p {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.62;
+      max-width: none;
+    }
+
+    .portfolio-chip {
+      margin-top: 16px;
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    .portfolio-chip.exit {
+      color: var(--accent-dark);
+      border-color: rgba(206,51,45,0.24);
+      background: rgba(206,51,45,0.08);
+    }
+
+    @media (max-width: 1024px) {
+      .portfolio-summary-card {
+        grid-template-columns: 1fr;
+        padding: 34px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .portfolio-summary {
+        margin-top: -28px;
+      }
+
+      .portfolio-summary-card {
+        padding: 28px 22px;
+        gap: 22px;
+      }
+
+      .portfolio-summary-main h2 {
+        max-width: none;
+        font-size: clamp(1.45rem, 7vw, 2.05rem);
+      }
+
+      .portfolio-stats {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .portfolio-grid-v2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .portfolio-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .portfolio-summary-card {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .portfolio-stat {
+        transition: none;
+      }
+
+      .portfolio-stat:hover {
+        transform: none;
+      }
+
+      .portfolio-item {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .portfolio-item:hover {
+        transform: none;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -25,7 +346,7 @@
         <li><a href="../index.html">Home</a></li>
         <li><a href="portfolio.html" class="active">Portfolio</a></li>
         <li><a href="team.html">Team</a></li>
-        <li><a href="impact.html">Impact</a></li>
+        <li><a href="approach.html">Approach</a></li>
         <li><a href="investors.html">Investors</a></li>
         <li><a href="news.html">News</a></li>
         <li><a href="events.html">Events</a></li>
@@ -45,128 +366,218 @@
     <div class="container">
       <span class="label">Our Investments</span>
       <h1>Portfolio</h1>
-      <p class="lead">A selection of companies in which Hadean Ventures has invested — spanning RNA therapeutics, medical devices, diagnostics, and digital health.</p>
+      <p class="lead">A selection of companies where Hadean Ventures has invested across therapeutics, diagnostics, devices, and digital health.</p>
     </div>
   </div>
 
-  <!-- PORTFOLIO GRID -->
-  <section class="section">
+  <!-- PORTFOLIO SUMMARY -->
+  <section class="section-sm portfolio-summary">
     <div class="container">
-      <div class="portfolio-grid">
-
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">Actithera</div>
-          <div class="portfolio-card-desc">A radiopharmaceutical company developing targeted cancer therapies using alpha-particle emitting radionuclides.</div>
-          <span class="portfolio-card-tag">Oncology</span>
+      <div class="portfolio-summary-card js-portfolio-reveal">
+        <div class="portfolio-summary-main">
+          <span class="label">Portfolio Snapshot</span>
+          <h2>Built for long-term healthcare impact</h2>
+          <p>We partner with category-defining teams from early clinical development through growth, with a focus on differentiated science and clear patient value.</p>
+          <div class="portfolio-focus-list">
+            <span class="portfolio-focus-item">Therapeutics</span>
+            <span class="portfolio-focus-item">Medical Devices</span>
+            <span class="portfolio-focus-item">Diagnostics</span>
+            <span class="portfolio-focus-item">Digital Health</span>
+          </div>
         </div>
-
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">Alex Therapeutics</div>
-          <div class="portfolio-card-desc">A digital therapeutics (DTx) company based in Stockholm developing AI-powered mental health treatments.</div>
-          <span class="portfolio-card-tag">Digital Health</span>
+        <div class="portfolio-stats">
+          <div class="portfolio-stat">
+            <span class="portfolio-stat-value">19</span>
+            <span class="portfolio-stat-label">Active &amp; Historical Companies</span>
+          </div>
+          <div class="portfolio-stat">
+            <span class="portfolio-stat-value">4</span>
+            <span class="portfolio-stat-label">Core Segments</span>
+          </div>
+          <div class="portfolio-stat">
+            <span class="portfolio-stat-value">2</span>
+            <span class="portfolio-stat-label">Documented Exits</span>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">ARTHEx Biotech</div>
-          <div class="portfolio-card-desc">A Spanish biopharmaceutical company developing advanced RNA treatments for rare genetic diseases, including myotonic dystrophy type 1.</div>
-          <span class="portfolio-card-tag">Rare Disease · RNA</span>
-        </div>
+  <!-- PORTFOLIO GRID -->
+  <section class="section" style="padding-top: 24px;">
+    <div class="container">
+      <div class="portfolio-grid-v2" id="portfolioGrid">
 
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">Attgeno</div>
-          <div class="portfolio-card-desc">A pharmaceutical company based in Stockholm, Sweden developing treatments for acute life-threatening conditions including pulmonary hypertension.</div>
-          <span class="portfolio-card-tag">Cardiovascular</span>
-        </div>
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/actithera_logo.jpg" alt="Actithera logo" loading="lazy">
+          </div>
+          <h3>Actithera</h3>
+          <p>A radiopharmaceutical company developing targeted cancer therapies using alpha-particle emitting radionuclides.</p>
+          <span class="portfolio-chip">Oncology</span>
+        </article>
 
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">CardioMech</div>
-          <div class="portfolio-card-desc">A privately-held Norwegian company developing an innovative technology to repair the mitral valve via a transcatheter approach.</div>
-          <span class="portfolio-card-tag">Medical Device · Cardiovascular</span>
-        </div>
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/alex_therapeutics_logo.png" alt="Alex Therapeutics logo" loading="lazy">
+          </div>
+          <h3>Alex Therapeutics</h3>
+          <p>A digital therapeutics company based in Stockholm developing AI-powered mental health treatments.</p>
+          <span class="portfolio-chip">Digital Health</span>
+        </article>
 
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">Cardior Pharmaceuticals</div>
-          <div class="portfolio-card-desc">A leading clinical-stage biopharmaceutical company developing RNA therapeutics for cardiac disease. Acquired by Novo Nordisk in March 2024.</div>
-          <span class="portfolio-card-tag" style="background: rgba(206,51,45,0.08); color: var(--accent-dark); border-color: rgba(206,51,45,0.2);">Exit — Novo Nordisk</span>
-        </div>
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/arthex_biotech_logo.png" alt="ARTHEx Biotech logo" loading="lazy">
+          </div>
+          <h3>ARTHEx Biotech</h3>
+          <p>A Spanish biopharmaceutical company developing advanced RNA treatments for rare genetic diseases, including myotonic dystrophy type 1.</p>
+          <span class="portfolio-chip">Rare Disease · RNA</span>
+        </article>
 
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">Complement Therapeutics</div>
-          <div class="portfolio-card-desc">A German-headquartered biotechnology company developing complement pathway inhibitors for geographic atrophy and other conditions.</div>
-          <span class="portfolio-card-tag">Ophthalmology</span>
-        </div>
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/attgeno_logo.png" alt="Attgeno logo" loading="lazy">
+          </div>
+          <h3>Attgeno</h3>
+          <p>A pharmaceutical company based in Stockholm developing treatments for acute life-threatening conditions, including pulmonary hypertension.</p>
+          <span class="portfolio-chip">Cardiovascular</span>
+        </article>
 
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">Contineum Therapeutics</div>
-          <div class="portfolio-card-desc">A San Diego-based company focused on developing therapeutics for neurological and inflammatory diseases.</div>
-          <span class="portfolio-card-tag">Neurology</span>
-        </div>
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/cardiomech_logo.jpg" alt="CardioMech logo" loading="lazy">
+          </div>
+          <h3>CardioMech</h3>
+          <p>A privately held Norwegian company developing an innovative technology to repair the mitral valve via a transcatheter approach.</p>
+          <span class="portfolio-chip">Medical Device · Cardiovascular</span>
+        </article>
 
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">Emergence Therapeutics</div>
-          <div class="portfolio-card-desc">A European biopharmaceutical company advancing a nectin-4 antibody-drug conjugate for solid tumour oncology.</div>
-          <span class="portfolio-card-tag">Oncology · ADC</span>
-        </div>
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/cardior_logo.jpg" alt="Cardior Pharmaceuticals logo" loading="lazy">
+          </div>
+          <h3>Cardior Pharmaceuticals</h3>
+          <p>A clinical-stage biopharmaceutical company developing RNA therapeutics for cardiac disease. Acquired by Novo Nordisk in March 2024.</p>
+          <span class="portfolio-chip exit">Exit · Novo Nordisk</span>
+        </article>
 
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">Galecto</div>
-          <div class="portfolio-card-desc">A Danish drug development company based in Copenhagen focusing on galectin biology for fibrosis and oncology.</div>
-          <span class="portfolio-card-tag">Fibrosis · Oncology</span>
-        </div>
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/complement_therapeutics_logo.png" alt="Complement Therapeutics logo" loading="lazy">
+          </div>
+          <h3>Complement Therapeutics</h3>
+          <p>A German-headquartered biotechnology company developing complement pathway inhibitors for geographic atrophy and related indications.</p>
+          <span class="portfolio-chip">Ophthalmology</span>
+        </article>
 
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">Neuro Event Labs</div>
-          <div class="portfolio-card-desc">A digital health company based in Tampere, Finland developing the AI-powered Nelli® seizure monitoring system. FDA 510(k) cleared.</div>
-          <span class="portfolio-card-tag">Digital Health · Neurology</span>
-        </div>
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/contineum_therapeutics_logo.jpg" alt="Contineum Therapeutics logo" loading="lazy">
+          </div>
+          <h3>Contineum Therapeutics</h3>
+          <p>A San Diego-based company focused on therapeutics for neurological and inflammatory diseases.</p>
+          <span class="portfolio-chip">Neurology</span>
+        </article>
 
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">Nisonic</div>
-          <div class="portfolio-card-desc">A medical device company from Trondheim, Norway developing advanced ultrasound technology for neurological conditions.</div>
-          <span class="portfolio-card-tag">Medical Device · Neurology</span>
-        </div>
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/emergence_therapeutics_logo.png" alt="Emergence Therapeutics logo" loading="lazy">
+          </div>
+          <h3>Emergence Therapeutics</h3>
+          <p>A European biopharmaceutical company advancing a nectin-4 antibody-drug conjugate for solid tumour oncology.</p>
+          <span class="portfolio-chip">Oncology · ADC</span>
+        </article>
 
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">Oncoinvent</div>
-          <div class="portfolio-card-desc">A drug development company based in Oslo developing Radspherin®, a radiopharmaceutical for peritoneal metastases. FDA Fast Track designated.</div>
-          <span class="portfolio-card-tag">Oncology · Radiopharmaceuticals</span>
-        </div>
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/galecto_logo.png" alt="Galecto logo" loading="lazy">
+          </div>
+          <h3>Galecto</h3>
+          <p>A Danish drug development company focused on galectin biology for fibrosis and oncology.</p>
+          <span class="portfolio-chip">Fibrosis · Oncology</span>
+        </article>
 
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">Ribbon Bio</div>
-          <div class="portfolio-card-desc">Ribbon Biolabs is developing a platform technology to synthesise long, complex DNA molecules for gene therapy and synthetic biology applications.</div>
-          <span class="portfolio-card-tag">Gene Therapy · Synthetic Biology</span>
-        </div>
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/neuro_event_labs_logo.png" alt="Neuro Event Labs logo" loading="lazy">
+          </div>
+          <h3>Neuro Event Labs</h3>
+          <p>A digital health company based in Tampere developing the AI-powered Nelli seizure monitoring system with FDA 510(k) clearance.</p>
+          <span class="portfolio-chip">Digital Health · Neurology</span>
+        </article>
 
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">SAGA Diagnostics</div>
-          <div class="portfolio-card-desc">A Lund, Sweden-based medical diagnostics company offering the Pathlight™ MRD test for ultrasensitive cancer liquid biopsies. Medicare covered.</div>
-          <span class="portfolio-card-tag">Diagnostics · Liquid Biopsy</span>
-        </div>
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/nisonic_logo.png" alt="Nisonic logo" loading="lazy">
+          </div>
+          <h3>Nisonic</h3>
+          <p>A medical device company from Trondheim developing advanced ultrasound technology for neurological conditions.</p>
+          <span class="portfolio-chip">Medical Device · Neurology</span>
+        </article>
 
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">SciRhom</div>
-          <div class="portfolio-card-desc">SciRhom GmbH is a German biotechnology company developing iRhom2 inhibitors for inflammatory and autoimmune diseases.</div>
-          <span class="portfolio-card-tag">Immunology</span>
-        </div>
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/oncoinvent_logo.png" alt="Oncoinvent logo" loading="lazy">
+          </div>
+          <h3>Oncoinvent</h3>
+          <p>An Oslo-based drug development company building Radspherin for peritoneal metastases, with FDA Fast Track designation.</p>
+          <span class="portfolio-chip">Oncology · Radiopharmaceuticals</span>
+        </article>
 
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">Step Pharma</div>
-          <div class="portfolio-card-desc">Developing novel therapeutics that inhibit the enzyme CTPS1 — the world's most advanced CTPS1 inhibitor programme in T-cell malignancies and solid tumours.</div>
-          <span class="portfolio-card-tag">Oncology</span>
-        </div>
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/ribbon_bio_logo.png" alt="Ribbon Bio logo" loading="lazy">
+          </div>
+          <h3>Ribbon Bio</h3>
+          <p>Developing a platform technology to synthesize long, complex DNA molecules for gene therapy and synthetic biology applications.</p>
+          <span class="portfolio-chip">Gene Therapy · Synthetic Biology</span>
+        </article>
 
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">TargED Biopharmaceuticals</div>
-          <div class="portfolio-card-desc">A private biotechnology company developing TGD001 for targeted protein degradation in oncology. Phase 1 initiated December 2024.</div>
-          <span class="portfolio-card-tag">Oncology · Protein Degradation</span>
-        </div>
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/saga_diagnostics_logo.png" alt="SAGA Diagnostics logo" loading="lazy">
+          </div>
+          <h3>SAGA Diagnostics</h3>
+          <p>A Lund-based diagnostics company offering the Pathlight MRD test for ultrasensitive cancer liquid biopsies.</p>
+          <span class="portfolio-chip">Diagnostics · Liquid Biopsy</span>
+        </article>
 
-        <div class="portfolio-card">
-          <div class="portfolio-card-name">Themis Bioscience</div>
-          <div class="portfolio-card-desc">A vaccine development company based in Vienna. Acquired by MSD in May 2020 to accelerate coronavirus vaccine development.</div>
-          <span class="portfolio-card-tag" style="background: rgba(206,51,45,0.08); color: var(--accent-dark); border-color: rgba(206,51,45,0.2);">Exit — MSD</span>
-        </div>
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/scirhom_logo.jpg" alt="SciRhom logo" loading="lazy">
+          </div>
+          <h3>SciRhom</h3>
+          <p>A German biotechnology company developing iRhom2 inhibitors for inflammatory and autoimmune diseases.</p>
+          <span class="portfolio-chip">Immunology</span>
+        </article>
+
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/step_pharma_logo.jpg" alt="Step Pharma logo" loading="lazy">
+          </div>
+          <h3>Step Pharma</h3>
+          <p>Developing therapeutics that inhibit CTPS1, with one of the most advanced CTPS1 inhibitor programs in T-cell malignancies and solid tumours.</p>
+          <span class="portfolio-chip">Oncology</span>
+        </article>
+
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/targed_logo.png" alt="TargED Biopharmaceuticals logo" loading="lazy">
+          </div>
+          <h3>TargED Biopharmaceuticals</h3>
+          <p>A private biotechnology company developing TGD001 for targeted protein degradation in oncology.</p>
+          <span class="portfolio-chip">Oncology · Protein Degradation</span>
+        </article>
+
+        <article class="portfolio-item js-portfolio-reveal">
+          <div class="portfolio-logo-wrap">
+            <img src="../portfolio_logos/themis_bioscience_logo.png" alt="Themis Bioscience logo" loading="lazy">
+          </div>
+          <h3>Themis Bioscience</h3>
+          <p>A vaccine development company based in Vienna. Acquired by MSD in May 2020 to accelerate coronavirus vaccine development.</p>
+          <span class="portfolio-chip exit">Exit · MSD</span>
+        </article>
 
       </div>
     </div>
@@ -199,7 +610,7 @@
           <ul class="footer-links">
             <li><a href="portfolio.html">Portfolio</a></li>
             <li><a href="team.html">Team</a></li>
-            <li><a href="impact.html">Impact</a></li>
+            <li><a href="approach.html">Approach</a></li>
             <li><a href="investors.html">Investors</a></li>
           </ul>
         </div>
@@ -228,6 +639,7 @@
   <script>
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+
     const toggle = document.getElementById('navToggle');
     const links = document.getElementById('navLinks');
     toggle.addEventListener('click', () => {
@@ -238,6 +650,31 @@
       spans[1].style.opacity = isOpen ? '0' : '';
       spans[2].style.transform = isOpen ? 'translateY(-7px) rotate(-45deg)' : '';
     });
+
+    const summaryPanel = document.querySelector('.portfolio-summary-card.js-portfolio-reveal');
+    if (summaryPanel) summaryPanel.style.setProperty('--reveal-delay', '0ms');
+
+    const portfolioCards = document.querySelectorAll('.portfolio-item.js-portfolio-reveal');
+    portfolioCards.forEach((card, index) => {
+      card.style.setProperty('--reveal-delay', `${(index % 3) * 85}ms`);
+    });
+
+    const revealTargets = document.querySelectorAll('.js-portfolio-reveal');
+
+    if ('IntersectionObserver' in window) {
+      const portfolioObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
+
+      revealTargets.forEach((element) => portfolioObserver.observe(element));
+    } else {
+      revealTargets.forEach((element) => element.classList.add('is-visible'));
+    }
   </script>
 </body>
 </html>
