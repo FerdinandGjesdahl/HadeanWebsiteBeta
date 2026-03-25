@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/ferdinandhgjesdahl status --short)",
+      "Bash(git -C:*)",
+      "Bash(gh repo:*)",
+      "Bash(git remote:*)",
+      "Bash(git checkout:*)"
+    ]
+  }
+}
