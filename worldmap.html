@@ -549,7 +549,7 @@
       }
     ];
 
-    fetch("https://raw.githubusercontent.com/datasets/geo-countries/main/data/countries.geojson")
+    fetch("countries.geojson")
       .then((response) => response.json())
       .then((geojson) => {
         L.geoJSON(geojson, {
