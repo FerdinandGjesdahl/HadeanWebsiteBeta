@@ -9,6 +9,65 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .mix-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px 28px;
+    }
+    .mix-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .mix-ring {
+      position: relative;
+      width: 130px;
+      height: 130px;
+    }
+    .mix-ring svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+    .ring-track {
+      fill: none;
+      stroke: #dde6ee;
+      stroke-width: 5;
+    }
+    .ring-fill {
+      fill: none;
+      stroke: var(--navy, #1a3a6b);
+      stroke-width: 5;
+      stroke-linecap: round;
+    }
+    .ring-center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--navy, #1a3a6b);
+      letter-spacing: -0.03em;
+      pointer-events: none;
+    }
+    .ring-center sup {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+    .ring-name {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted, #7a8a9a);
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
@@ -23,9 +82,9 @@
       </button>
       <ul class="nav-links" id="navLinks">
         <li><a href="../index.html">Home</a></li>
+        <li><a href="approach.html">Approach</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="team.html">Team</a></li>
-        <li><a href="approach.html">Approach</a></li>
         <li><a href="investors.html" class="active">Investors</a></li>
         <li><a href="news.html">News</a></li>
         <li><a href="events.html">Events</a></li>
@@ -60,7 +119,7 @@
             Our funds — Hadean Capital I and Hadean Capital II — are backed by a carefully selected group of leading European and US-based investors who share our commitment to transformative healthcare innovation and responsible investing.
           </p>
           <p style="margin-bottom: 20px;">
-            Our investor base includes institutional investors, family offices, pension funds, foundations, and government-backed investors. Government-backed fund investors include <strong>Saminvest AB</strong>, <strong>Argentum</strong>, and <strong>Investinor</strong>.
+            Our investor base includes institutional investors, family offices, pension funds, foundations, and government-backed investors.
           </p>
           <p>
             In December 2023, Hadean Ventures announced the oversubscribed final close of Hadean Capital II — a testament to the confidence our LP network places in our team and strategy.
@@ -72,41 +131,55 @@
           </div>
         </div>
         <div>
-          <h3 style="margin-bottom: 28px;">Investor mix — Hadean Capital I &amp; Hadean Capital II</h3>
-          <div class="investor-stats" style="grid-template-columns: 1fr 1fr; margin-top: 0;">
+          <h3 style="margin-bottom: 36px;">Investor mix — Hadean Capital I &amp; Hadean Capital II</h3>
+          <div class="mix-grid" id="mixGrid">
 
-            <div class="investor-stat">
-              <div class="investor-stat-value">€230M</div>
-              <div class="investor-stat-label">Total AUM</div>
+            <div class="mix-item">
+              <div class="mix-ring">
+                <svg viewBox="0 0 100 100">
+                  <circle class="ring-track" cx="50" cy="50" r="38"/>
+                  <circle class="ring-fill" cx="50" cy="50" r="38"
+                    stroke-dasharray="238.76" stroke-dashoffset="238.76" data-pct="43"/>
+                </svg>
+                <div class="ring-center"><span class="ring-num">0</span><sup>%</sup></div>
+              </div>
+              <div class="ring-name">Fund of Funds</div>
             </div>
 
-            <div class="investor-stat">
-              <div class="investor-stat-value">2</div>
-              <div class="investor-stat-label">Funds Closed</div>
+            <div class="mix-item">
+              <div class="mix-ring">
+                <svg viewBox="0 0 100 100">
+                  <circle class="ring-track" cx="50" cy="50" r="38"/>
+                  <circle class="ring-fill" cx="50" cy="50" r="38"
+                    stroke-dasharray="238.76" stroke-dashoffset="238.76" data-pct="21"/>
+                </svg>
+                <div class="ring-center"><span class="ring-num">0</span><sup>%</sup></div>
+              </div>
+              <div class="ring-name">Pension Funds</div>
             </div>
 
-          </div>
-
-          <div style="margin-top: 32px; display: flex; flex-direction: column; gap: 12px;">
-
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-md);">
-              <span style="font-size: 0.9rem; font-weight: 600; color: var(--navy);">Fund of Funds</span>
-              <span style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted);">2%</span>
+            <div class="mix-item">
+              <div class="mix-ring">
+                <svg viewBox="0 0 100 100">
+                  <circle class="ring-track" cx="50" cy="50" r="38"/>
+                  <circle class="ring-fill" cx="50" cy="50" r="38"
+                    stroke-dasharray="238.76" stroke-dashoffset="238.76" data-pct="27"/>
+                </svg>
+                <div class="ring-center"><span class="ring-num">0</span><sup>%</sup></div>
+              </div>
+              <div class="ring-name">Family Offices</div>
             </div>
 
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-md);">
-              <span style="font-size: 0.9rem; font-weight: 600; color: var(--navy);">Pension Funds</span>
-              <span style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted);">2%</span>
-            </div>
-
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-md);">
-              <span style="font-size: 0.9rem; font-weight: 600; color: var(--navy);">Family Offices</span>
-              <span style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted);">2%</span>
-            </div>
-
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-md);">
-              <span style="font-size: 0.9rem; font-weight: 600; color: var(--navy);">Foundations</span>
-              <span style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted);">2%</span>
+            <div class="mix-item">
+              <div class="mix-ring">
+                <svg viewBox="0 0 100 100">
+                  <circle class="ring-track" cx="50" cy="50" r="38"/>
+                  <circle class="ring-fill" cx="50" cy="50" r="38"
+                    stroke-dasharray="238.76" stroke-dashoffset="238.76" data-pct="9"/>
+                </svg>
+                <div class="ring-center"><span class="ring-num">0</span><sup>%</sup></div>
+              </div>
+              <div class="ring-name">Foundations</div>
             </div>
 
           </div>
@@ -125,17 +198,14 @@
       </div>
       <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;">
         <div class="card" style="text-align: center; padding: 40px 32px;">
-          <div style="font-size: 2rem; margin-bottom: 16px;">🇸🇪</div>
           <h3 style="font-size: 1.1rem; margin-bottom: 8px;">Saminvest AB</h3>
           <p style="font-size: 0.88rem; max-width: none;">Sweden's government-owned fund-of-funds investing in Nordic venture capital.</p>
         </div>
         <div class="card" style="text-align: center; padding: 40px 32px;">
-          <div style="font-size: 2rem; margin-bottom: 16px;">🇳🇴</div>
           <h3 style="font-size: 1.1rem; margin-bottom: 8px;">Argentum</h3>
           <p style="font-size: 0.88rem; max-width: none;">Norwegian government-owned private equity fund-of-funds manager.</p>
         </div>
         <div class="card" style="text-align: center; padding: 40px 32px;">
-          <div style="font-size: 2rem; margin-bottom: 16px;">🇳🇴</div>
           <h3 style="font-size: 1.1rem; margin-bottom: 8px;">Investinor</h3>
           <p style="font-size: 0.88rem; max-width: none;">Norwegian government-funded investor in growth companies and venture funds.</p>
         </div>
@@ -143,15 +213,15 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="section">
+  <!-- GET IN TOUCH — CTA with mountain image -->
+  <section class="cta-image-section">
+    <img class="cta-bg" src="../PotentialNewImages/image_1.png" alt="Mountain peak at dusk">
+    <div class="cta-overlay"></div>
     <div class="container">
-      <div class="highlight-box">
-        <span class="label" style="color: var(--light-blue);">Fund Information</span>
-        <h2 style="margin-top: 12px;">Interested in our funds?</h2>
-        <p>Should you require information regarding our fund, including LP reporting, fund documentation, or investor relations enquiries, please contact our team directly.</p>
-        <a href="mailto:enquiries@hadeanventures.com" class="btn btn-white btn-lg">enquiries@hadeanventures.com</a>
-      </div>
+      <span class="label">Get Involved</span>
+      <h2>Have a venture that could transform healthcare?</h2>
+      <p>If you are developing a product with the potential to address unmet medical needs, we would like to hear from you. Hadean Ventures partners with founders at every stage.</p>
+      <a href="contact.html" class="btn btn-white btn-lg">Get in Touch</a>
     </div>
   </section>
 
@@ -160,8 +230,8 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <a href="../index.html" class="nav-logo">
-            <img src="../hadean_images/logo.png" alt="Hadean Ventures">
+          <a href="../index.html" style="display: inline-block; margin-bottom: 16px;">
+            <img src="../hadean_images/logo.png" alt="Hadean Ventures" style="height: 48px; width: auto;">
           </a>
           <p class="footer-tagline">Investing in the future of healthcare since 2017.</p>
         </div>
@@ -170,7 +240,6 @@
           <ul class="footer-links">
             <li><a href="portfolio.html">Portfolio</a></li>
             <li><a href="team.html">Team</a></li>
-            <li><a href="approach.html">Approach</a></li>
             <li><a href="investors.html">Investors</a></li>
           </ul>
         </div>
@@ -185,16 +254,61 @@
         </div>
         <div>
           <div class="footer-heading">Contact</div>
-          <div class="footer-contact-item">Oslo, Norway<br><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
-          <div class="footer-contact-item">Stockholm, Sweden<br>Karolinska Institute Science Park</div>
+          <div class="footer-contact-item">
+            <strong style="color: rgba(255,255,255,0.7); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;">Oslo</strong><br>
+            Dronningen 1<br>0287 Oslo, Norway<br>
+            <a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a>
+          </div>
+          <div class="footer-contact-item" style="margin-top: 16px;">
+            <strong style="color: rgba(255,255,255,0.7); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;">Stockholm</strong><br>
+            Karolinska Institute Science Park<br>
+            Nanna Svartz väg 4, 171 65 Solna<br>
+            <a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a>
+          </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <span class="footer-copyright">© 2025 Hadean Ventures. All rights reserved.</span>
+        <span class="footer-copyright">© 2026 Hadean Ventures. All rights reserved.</span>
         <div class="footer-accent"></div>
       </div>
     </div>
   </footer>
+
+  <script>
+    // Animated ring gauges
+    const circumference = 238.76;
+    let animated = false;
+
+    function animateRings() {
+      if (animated) return;
+      animated = true;
+      document.querySelectorAll('.ring-fill').forEach((circle, i) => {
+        const pct = parseInt(circle.dataset.pct);
+        const targetOffset = circumference * (1 - pct / 100);
+        const numEl = circle.closest('.mix-item').querySelector('.ring-num');
+        const delay = i * 120;
+        const duration = 1200;
+        let startTime = null;
+
+        function step(ts) {
+          if (!startTime) startTime = ts;
+          const elapsed = ts - startTime - delay;
+          if (elapsed < 0) { requestAnimationFrame(step); return; }
+          const t = Math.min(elapsed / duration, 1);
+          const ease = 1 - Math.pow(1 - t, 3);
+          circle.style.strokeDashoffset = circumference - (circumference - targetOffset) * ease;
+          numEl.textContent = Math.round(pct * ease);
+          if (t < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }
+
+    const mixObs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) animateRings();
+    }, { threshold: 0.35 });
+    mixObs.observe(document.getElementById('mixGrid'));
+  </script>
 
   <script>
     const nav = document.getElementById('mainNav');

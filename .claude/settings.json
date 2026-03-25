@@ -5,7 +5,14 @@
       "Bash(git -C:*)",
       "Bash(gh repo:*)",
       "Bash(git remote:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(cp /Users/ferdinandhgjesdahl/Desktop/HadeanWebsite/pages/contactNew.html /Users/ferdinandhgjesdahl/Desktop/HadeanWebsite/pages/contact.html)",
+      "Bash(cp /Users/ferdinandhgjesdahl/Desktop/HadeanWebsite/pages/eventsNew.html /Users/ferdinandhgjesdahl/Desktop/HadeanWebsite/pages/events.html)",
+      "Bash(cp /Users/ferdinandhgjesdahl/Desktop/HadeanWebsite/pages/impactNew.html /Users/ferdinandhgjesdahl/Desktop/HadeanWebsite/pages/impact.html)",
+      "Bash(cp /Users/ferdinandhgjesdahl/Desktop/HadeanWebsite/pages/teamNew.html /Users/ferdinandhgjesdahl/Desktop/HadeanWebsite/pages/team.html)"
+    ],
+    "additionalDirectories": [
+      "/Users/ferdinandhgjesdahl/Desktop/HadeanWebsite/pages"
     ]
   }
 }
