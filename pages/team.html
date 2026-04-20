@@ -5,10 +5,130 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Team — Hadean Ventures</title>
   <meta name="description" content="Our team combines in-depth knowledge of medicine and life science with extensive investment experience at prestigious venture capital funds.">
+  <script>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    html.js .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 720ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+        transform 720ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+      will-change: opacity, transform;
+    }
+
+    html.js .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      will-change: auto;
+    }
+
+    .team-grid {
+      margin-top: 0;
+    }
+
+    html.js .team-card.reveal-on-scroll {
+      transform: translateY(56px) perspective(1200px) rotateX(10deg);
+      transform-origin: 50% 100%;
+      box-shadow: 0 28px 54px rgba(15, 30, 53, 0.08);
+    }
+
+    html.js .team-card.reveal-on-scroll.is-visible {
+      transform: translateY(0) perspective(1200px) rotateX(0deg);
+      box-shadow: var(--shadow-sm);
+    }
+
+    html.js .team-card.reveal-on-scroll .team-card-photo {
+      isolation: isolate;
+    }
+
+    html.js .team-card.reveal-on-scroll .team-card-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15, 30, 53, 0.82) 0%, rgba(33, 66, 116, 0.38) 48%, rgba(191, 220, 236, 0.18) 100%);
+      transform: translateY(0);
+      transition:
+        transform 1100ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--reveal-delay, 0ms) + 40ms),
+        opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--reveal-delay, 0ms) + 40ms);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    html.js .team-card.reveal-on-scroll .team-card-photo img {
+      transform: translate3d(0, 38px, 0) scale(1.16);
+      transition:
+        transform 1200ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--reveal-delay, 0ms) + 10ms),
+        filter 900ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--reveal-delay, 0ms) + 10ms);
+      filter: grayscale(12%);
+      will-change: transform;
+    }
+
+    html.js .team-card.reveal-on-scroll .team-card-body {
+      opacity: 0;
+      transform: translateY(20px);
+      transition:
+        opacity 720ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--reveal-delay, 0ms) + 120ms),
+        transform 720ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--reveal-delay, 0ms) + 120ms);
+    }
+
+    html.js .team-card.reveal-on-scroll.is-visible .team-card-photo::after {
+      transform: translateY(103%);
+      opacity: 0.24;
+    }
+
+    html.js .team-card.reveal-on-scroll.is-visible .team-card-photo img {
+      transform: translate3d(0, var(--scroll-shift, 0px), 0) scale(1.045);
+    }
+
+    html.js .team-card.reveal-on-scroll.is-visible .team-card-body {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    html.js .team-card.reveal-on-scroll.is-visible:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    html.js .team-card.reveal-on-scroll.is-visible:hover .team-card-photo img {
+      transform: translate3d(0, calc(var(--scroll-shift, 0px) - 4px), 0) scale(1.085);
+      filter: grayscale(0%);
+    }
+
+    html.js .team-card.reveal-on-scroll .team-card-initials {
+      transform: translate3d(0, 24px, 0) scale(1.04);
+      transition:
+        transform 1000ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--reveal-delay, 0ms) + 20ms);
+    }
+
+    html.js .team-card.reveal-on-scroll.is-visible .team-card-initials {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html.js .reveal-on-scroll,
+      html.js .reveal-on-scroll.is-visible,
+      html.js .team-card.reveal-on-scroll,
+      html.js .team-card.reveal-on-scroll.is-visible,
+      html.js .team-card.reveal-on-scroll .team-card-body,
+      html.js .team-card.reveal-on-scroll.is-visible .team-card-body,
+      html.js .team-card.reveal-on-scroll .team-card-photo::after,
+      html.js .team-card.reveal-on-scroll.is-visible .team-card-photo::after,
+      html.js .team-card.reveal-on-scroll .team-card-photo img,
+      html.js .team-card.reveal-on-scroll.is-visible .team-card-photo img,
+      html.js .team-card.reveal-on-scroll .team-card-initials,
+      html.js .team-card.reveal-on-scroll.is-visible .team-card-initials {
+        opacity: 1;
+        transform: none;
+        transition: none;
+        will-change: auto;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -49,256 +169,212 @@
     </div>
   </div>
 
-  <!-- MANAGING PARTNERS -->
+  <!-- TEAM DIRECTORY -->
   <section class="section">
     <div class="container">
-      <div class="team-group">
-        <div class="team-group-label">Leadership</div>
-        <div class="team-group-title">Managing Partners</div>
-        <div class="team-grid team-grid-leaders">
+      <div class="team-grid">
 
-          <div class="team-card team-card-leader">
-            <div class="team-card-photo">
-              <img src="../hadean_images/Ingrid-Teigland-Akay-227x230.jpg" alt="Ingrid Teigland Akay">
-            </div>
-            <div class="team-card-body">
-              <div class="team-card-name">Ingrid Teigland Akay</div>
-              <div class="team-card-role">Managing Partner</div>
-            </div>
+        <div class="team-card">
+          <div class="team-card-photo">
+            <img src="../hadean_images/Ingrid-Teigland-Akay-227x230.jpg" alt="Ingrid Teigland Akay">
           </div>
-
-          <div class="team-card team-card-leader">
-            <div class="team-card-photo">
-              <img src="../hadean_images/2023-12-12-HV-walter-stockinger-553-sh-1-scaled-230x230.jpg" alt="Walter Stockinger">
-            </div>
-            <div class="team-card-body">
-              <div class="team-card-name">Walter Stockinger</div>
-              <div class="team-card-role">Managing Partner</div>
-            </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Ingrid Teigland Akay</div>
+            <div class="team-card-role">Managing Partner</div>
           </div>
-
-          <div class="team-card team-card-leader">
-            <div class="team-card-photo">
-              <img src="../hadean_images/2023-12-12-HV-roger-franklin-402-sh-scaled-230x230.jpg" alt="Roger Franklin">
-            </div>
-            <div class="team-card-body">
-              <div class="team-card-name">Roger Franklin</div>
-              <div class="team-card-role">Partner</div>
-            </div>
-          </div>
-
         </div>
-      </div>
 
-      <!-- INVESTMENT TEAM -->
-      <div class="team-group">
-        <div class="team-group-label">Investments</div>
-        <div class="team-group-title">Investment Team</div>
-        <div class="team-grid">
-
-          <div class="team-card">
-            <div class="team-card-photo">
-              <img src="../hadean_images/Georgina-Askeland.png" alt="Georgina Askeland">
-            </div>
-            <div class="team-card-body">
-              <div class="team-card-name">Georgina Askeland</div>
-              <div class="team-card-role">Principal</div>
-            </div>
+        <div class="team-card">
+          <div class="team-card-photo">
+            <img src="../hadean_images/2023-12-12-HV-walter-stockinger-553-sh-1-scaled-230x230.jpg" alt="Walter Stockinger">
           </div>
-
-          <div class="team-card">
-            <div class="team-card-photo">
-              <img src="../hadean_images/2023-12-12-HV-miao-he-677-sh-scaled-230x230.jpg" alt="Miao He">
-            </div>
-            <div class="team-card-body">
-              <div class="team-card-name">Miao He</div>
-              <div class="team-card-role">Senior Investment Associate</div>
-            </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Walter Stockinger</div>
+            <div class="team-card-role">Managing Partner</div>
           </div>
-
-          <div class="team-card">
-            <div class="team-card-photo">
-              <img src="../hadean_images/markus-dietrich-230x230.jpg" alt="Markus Dietrich">
-            </div>
-            <div class="team-card-body">
-              <div class="team-card-name">Markus Dietrich</div>
-              <div class="team-card-role">Senior Investment Associate</div>
-            </div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-card-photo">
-              <img src="../hadean_images/2023-12-12-HV-yun-yang-113-sh-scaled-230x230.jpg" alt="Yun Yang">
-            </div>
-            <div class="team-card-body">
-              <div class="team-card-name">Yun Yang</div>
-              <div class="team-card-role">Investment Associate</div>
-            </div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-card-photo">
-              <img src="../hadean_images/Picture_Marketa-e1755599357284-230x230.jpeg" alt="Marketa Chlubnova">
-            </div>
-            <div class="team-card-body">
-              <div class="team-card-name">Marketa Chlubnova</div>
-              <div class="team-card-role">Investment Analyst</div>
-            </div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-card-photo">
-              <img src="../hadean_images/JK-Business-scaled-230x230.jpg" alt="Jan Kästingschäfer">
-            </div>
-            <div class="team-card-body">
-              <div class="team-card-name">Jan Kästingschäfer</div>
-              <div class="team-card-role">Project Analyst</div>
-            </div>
-          </div>
-
         </div>
-      </div>
 
-      <!-- OPERATIONS TEAM -->
-      <div class="team-group">
-        <div class="team-group-label">Operations</div>
-        <div class="team-group-title">Operations &amp; Support</div>
-        <div class="team-grid">
-
-          <div class="team-card">
-            <div class="team-card-photo">
-              <img src="../hadean_images/Camilla_Olsen_BW-scaled-230x230.jpg" alt="Camilla Olsen">
-            </div>
-            <div class="team-card-body">
-              <div class="team-card-name">Camilla Olsen</div>
-              <div class="team-card-role">Impact &amp; ESG Manager</div>
-            </div>
+        <div class="team-card">
+          <div class="team-card-photo">
+            <img src="../hadean_images/2023-12-12-HV-roger-franklin-402-sh-scaled-230x230.jpg" alt="Roger Franklin">
           </div>
-
-          <div class="team-card">
-            <div class="team-card-photo">
-              <img src="../hadean_images/2023-12-12-HV-paal-nordhagen-518-sh-scaled-230x230.jpg" alt="Paal August Nordhagen">
-            </div>
-            <div class="team-card-body">
-              <div class="team-card-name">Paal August Nordhagen</div>
-              <div class="team-card-role">Director of Finance &amp; Controlling</div>
-            </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Roger Franklin</div>
+            <div class="team-card-role">Partner</div>
           </div>
-
-          <div class="team-card">
-            <div class="team-card-photo">
-              <img src="../hadean_images/Diar-Tahir.jpeg" alt="Diar Tahir">
-            </div>
-            <div class="team-card-body">
-              <div class="team-card-name">Diar Tahir</div>
-              <div class="team-card-role">Financial Controller</div>
-            </div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-card-photo">
-              <img src="../hadean_images/2023-12-12-HV-silje-ervik-728-sh-scaled-230x230.jpg" alt="Silje C. L. Ervik">
-            </div>
-            <div class="team-card-body">
-              <div class="team-card-name">Silje C. L. Ervik</div>
-              <div class="team-card-role">Head of Legal</div>
-            </div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-card-photo">
-              <img src="../hadean_images/2023-12-12-HV-lene-dragesund-637-sh-scaled-230x230.jpg" alt="Lene Dragesund">
-            </div>
-            <div class="team-card-body">
-              <div class="team-card-name">Lene Dragesund</div>
-              <div class="team-card-role">Senior Office Manager</div>
-            </div>
-          </div>
-
         </div>
-      </div>
 
-      <!-- ADVISORS -->
-      <div class="team-group">
-        <div class="team-group-label">Extended Network</div>
-        <div class="team-group-title">Senior Advisors &amp; Venture Partners</div>
-        <div class="advisor-list">
-
-          <div class="advisor-item">
-            <div class="advisor-initials-sm">PJ</div>
-            <div>
-              <div class="advisor-info-name">Pål R. Jensen</div>
-              <div class="advisor-info-role">Senior Advisor Operations</div>
-            </div>
+        <div class="team-card">
+          <div class="team-card-photo">
+            <img src="../hadean_images/Georgina-Askeland.png" alt="Georgina Askeland">
           </div>
-
-          <div class="advisor-item">
-            <div class="advisor-initials-sm">FE</div>
-            <div>
-              <div class="advisor-info-name">Florian Eckhardt</div>
-              <div class="advisor-info-role">Senior Advisor</div>
-            </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Georgina Askeland</div>
+            <div class="team-card-role">Principal</div>
           </div>
-
-          <div class="advisor-item">
-            <div class="advisor-initials-sm">IB</div>
-            <div>
-              <div class="advisor-info-name">Ingrid Beyer</div>
-              <div class="advisor-info-role">Senior Advisor</div>
-            </div>
-          </div>
-
-          <div class="advisor-item">
-            <div class="advisor-initials-sm">RK</div>
-            <div>
-              <div class="advisor-info-name">Reinhard Krickl</div>
-              <div class="advisor-info-role">Venture Partner</div>
-            </div>
-          </div>
-
-          <div class="advisor-item">
-            <div class="advisor-initials-sm">NK</div>
-            <div>
-              <div class="advisor-info-name">Nora Kaarela</div>
-              <div class="advisor-info-role">Venture Partner</div>
-            </div>
-          </div>
-
-          <div class="advisor-item">
-            <div class="advisor-initials-sm">LG</div>
-            <div>
-              <div class="advisor-info-name">Lene Gerlach</div>
-              <div class="advisor-info-role">Venture Partner</div>
-            </div>
-          </div>
-
-          <div class="advisor-item">
-            <div class="advisor-initials-sm">DB</div>
-            <div>
-              <div class="advisor-info-name">Denise Barbut</div>
-              <div class="advisor-info-role">Senior Advisor</div>
-            </div>
-          </div>
-
-          <div class="advisor-item">
-            <div class="advisor-initials-sm">BS</div>
-            <div>
-              <div class="advisor-info-name">Bernd Seizinger</div>
-              <div class="advisor-info-role">Senior Advisor</div>
-            </div>
-          </div>
-
-          <div class="advisor-item">
-            <div class="advisor-initials-sm">SR</div>
-            <div>
-              <div class="advisor-info-name">Sassa Rostad Braathen</div>
-              <div class="advisor-info-role">Tech Advisor</div>
-            </div>
-          </div>
-
         </div>
-      </div>
 
+        <div class="team-card">
+          <div class="team-card-photo">
+            <img src="../hadean_images/2023-12-12-HV-miao-he-677-sh-scaled-230x230.jpg" alt="Miao He">
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Miao He</div>
+            <div class="team-card-role">Senior Investment Associate</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-photo">
+            <img src="../hadean_images/markus-dietrich-230x230.jpg" alt="Markus Dietrich">
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Markus Dietrich</div>
+            <div class="team-card-role">Senior Investment Associate</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-photo">
+            <img src="../hadean_images/2023-12-12-HV-yun-yang-113-sh-scaled-230x230.jpg" alt="Yun Yang">
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Yun Yang</div>
+            <div class="team-card-role">Investment Associate</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-photo">
+            <img src="../hadean_images/Picture_Marketa-e1755599357284-230x230.jpeg" alt="Marketa Chlubnova">
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Marketa Chlubnova</div>
+            <div class="team-card-role">Investment Analyst</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-photo">
+            <img src="../hadean_images/JK-Business-scaled-230x230.jpg" alt="Jan Kästingschäfer">
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Jan Kästingschäfer</div>
+            <div class="team-card-role">Project Analyst</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-photo">
+            <div class="team-card-initials">PJ</div>
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Pål R. Jensen</div>
+            <div class="team-card-role">Senior Advisor Operations</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-photo">
+            <img src="../hadean_images/Camilla_Olsen_BW-scaled-230x230.jpg" alt="Camilla Olsen">
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Camilla Olsen</div>
+            <div class="team-card-role">Impact &amp; ESG Manager</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-photo">
+            <img src="../hadean_images/2023-12-12-HV-paal-nordhagen-518-sh-scaled-230x230.jpg" alt="Paal August Nordhagen">
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Paal August Nordhagen</div>
+            <div class="team-card-role">Director of Finance &amp; Controlling</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-photo">
+            <img src="../hadean_images/Diar-Tahir.jpeg" alt="Diar Tahir">
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Diar Tahir</div>
+            <div class="team-card-role">Financial Controller</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-photo">
+            <img src="../hadean_images/2023-12-12-HV-silje-ervik-728-sh-scaled-230x230.jpg" alt="Silje C. L. Ervik">
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Silje C. L. Ervik</div>
+            <div class="team-card-role">Head of Legal</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-photo">
+            <img src="../hadean_images/2023-12-12-HV-lene-dragesund-637-sh-scaled-230x230.jpg" alt="Lene Dragesund">
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Lene Dragesund</div>
+            <div class="team-card-role">Senior Office Manager</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-photo">
+            <div class="team-card-initials">FE</div>
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Florian Eckhardt</div>
+            <div class="team-card-role">Senior Advisor</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-photo">
+            <div class="team-card-initials">IB</div>
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Ingrid Beyer</div>
+            <div class="team-card-role">Senior Advisor</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-photo">
+            <div class="team-card-initials">RK</div>
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Reinhard Krickl</div>
+            <div class="team-card-role">Venture Partner</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-photo">
+            <div class="team-card-initials">NK</div>
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Nora Kaarela</div>
+            <div class="team-card-role">Venture Partner</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-card-photo">
+            <div class="team-card-initials">LG</div>
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-name">Lene Gerlach</div>
+            <div class="team-card-role">Venture Partner</div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -338,6 +414,11 @@
       </div>
       <div class="footer-bottom">
         <span class="footer-copyright">© 2025 Hadean Ventures. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="privacy-policy.html" class="footer-disclosures">Privacy Policy</a>
+          <span class="footer-legal-sep">|</span>
+          <a href="sustainability-related-disclosures.html" class="footer-disclosures">Sustainability-Related Disclosures</a>
+        </div>
         <div class="footer-accent"></div>
       </div>
     </div>
@@ -356,6 +437,79 @@
       spans[1].style.opacity = isOpen ? '0' : '';
       spans[2].style.transform = isOpen ? 'translateY(-7px) rotate(-45deg)' : '';
     });
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const teamCards = Array.from(document.querySelectorAll('.team-card'));
+
+    teamCards.forEach((card, index) => {
+      card.classList.add('reveal-on-scroll');
+      card.style.setProperty('--reveal-delay', `${Math.min(index, 7) * 70}ms`);
+    });
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      teamCards.forEach((card) => card.classList.add('is-visible'));
+    } else {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        });
+      }, {
+        threshold: 0.16,
+        rootMargin: '0px 0px -12% 0px'
+      });
+
+      teamCards.forEach((card) => revealObserver.observe(card));
+    }
+
+    if (!reduceMotion) {
+      const activeParallaxCards = new Set();
+      let parallaxFrame = null;
+
+      const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+      const updateParallax = () => {
+        parallaxFrame = null;
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+        activeParallaxCards.forEach((card) => {
+          const rect = card.getBoundingClientRect();
+          const centerOffset = rect.top + (rect.height / 2) - (viewportHeight / 2);
+          const progress = clamp(centerOffset / viewportHeight, -1, 1);
+          const shift = clamp(progress * -20, -20, 20);
+          card.style.setProperty('--scroll-shift', `${shift.toFixed(2)}px`);
+        });
+      };
+
+      const queueParallax = () => {
+        if (parallaxFrame !== null) return;
+        parallaxFrame = window.requestAnimationFrame(updateParallax);
+      };
+
+      if ('IntersectionObserver' in window) {
+        const parallaxObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              activeParallaxCards.add(entry.target);
+            } else {
+              activeParallaxCards.delete(entry.target);
+              entry.target.style.setProperty('--scroll-shift', '0px');
+            }
+          });
+          queueParallax();
+        }, {
+          threshold: 0,
+          rootMargin: '18% 0px'
+        });
+
+        teamCards.forEach((card) => parallaxObserver.observe(card));
+      }
+
+      window.addEventListener('scroll', queueParallax, { passive: true });
+      window.addEventListener('resize', queueParallax);
+      queueParallax();
+    }
   </script>
 </body>
 </html>

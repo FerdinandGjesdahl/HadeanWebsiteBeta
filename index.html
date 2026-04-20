@@ -72,10 +72,6 @@
             <div class="hero-stat-value" data-count="2">0</div>
             <div class="hero-stat-label">Funds</div>
           </div>
-          <div>
-            <div class="hero-stat-value">Oslo · Stockholm</div>
-            <div class="hero-stat-label">Offices</div>
-          </div>
         </div>
       </div>
     </div>
@@ -332,6 +328,11 @@
       </div>
       <div class="footer-bottom">
         <span class="footer-copyright">© 2025 Hadean Ventures. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="pages/privacy-policy.html" class="footer-disclosures">Privacy Policy</a>
+          <span class="footer-legal-sep">|</span>
+          <a href="pages/sustainability-related-disclosures.html" class="footer-disclosures">Sustainability-Related Disclosures</a>
+        </div>
         <div class="footer-accent"></div>
       </div>
     </div>
@@ -367,6 +368,12 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Slow down hero video for smoother, calmer loop
+    const heroVideo = document.querySelector('.hero-video');
+    if (heroVideo) {
+      heroVideo.playbackRate = 0.6;
+    }
 
     // Counter animation for hero stats
     function animateCounter(el) {
