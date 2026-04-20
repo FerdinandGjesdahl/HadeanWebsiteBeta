@@ -34,16 +34,13 @@
         <li><a href="pages/careers.html">Careers</a></li>
         <li><a href="pages/contact.html">Contact</a></li>
       </ul>
-      <div class="nav-cta">
-        <a href="pages/contact.html" class="btn btn-primary btn-sm">Get in Touch</a>
-      </div>
     </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <video class="hero-video" autoplay muted loop playsinline>
-      <source src="HadeanVideo/DNA_Double_Helix_Rotation_Animation.mp4" type="video/mp4">
+      <source src="HadeanVideo/ScreenRecording_04-20-2026 16.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-lines"></div>
@@ -54,11 +51,6 @@
         <p class="lead animate-fade-up animate-delay-3">
           We back transformative science and exceptional teams building the next generation of treatments — from discovery through clinical development.
         </p>
-        <div class="hero-actions animate-fade-up animate-delay-4">
-          <a href="pages/portfolio.html" class="btn btn-white btn-lg">View Portfolio</a>
-          <a href="pages/team.html" class="btn btn-ghost btn-lg">Meet the Team</a>
-        </div>
-
         <div class="hero-stats animate-fade-up animate-delay-4">
           <div>
             <div class="hero-stat-value" data-count="230" data-prefix="€" data-suffix="M">€0M</div>
@@ -91,7 +83,8 @@
             The stated purpose of the firm is to make a difference by investing in the future of healthcare — supporting research, development, and the teams behind tomorrow's breakthrough treatments.
           </p>
           <div style="margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap;">
-            <a href="pages/team.html" class="btn btn-primary">Our Team</a>
+            <a href="pages/team.html" class="btn btn-outline">Our Team</a>
+            <a href="pages/portfolio.html" class="btn btn-outline">Our Portfolio</a>
             <a href="pages/impact.html" class="btn btn-outline">Our Approach</a>
           </div>
         </div>
@@ -106,14 +99,7 @@
 
   <!-- PORTFOLIO MAP -->
   <section class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <span class="label">Global Reach</span>
-        <h2 style="margin-top: 12px;">Where we invest</h2>
-        <p style="margin-top: 16px; max-width: 56ch;">Our portfolio companies span Scandinavia, Europe and beyond. Hover over a marker to learn more about each company.</p>
-      </div>
-    </div>
-    <div style="margin-top: 40px; width: 100%; height: 560px; overflow: hidden; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+    <div style="width: 100%; height: 560px; overflow: hidden; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
       <iframe
         src="worldmap.html"
         style="width: 100%; height: 100%; border: none; display: block;"
@@ -280,16 +266,32 @@
     </div>
   </section>
 
-  <!-- GET IN TOUCH — CTA with mountain image -->
-  <section class="cta-image-section">
-    <img class="cta-bg" src="PotentialNewImages/image_1.png" alt="Mountain peak at dusk">
-    <div class="cta-overlay"></div>
-    <div class="container">
-      <span class="label">Get Involved</span>
-      <h2>Have a venture that could transform healthcare?</h2>
-      <p>If you are developing a product with the potential to address unmet medical needs, we would like to hear from you. Hadean Ventures partners with founders at every stage.</p>
-      <a href="pages/contact.html" class="btn btn-white btn-lg">Get in Touch</a>
-    </div>
+  <!-- SPLIT CTA PANELS -->
+  <section class="split-cta">
+    <a href="pages/investors.html" class="split-cta-panel">
+      <img src="PotentialNewImages/Sea.png" alt="Ocean horizon" class="split-cta-bg">
+      <div class="split-cta-overlay"></div>
+      <div class="split-cta-content">
+        <span class="split-cta-label">/ Invest</span>
+        <h2 class="split-cta-heading">Invest with us</h2>
+      </div>
+      <div class="split-cta-btn">
+        <span>Contact us</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </a>
+    <a href="pages/contact.html" class="split-cta-panel">
+      <img src="PotentialNewImages/high_tech_lab.jpg" alt="High-tech laboratory" class="split-cta-bg">
+      <div class="split-cta-overlay"></div>
+      <div class="split-cta-content">
+        <span class="split-cta-label">/ Pitch</span>
+        <h2 class="split-cta-heading">Pitch to us</h2>
+      </div>
+      <div class="split-cta-btn">
+        <span>Pitch to us</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </a>
   </section>
 
   <!-- FOOTER -->
