@@ -392,8 +392,8 @@
   ></script>
   <script>
     const map = L.map("map", {
-      center: [30, 10],
-      zoom: 2,
+      center: [56, 12],
+      zoom: 4,
       minZoom: 2,
       maxZoom: 7,
       zoomControl: false,
@@ -623,14 +623,6 @@
         sticky: true
       });
       marker.bindPopup(infoHtml, { className: "country-popup", offset: [0, -10] });
-    });
-
-    let hasZoomed = false;
-    window.addEventListener("message", (e) => {
-      if (e.data === "zoomToEurope" && !hasZoomed) {
-        hasZoomed = true;
-        map.flyTo([56, 12], 4, { duration: 2.5, easeLinearity: 0.25 });
-      }
     });
 
     L.control
