@@ -1432,6 +1432,61 @@ p {
 .reveal-delay-2 { transition-delay: 0.18s; }
 .reveal-delay-3 { transition-delay: 0.28s; }
 
+/* Homepage section-by-section scroll reveal */
+body.js-scroll-animate .scroll-section {
+  --section-shift-x: 0px;
+  --section-shift-y: 30px;
+  --section-scale: 1;
+  --section-duration: 0.76s;
+  opacity: 0;
+  transform: translate3d(var(--section-shift-x), var(--section-shift-y), 0) scale(var(--section-scale));
+  transition: opacity var(--section-duration) var(--ease), transform var(--section-duration) var(--ease);
+  will-change: opacity, transform;
+}
+
+body.js-scroll-animate .scroll-section.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+body.js-scroll-animate .scroll-section.scroll-from-left {
+  --section-shift-x: -38px;
+  --section-shift-y: 14px;
+  --section-duration: 0.84s;
+}
+
+body.js-scroll-animate .scroll-section.scroll-from-right {
+  --section-shift-x: 38px;
+  --section-shift-y: 14px;
+  --section-duration: 0.84s;
+}
+
+body.js-scroll-animate .scroll-section.scroll-zoom {
+  --section-shift-y: 18px;
+  --section-scale: 0.965;
+  --section-duration: 0.78s;
+}
+
+body.js-scroll-animate .scroll-section.scroll-rise-soft {
+  --section-shift-y: 44px;
+  --section-duration: 0.92s;
+}
+
+body.js-scroll-animate .scroll-section.scroll-tilt {
+  --section-shift-x: 14px;
+  --section-shift-y: 28px;
+  --section-scale: 0.985;
+  --section-duration: 0.9s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.js-scroll-animate .scroll-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* === IMAGE BREAK (full-width atmospheric) === */
 .image-break {
   position: relative;

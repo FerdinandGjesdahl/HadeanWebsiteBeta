@@ -70,7 +70,7 @@
   </section>
 
   <!-- OUR STORY -->
-  <section class="section">
+  <section class="section scroll-section scroll-from-left">
     <div class="container">
       <div class="two-col">
         <div class="reveal from-left">
@@ -98,8 +98,8 @@
   </section>
 
   <!-- PORTFOLIO MAP -->
-  <section class="section section-alt">
-    <div style="width: 100%; height: 560px; overflow: hidden; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
+  <section class="section section-alt scroll-section scroll-zoom">
+    <div class="reveal scale" style="width: 100%; height: 560px; overflow: hidden; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
       <iframe
         src="worldmap.html"
         style="width: 100%; height: 100%; border: none; display: block;"
@@ -110,11 +110,11 @@
   </section>
 
   <!-- TEAM MARQUEE -->
-  <section class="team-marquee">
-    <div class="team-marquee-header">
+  <section class="team-marquee scroll-section scroll-from-right">
+    <div class="team-marquee-header reveal from-left">
       <h2 style="margin-top: 10px;">Our Team</h2>
     </div>
-    <div class="marquee-track-wrapper">
+    <div class="marquee-track-wrapper reveal from-right reveal-delay-1">
       <div class="marquee-track">
         <!-- First set -->
         <div class="marquee-item">
@@ -260,14 +260,14 @@
         </div>
       </div>
     </div>
-    <div style="text-align: center; margin-top: 48px;">
+    <div class="reveal scale reveal-delay-2" style="text-align: center; margin-top: 48px;">
       <a href="pages/team.html" class="btn btn-primary">Meet the Full Team</a>
     </div>
   </section>
 
   <!-- SPLIT CTA PANELS -->
-  <section class="split-cta">
-    <a href="pages/investors.html" class="split-cta-panel">
+  <section class="split-cta scroll-section scroll-rise-soft">
+    <a href="pages/investors.html" class="split-cta-panel reveal from-left">
       <img src="PotentialNewImages/Sea.png" alt="Ocean horizon" class="split-cta-bg">
       <div class="split-cta-overlay"></div>
       <div class="split-cta-content">
@@ -279,7 +279,7 @@
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
     </a>
-    <a href="pages/contact.html" class="split-cta-panel">
+    <a href="pages/contact.html" class="split-cta-panel reveal from-right reveal-delay-1">
       <img src="PotentialNewImages/high_tech_lab.jpg" alt="High-tech laboratory" class="split-cta-bg">
       <div class="split-cta-overlay"></div>
       <div class="split-cta-content">
@@ -294,16 +294,16 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
+  <footer class="footer scroll-section scroll-tilt">
     <div class="container">
       <div class="footer-inner">
-        <div class="footer-brand">
+        <div class="footer-brand reveal from-left">
           <a href="index.html" class="nav-logo">
             <img src="hadean_images/logo.png" alt="Hadean Ventures">
           </a>
           <p class="footer-tagline">Investing in the future of healthcare since 2017.</p>
         </div>
-        <div>
+        <div class="reveal reveal-delay-1">
           <div class="footer-heading">Navigation</div>
           <ul class="footer-links">
             <li><a href="pages/portfolio.html">Portfolio</a></li>
@@ -312,7 +312,7 @@
             <li><a href="pages/investors.html">Investors</a></li>
           </ul>
         </div>
-        <div>
+        <div class="reveal reveal-delay-2">
           <div class="footer-heading">Company</div>
           <ul class="footer-links">
             <li><a href="pages/news.html">News</a></li>
@@ -321,12 +321,12 @@
             <li><a href="pages/contact.html">Contact</a></li>
           </ul>
         </div>
-        <div>
+        <div class="reveal from-right reveal-delay-3">
           <div class="footer-heading">Contact</div>
           <div class="footer-contact-item"><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
         </div>
       </div>
-      <div class="footer-bottom">
+      <div class="footer-bottom reveal scale reveal-delay-2">
         <span class="footer-copyright">© 2025 Hadean Ventures. All rights reserved.</span>
         <div class="footer-legal">
           <a href="pages/privacy-policy.html" class="footer-disclosures">Privacy Policy</a>
@@ -368,6 +368,29 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Section-by-section scroll animation on the homepage
+    const scrollSections = document.querySelectorAll('.scroll-section');
+    if (scrollSections.length) {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (prefersReducedMotion) {
+        scrollSections.forEach(section => section.classList.add('is-visible'));
+      } else {
+        document.body.classList.add('js-scroll-animate');
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              sectionObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+
+        scrollSections.forEach(section => sectionObserver.observe(section));
+      }
+    }
 
     // Slow down hero video for smoother, calmer loop
     const heroVideo = document.querySelector('.hero-video');
