@@ -9,6 +9,138 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    /* ── Investor page ── */
+    .inv-hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .inv-hero-bg {
+      position: absolute;
+      inset: 0;
+      background-color: #050e1d;
+      /* Source: https://www.pexels.com/photo/modern-skyline-of-frankfurt-financial-district-30990191/ */
+      background-image: url('../hadean_images/investors-hero-2026.jpg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+    }
+    .inv-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10, 20, 45, 0.72) 0%,
+        rgba(15, 30, 55, 0.78) 60%,
+        rgba(20, 35, 65, 0.92) 100%
+      );
+    }
+    .inv-hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .inv-hero-text {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: clamp(1.25rem, 2.4vw, 1.65rem);
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.92);
+    }
+
+    /* ── Donut charts section ── */
+    .inv-mix {
+      padding: 0 0 96px;
+      text-align: center;
+    }
+    .inv-mix-label {
+      display: block;
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 56px;
+    }
+    .inv-charts {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .inv-chart-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .inv-chart-ring {
+      position: relative;
+      width: 160px;
+      height: 160px;
+    }
+    .inv-chart-ring svg {
+      transform: rotate(-90deg);
+    }
+    .inv-chart-pct {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+    }
+    .inv-chart-name {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* progress ring animation */
+    .ring-track {
+      fill: none;
+      stroke: rgba(33,66,116,0.1);
+      stroke-width: 3;
+    }
+    .ring-arc {
+      fill: none;
+      stroke: var(--navy);
+      stroke-width: 3.5;
+      stroke-linecap: round;
+      stroke-dashoffset: -97.4;
+      transition: stroke-dasharray 1.2s cubic-bezier(0.4,0,0.2,1);
+    }
+    .ring-arc.animate-in {
+      animation: drawArc 1.4s cubic-bezier(0.4,0,0.2,1) forwards;
+    }
+    @keyframes drawArc {
+      from { stroke-dasharray: 0 389.6; }
+    }
+
+    /* divider between hero and charts */
+    .inv-divider {
+      width: 1px;
+      height: 64px;
+      background: var(--border);
+      margin: 0 auto 64px;
+    }
+
+    @media (max-width: 600px) {
+      .inv-charts { gap: 24px; }
+      .inv-chart-ring { width: 130px; height: 130px; }
+      .inv-chart-pct { font-size: 1.6rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -32,126 +164,94 @@
         <li><a href="careers.html">Careers</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <div class="nav-cta">
-        <a href="contact.html" class="btn btn-primary btn-sm">Get in Touch</a>
+      <div class="nav-cta nav-cta-placeholder" aria-hidden="true">
+        <a href="contact.html" class="btn btn-primary btn-sm" tabindex="-1">Get in Touch</a>
       </div>
     </div>
   </nav>
 
-  <!-- PAGE HEADER -->
-  <div class="page-header-img">
-    <img class="ph-bg" src="../PotentialNewImages/image_3.png" alt="Calm ocean at sunset">
-    <div class="ph-overlay"></div>
-    <div class="container">
-      <span class="label">Our Limited Partners</span>
-      <h1>Investors</h1>
-      <p class="lead">Hadean Ventures funds are supported by leading European and US-based institutional and private investors, as well as government-backed fund investors.</p>
-    </div>
-  </div>
-
-  <!-- INVESTOR BASE -->
-  <section class="section">
-    <div class="container">
-      <div class="two-col" style="align-items: start; gap: 72px;">
-        <div>
-          <span class="label">Our LP Base</span>
-          <h2 style="margin-top: 12px; margin-bottom: 24px;">A trusted network of institutional and private capital</h2>
-          <p style="margin-bottom: 20px;">
-            Our funds — Hadean Capital I and Hadean Capital II — are backed by a carefully selected group of leading European and US-based investors who share our commitment to transformative healthcare innovation and responsible investing.
-          </p>
-          <p style="margin-bottom: 20px;">
-            Our investor base includes institutional investors, family offices, pension funds, foundations, and government-backed investors. Government-backed fund investors include <strong>Saminvest AB</strong>, <strong>Argentum</strong>, and <strong>Investinor</strong>.
-          </p>
-          <p>
-            In December 2023, Hadean Ventures announced the oversubscribed final close of Hadean Capital II — a testament to the confidence our LP network places in our team and strategy.
-          </p>
-          <div style="margin-top: 40px; padding: 28px 32px; background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius-lg);">
-            <div style="font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px;">Fund milestone</div>
-            <div style="font-size: 1.4rem; font-weight: 800; color: var(--navy); letter-spacing: -0.02em;">Hadean Capital II</div>
-            <div style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Oversubscribed final close — December 2023</div>
-          </div>
-        </div>
-        <div>
-          <h3 style="margin-bottom: 28px;">Investor mix — Hadean Capital I &amp; Hadean Capital II</h3>
-          <div class="investor-stats" style="grid-template-columns: 1fr 1fr; margin-top: 0;">
-
-            <div class="investor-stat">
-              <div class="investor-stat-value">€230M</div>
-              <div class="investor-stat-label">Total AUM</div>
-            </div>
-
-            <div class="investor-stat">
-              <div class="investor-stat-value">2</div>
-              <div class="investor-stat-label">Funds Closed</div>
-            </div>
-
-          </div>
-
-          <div style="margin-top: 32px; display: flex; flex-direction: column; gap: 12px;">
-
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-md);">
-              <span style="font-size: 0.9rem; font-weight: 600; color: var(--navy);">Fund of Funds</span>
-              <span style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted);">2%</span>
-            </div>
-
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-md);">
-              <span style="font-size: 0.9rem; font-weight: 600; color: var(--navy);">Pension Funds</span>
-              <span style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted);">2%</span>
-            </div>
-
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-md);">
-              <span style="font-size: 0.9rem; font-weight: 600; color: var(--navy);">Family Offices</span>
-              <span style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted);">2%</span>
-            </div>
-
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius-md);">
-              <span style="font-size: 0.9rem; font-weight: 600; color: var(--navy);">Foundations</span>
-              <span style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted);">2%</span>
-            </div>
-
-          </div>
-        </div>
-      </div>
+  <!-- HERO TEXT -->
+  <section class="inv-hero">
+    <div class="inv-hero-bg"></div>
+    <div class="inv-hero-overlay"></div>
+    <div class="container inv-hero-content" style="padding-top: var(--nav-height);">
+      <p class="inv-hero-text">
+        Hadean Ventures funds are supported by leading European and US-based institutional and private investors, as well as the government backed fund investors Saminvest AB, Argentum and Investinor
+      </p>
     </div>
   </section>
 
-  <!-- GOVERNMENT BACKERS -->
-  <section class="section section-alt">
+  <!-- INVESTOR MIX -->
+  <section class="inv-mix">
     <div class="container">
-      <div class="section-header">
-        <span class="label">Public Sector</span>
-        <h2 style="margin-top: 12px;">Government-backed fund investors</h2>
-        <p style="margin-top: 16px;">We are proud to count leading Nordic government-backed investment vehicles among our limited partners.</p>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;">
-        <div class="card" style="text-align: center; padding: 40px 32px;">
-          <div style="font-size: 2rem; margin-bottom: 16px;">🇸🇪</div>
-          <h3 style="font-size: 1.1rem; margin-bottom: 8px;">Saminvest AB</h3>
-          <p style="font-size: 0.88rem; max-width: none;">Sweden's government-owned fund-of-funds investing in Nordic venture capital.</p>
+      <div class="inv-divider"></div>
+      <p class="inv-mix-label">Hadean Capital I &amp; Hadean Capital II</p>
+      <div class="inv-charts">
+
+        <!-- 43% Fund of Funds — circumference 389.6, arc = 167.5 -->
+        <div class="inv-chart-item">
+          <div class="inv-chart-ring">
+            <svg viewBox="0 0 160 160" width="160" height="160">
+              <circle class="ring-track" cx="80" cy="80" r="62"/>
+              <circle class="ring-arc" cx="80" cy="80" r="62"
+                stroke-dasharray="167.5 389.6"/>
+            </svg>
+            <div class="inv-chart-pct">43%</div>
+          </div>
+          <div class="inv-chart-name">Fund of Funds</div>
         </div>
-        <div class="card" style="text-align: center; padding: 40px 32px;">
-          <div style="font-size: 2rem; margin-bottom: 16px;">🇳🇴</div>
-          <h3 style="font-size: 1.1rem; margin-bottom: 8px;">Argentum</h3>
-          <p style="font-size: 0.88rem; max-width: none;">Norwegian government-owned private equity fund-of-funds manager.</p>
+
+        <!-- 21% Pension Funds — arc = 81.8 -->
+        <div class="inv-chart-item">
+          <div class="inv-chart-ring">
+            <svg viewBox="0 0 160 160" width="160" height="160">
+              <circle class="ring-track" cx="80" cy="80" r="62"/>
+              <circle class="ring-arc" cx="80" cy="80" r="62"
+                stroke-dasharray="81.8 389.6"/>
+            </svg>
+            <div class="inv-chart-pct">21%</div>
+          </div>
+          <div class="inv-chart-name">Pension Funds</div>
         </div>
-        <div class="card" style="text-align: center; padding: 40px 32px;">
-          <div style="font-size: 2rem; margin-bottom: 16px;">🇳🇴</div>
-          <h3 style="font-size: 1.1rem; margin-bottom: 8px;">Investinor</h3>
-          <p style="font-size: 0.88rem; max-width: none;">Norwegian government-funded investor in growth companies and venture funds.</p>
+
+        <!-- 27% Family Offices — arc = 105.2 -->
+        <div class="inv-chart-item">
+          <div class="inv-chart-ring">
+            <svg viewBox="0 0 160 160" width="160" height="160">
+              <circle class="ring-track" cx="80" cy="80" r="62"/>
+              <circle class="ring-arc" cx="80" cy="80" r="62"
+                stroke-dasharray="105.2 389.6"/>
+            </svg>
+            <div class="inv-chart-pct">27%</div>
+          </div>
+          <div class="inv-chart-name">Family Offices</div>
         </div>
+
+        <!-- 9% Foundations — arc = 35.1 -->
+        <div class="inv-chart-item">
+          <div class="inv-chart-ring">
+            <svg viewBox="0 0 160 160" width="160" height="160">
+              <circle class="ring-track" cx="80" cy="80" r="62"/>
+              <circle class="ring-arc" cx="80" cy="80" r="62"
+                stroke-dasharray="35.1 389.6"/>
+            </svg>
+            <div class="inv-chart-pct">9%</div>
+          </div>
+          <div class="inv-chart-name">Foundations</div>
+        </div>
+
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section class="section">
+  <section class="section section-alt" style="padding-top: 80px; padding-bottom: 80px; text-align: center;">
     <div class="container">
-      <div class="highlight-box">
-        <span class="label" style="color: var(--light-blue);">Fund Information</span>
-        <h2 style="margin-top: 12px;">Interested in our funds?</h2>
-        <p>Should you require information regarding our fund, including LP reporting, fund documentation, or investor relations enquiries, please contact our team directly.</p>
-        <a href="mailto:enquiries@hadeanventures.com" class="btn btn-white btn-lg">enquiries@hadeanventures.com</a>
-      </div>
+      <p style="font-size: 1rem; color: var(--text-muted); margin: 0 0 20px; line-height: 1.7;">
+        Should you require information regarding our fund,<br>
+        please contact:
+      </p>
+      <a href="mailto:enquiries@hadeanventures.com" class="btn btn-outline">enquiries@hadeanventures.com</a>
     </div>
   </section>
 
@@ -185,16 +285,32 @@
         </div>
         <div>
           <div class="footer-heading">Contact</div>
-          <div class="footer-contact-item">Oslo, Norway<br><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
-          <div class="footer-contact-item">Stockholm, Sweden<br>Karolinska Institute Science Park</div>
+          <div class="footer-contact-item"><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
         </div>
       </div>
-      <div class="footer-bottom">
+      <div class="footer-bottom footer-bottom-home">
         <span class="footer-copyright">© 2025 Hadean Ventures. All rights reserved.</span>
         <div class="footer-legal">
           <a href="privacy-policy.html" class="footer-disclosures">Privacy Policy</a>
           <span class="footer-legal-sep">|</span>
           <a href="sustainability-related-disclosures.html" class="footer-disclosures">Sustainability-Related Disclosures</a>
+        </div>
+        <div class="footer-membership" aria-label="Member of">
+          <span class="footer-membership-label">Member of</span>
+          <div class="footer-membership-logos">
+            <a href="https://www.investeurope.eu/" target="_blank" rel="noopener noreferrer" aria-label="Invest Europe">
+              <img src="../MemberOFbilder/MemberOF.jpg" alt="Invest Europe">
+            </a>
+            <a href="https://www.kvinnerifinans.com/" target="_blank" rel="noopener noreferrer" aria-label="Kvinner i Finans Charter">
+              <img src="../MemberOFbilder/KvinnerFinans.jpg" alt="Kvinner i Finans Charter">
+            </a>
+            <a href="https://www.nvca.no/" target="_blank" rel="noopener noreferrer" aria-label="NVCA">
+              <img src="../MemberOFbilder/NVCA.jpg" alt="NVCA">
+            </a>
+            <a href="https://www.level20.org/" target="_blank" rel="noopener noreferrer" aria-label="Level20">
+              <img src="../MemberOFbilder/LEVEL20.png" alt="Level20">
+            </a>
+          </div>
         </div>
         <div class="footer-accent"></div>
       </div>
@@ -202,6 +318,7 @@
   </footer>
 
   <script>
+    /* nav scroll */
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
     const toggle = document.getElementById('navToggle');
@@ -214,6 +331,18 @@
       spans[1].style.opacity = isOpen ? '0' : '';
       spans[2].style.transform = isOpen ? 'translateY(-7px) rotate(-45deg)' : '';
     });
+
+    /* animate rings when in view */
+    const arcs = document.querySelectorAll('.ring-arc');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('animate-in');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    arcs.forEach(a => observer.observe(a));
   </script>
 </body>
 </html>

@@ -34,6 +34,9 @@
         <li><a href="pages/careers.html">Careers</a></li>
         <li><a href="pages/contact.html">Contact</a></li>
       </ul>
+      <div class="nav-cta nav-cta-placeholder" aria-hidden="true">
+        <a href="pages/contact.html" class="btn btn-primary btn-sm" tabindex="-1">Get in Touch</a>
+      </div>
     </div>
   </nav>
 
@@ -85,7 +88,6 @@
           <div style="margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap;">
             <a href="pages/team.html" class="btn btn-outline">Our Team</a>
             <a href="pages/portfolio.html" class="btn btn-outline">Our Portfolio</a>
-            <a href="pages/impact.html" class="btn btn-outline">Our Approach</a>
           </div>
         </div>
         <div class="reveal from-right">
@@ -294,16 +296,16 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer scroll-section scroll-tilt">
+  <footer class="footer">
     <div class="container">
       <div class="footer-inner">
-        <div class="footer-brand reveal from-left">
+        <div class="footer-brand">
           <a href="index.html" class="nav-logo">
             <img src="hadean_images/logo.png" alt="Hadean Ventures">
           </a>
           <p class="footer-tagline">Investing in the future of healthcare since 2017.</p>
         </div>
-        <div class="reveal reveal-delay-1">
+        <div>
           <div class="footer-heading">Navigation</div>
           <ul class="footer-links">
             <li><a href="pages/portfolio.html">Portfolio</a></li>
@@ -312,7 +314,7 @@
             <li><a href="pages/investors.html">Investors</a></li>
           </ul>
         </div>
-        <div class="reveal reveal-delay-2">
+        <div>
           <div class="footer-heading">Company</div>
           <ul class="footer-links">
             <li><a href="pages/news.html">News</a></li>
@@ -321,17 +323,34 @@
             <li><a href="pages/contact.html">Contact</a></li>
           </ul>
         </div>
-        <div class="reveal from-right reveal-delay-3">
+        <div>
           <div class="footer-heading">Contact</div>
           <div class="footer-contact-item"><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
         </div>
       </div>
-      <div class="footer-bottom reveal scale reveal-delay-2">
+      <div class="footer-bottom footer-bottom-home">
         <span class="footer-copyright">© 2025 Hadean Ventures. All rights reserved.</span>
         <div class="footer-legal">
           <a href="pages/privacy-policy.html" class="footer-disclosures">Privacy Policy</a>
           <span class="footer-legal-sep">|</span>
           <a href="pages/sustainability-related-disclosures.html" class="footer-disclosures">Sustainability-Related Disclosures</a>
+        </div>
+        <div class="footer-membership" aria-label="Member of">
+          <span class="footer-membership-label">Member of</span>
+          <div class="footer-membership-logos">
+            <a href="https://www.investeurope.eu/" target="_blank" rel="noopener noreferrer" aria-label="Invest Europe">
+              <img src="MemberOFbilder/MemberOF.jpg" alt="Invest Europe">
+            </a>
+            <a href="https://www.kvinnerifinans.com/" target="_blank" rel="noopener noreferrer" aria-label="Kvinner i Finans Charter">
+              <img src="MemberOFbilder/KvinnerFinans.jpg" alt="Kvinner i Finans Charter">
+            </a>
+            <a href="https://www.nvca.no/" target="_blank" rel="noopener noreferrer" aria-label="NVCA">
+              <img src="MemberOFbilder/NVCA.jpg" alt="NVCA">
+            </a>
+            <a href="https://www.level20.org/" target="_blank" rel="noopener noreferrer" aria-label="Level20">
+              <img src="MemberOFbilder/LEVEL20.png" alt="Level20">
+            </a>
+          </div>
         </div>
         <div class="footer-accent"></div>
       </div>
@@ -434,6 +453,36 @@
       }, { threshold: 0.5 });
       counterObserver.observe(statsEl);
     }
+
+    const profilePages = {
+      'Ingrid Teigland Akay': 'pages/team-ingrid.html',
+      'Markus Dietrich': 'pages/team-markus.html'
+    };
+
+    document.querySelectorAll('.marquee-item').forEach(item => {
+      const nameEl = item.querySelector('.marquee-item-name');
+      const roleEl = item.querySelector('.marquee-item-role');
+
+      if (!nameEl) return;
+
+      const profileName = nameEl.textContent.trim();
+      const profileRole = roleEl ? roleEl.textContent.trim() : 'Team Member';
+      const fallbackUrl = `pages/team-profile-placeholder.html?name=${encodeURIComponent(profileName)}&role=${encodeURIComponent(profileRole)}`;
+      const targetUrl = profilePages[profileName] || fallbackUrl;
+
+      item.setAttribute('role', 'link');
+      item.setAttribute('tabindex', '0');
+      item.addEventListener('click', () => {
+        window.location.href = targetUrl;
+      });
+      item.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          window.location.href = targetUrl;
+        }
+      });
+    });
+
   </script>
 </body>
 </html>

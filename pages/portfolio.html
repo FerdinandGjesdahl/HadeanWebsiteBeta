@@ -5,51 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio — Hadean Ventures</title>
   <meta name="description" content="A selection of companies in which Hadean Ventures has invested across all healthcare verticals.">
+  <script>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/main.css">
-  <style>
-    .portfolio-filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 36px;
-    }
-    .filter-btn {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 18px;
-      font-family: inherit;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      transition: all var(--transition);
-      white-space: nowrap;
-    }
-    .filter-btn:hover {
-      color: var(--navy);
-      border-color: var(--light-blue);
-      background: var(--surface);
-    }
-    .filter-btn.active {
-      color: var(--white);
-      background: var(--navy);
-      border-color: var(--navy);
-    }
-    .portfolio-card {
-      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), opacity 0.3s ease;
-    }
-    .portfolio-card.hidden {
-      display: none;
-    }
-  </style>
 </head>
-<body>
+<body class="portfolio-page">
 
   <!-- NAVIGATION -->
   <nav class="nav" id="mainNav">
@@ -71,8 +33,8 @@
         <li><a href="careers.html">Careers</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <div class="nav-cta">
-        <a href="contact.html" class="btn btn-primary btn-sm">Get in Touch</a>
+      <div class="nav-cta nav-cta-placeholder" aria-hidden="true">
+        <a href="contact.html" class="btn btn-primary btn-sm" tabindex="-1">Get in Touch</a>
       </div>
     </div>
   </nav>
@@ -113,12 +75,10 @@
         <div class="portfolio-card" data-tags="oncology" data-country="norway">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/actithera.com?size=256" data-fallback="https://www.google.com/s2/favicons?domain=actithera.com&amp;sz=128" alt="Actithera logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/actithera_logo.jpg" alt="Actithera logo" loading="lazy">
               <span aria-hidden="true">AC</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">Actithera</div>
-            </div>
+            <div class="portfolio-card-name">Actithera</div>
           </div>
           <div class="portfolio-card-desc">A radiopharmaceutical company developing targeted cancer therapies using alpha-particle emitting radionuclides.</div>
           <span class="portfolio-card-tag">Oncology</span>
@@ -127,12 +87,10 @@
         <div class="portfolio-card" data-tags="digital-health" data-country="sweden">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/alextherapeutics.com?size=256" data-fallback="https://www.google.com/s2/favicons?domain=alextherapeutics.com&amp;sz=128" alt="Alex Therapeutics logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/alex_therapeutics_logo.png" alt="Alex Therapeutics logo" loading="lazy">
               <span aria-hidden="true">AT</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">Alex Therapeutics</div>
-            </div>
+            <div class="portfolio-card-name">Alex Therapeutics</div>
           </div>
           <div class="portfolio-card-desc">A digital therapeutics (DTx) company based in Stockholm developing AI-powered mental health treatments.</div>
           <span class="portfolio-card-tag">Digital Health</span>
@@ -141,12 +99,10 @@
         <div class="portfolio-card" data-tags="rare-disease" data-country="spain">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/arthexbiotech.com?size=256" data-fallback="https://www.google.com/s2/favicons?domain=arthexbiotech.com&amp;sz=128" alt="ARTHEx Biotech logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/arthex_biotech_logo.png" alt="ARTHEx Biotech logo" loading="lazy">
               <span aria-hidden="true">AR</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">ARTHEx Biotech</div>
-            </div>
+            <div class="portfolio-card-name">ARTHEx Biotech</div>
           </div>
           <div class="portfolio-card-desc">A Spanish biopharmaceutical company developing advanced RNA treatments for rare genetic diseases, including myotonic dystrophy type 1.</div>
           <span class="portfolio-card-tag">Rare Disease · RNA</span>
@@ -155,12 +111,10 @@
         <div class="portfolio-card" data-tags="cardiovascular" data-country="sweden">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/attgeno.com?size=256" data-fallback="https://www.google.com/s2/favicons?domain=attgeno.com&amp;sz=128" alt="Attgeno logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/attgeno_logo.png" alt="Attgeno logo" loading="lazy">
               <span aria-hidden="true">AG</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">Attgeno</div>
-            </div>
+            <div class="portfolio-card-name">Attgeno</div>
           </div>
           <div class="portfolio-card-desc">A pharmaceutical company based in Stockholm, Sweden developing treatments for acute life-threatening conditions including pulmonary hypertension.</div>
           <span class="portfolio-card-tag">Cardiovascular</span>
@@ -169,12 +123,10 @@
         <div class="portfolio-card" data-tags="medical-device cardiovascular" data-country="norway">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/cardiomech.com?size=256" data-fallback="https://www.google.com/s2/favicons?domain=cardiomech.com&amp;sz=128" alt="CardioMech logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/cardiomech_logo.jpg" alt="CardioMech logo" loading="lazy">
               <span aria-hidden="true">CM</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">CardioMech</div>
-            </div>
+            <div class="portfolio-card-name">CardioMech</div>
           </div>
           <div class="portfolio-card-desc">A privately-held Norwegian company developing an innovative technology to repair the mitral valve via a transcatheter approach.</div>
           <span class="portfolio-card-tag">Medical Device · Cardiovascular</span>
@@ -183,26 +135,21 @@
         <div class="portfolio-card" data-tags="cardiovascular exit" data-country="germany">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/cardior.de?size=256" data-fallback="https://www.google.com/s2/favicons?domain=cardior.de&amp;sz=128" alt="Cardior Pharmaceuticals logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/cardior_logo.jpg" alt="Cardior Pharmaceuticals logo" loading="lazy">
               <span aria-hidden="true">CD</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">Cardior Pharmaceuticals</div>
-            </div>
+            <div class="portfolio-card-name">Cardior Pharmaceuticals</div>
           </div>
           <div class="portfolio-card-desc">A leading clinical-stage biopharmaceutical company developing RNA therapeutics for cardiac disease. Acquired by Novo Nordisk in March 2024.</div>
-          <span class="portfolio-card-tag" style="background: rgba(206,51,45,0.08); color: var(--accent-dark); border-color: rgba(206,51,45,0.2);">Exit — Novo Nordisk</span>
         </div>
 
         <div class="portfolio-card" data-tags="ophthalmology" data-country="germany">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/complementtx.com?size=256" data-fallback="https://www.google.com/s2/favicons?domain=complementtx.com&amp;sz=128" alt="Complement Therapeutics logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/complement_therapeutics_logo.png" alt="Complement Therapeutics logo" loading="lazy">
               <span aria-hidden="true">CT</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">Complement Therapeutics</div>
-            </div>
+            <div class="portfolio-card-name">Complement Therapeutics</div>
           </div>
           <div class="portfolio-card-desc">A German-headquartered biotechnology company developing complement pathway inhibitors for geographic atrophy and other conditions.</div>
           <span class="portfolio-card-tag">Ophthalmology</span>
@@ -211,12 +158,10 @@
         <div class="portfolio-card" data-tags="neurology" data-country="usa">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/contineum-tx.com?size=256" data-fallback="https://www.google.com/s2/favicons?domain=contineum-tx.com&amp;sz=128" alt="Contineum Therapeutics logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/contineum_therapeutics_logo.jpg" alt="Contineum Therapeutics logo" loading="lazy">
               <span aria-hidden="true">CN</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">Contineum Therapeutics</div>
-            </div>
+            <div class="portfolio-card-name">Contineum Therapeutics</div>
           </div>
           <div class="portfolio-card-desc">A San Diego-based company focused on developing therapeutics for neurological and inflammatory diseases.</div>
           <span class="portfolio-card-tag">Neurology</span>
@@ -225,12 +170,10 @@
         <div class="portfolio-card" data-tags="oncology" data-country="germany">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/emergencetx.com?size=256" data-fallback="https://www.google.com/s2/favicons?domain=emergencetx.com&amp;sz=128" alt="Emergence Therapeutics logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/emergence_therapeutics_logo.png" alt="Emergence Therapeutics logo" loading="lazy">
               <span aria-hidden="true">EM</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">Emergence Therapeutics</div>
-            </div>
+            <div class="portfolio-card-name">Emergence Therapeutics</div>
           </div>
           <div class="portfolio-card-desc">A European biopharmaceutical company advancing a nectin-4 antibody-drug conjugate for solid tumour oncology.</div>
           <span class="portfolio-card-tag">Oncology · ADC</span>
@@ -239,12 +182,10 @@
         <div class="portfolio-card" data-tags="oncology" data-country="denmark">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/galecto.com?size=256" data-fallback="https://www.google.com/s2/favicons?domain=galecto.com&amp;sz=128" alt="Galecto logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/galecto_logo.png" alt="Galecto logo" loading="lazy">
               <span aria-hidden="true">GA</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">Galecto</div>
-            </div>
+            <div class="portfolio-card-name">Galecto</div>
           </div>
           <div class="portfolio-card-desc">A Danish drug development company based in Copenhagen focusing on galectin biology for fibrosis and oncology.</div>
           <span class="portfolio-card-tag">Fibrosis · Oncology</span>
@@ -253,12 +194,10 @@
         <div class="portfolio-card" data-tags="digital-health neurology" data-country="finland">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/neuroeventlabs.com?size=256" data-fallback="https://www.google.com/s2/favicons?domain=neuroeventlabs.com&amp;sz=128" alt="Neuro Event Labs logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/neuro_event_labs_logo.png" alt="Neuro Event Labs logo" loading="lazy">
               <span aria-hidden="true">NEL</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">Neuro Event Labs</div>
-            </div>
+            <div class="portfolio-card-name">Neuro Event Labs</div>
           </div>
           <div class="portfolio-card-desc">A digital health company based in Tampere, Finland developing the AI-powered Nelli® seizure monitoring system. FDA 510(k) cleared.</div>
           <span class="portfolio-card-tag">Digital Health · Neurology</span>
@@ -267,12 +206,10 @@
         <div class="portfolio-card" data-tags="medical-device neurology" data-country="norway">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/nisonic.com?size=256" data-fallback="https://www.google.com/s2/favicons?domain=nisonic.com&amp;sz=128" alt="Nisonic logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/nisonic_logo.png" alt="Nisonic logo" loading="lazy">
               <span aria-hidden="true">NI</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">Nisonic</div>
-            </div>
+            <div class="portfolio-card-name">Nisonic</div>
           </div>
           <div class="portfolio-card-desc">A medical device company from Trondheim, Norway developing advanced ultrasound technology for neurological conditions.</div>
           <span class="portfolio-card-tag">Medical Device · Neurology</span>
@@ -281,12 +218,10 @@
         <div class="portfolio-card" data-tags="oncology" data-country="norway">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/oncoinvent.com?size=256" data-fallback="https://www.google.com/s2/favicons?domain=oncoinvent.com&amp;sz=128" alt="Oncoinvent logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/oncoinvent_logo.png" alt="Oncoinvent logo" loading="lazy">
               <span aria-hidden="true">ON</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">Oncoinvent</div>
-            </div>
+            <div class="portfolio-card-name">Oncoinvent</div>
           </div>
           <div class="portfolio-card-desc">A drug development company based in Oslo developing Radspherin®, a radiopharmaceutical for peritoneal metastases. FDA Fast Track designated.</div>
           <span class="portfolio-card-tag">Oncology · Radiopharmaceuticals</span>
@@ -295,12 +230,10 @@
         <div class="portfolio-card" data-tags="gene-therapy" data-country="austria">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/ribbonbio.com?size=256" data-fallback="https://www.google.com/s2/favicons?domain=ribbonbio.com&amp;sz=128" alt="Ribbon Bio logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/ribbon_bio_logo.png" alt="Ribbon Bio logo" loading="lazy">
               <span aria-hidden="true">RB</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">Ribbon Bio</div>
-            </div>
+            <div class="portfolio-card-name">Ribbon Bio</div>
           </div>
           <div class="portfolio-card-desc">Ribbon Biolabs is developing a platform technology to synthesise long, complex DNA molecules for gene therapy and synthetic biology applications.</div>
           <span class="portfolio-card-tag">Gene Therapy · Synthetic Biology</span>
@@ -309,12 +242,10 @@
         <div class="portfolio-card" data-tags="diagnostics" data-country="sweden">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/sagadiagnostics.com?size=256" data-fallback="https://www.google.com/s2/favicons?domain=sagadiagnostics.com&amp;sz=128" alt="SAGA Diagnostics logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/saga_diagnostics_logo.png" alt="SAGA Diagnostics logo" loading="lazy">
               <span aria-hidden="true">SG</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">SAGA Diagnostics</div>
-            </div>
+            <div class="portfolio-card-name">SAGA Diagnostics</div>
           </div>
           <div class="portfolio-card-desc">A Lund, Sweden-based medical diagnostics company offering the Pathlight™ MRD test for ultrasensitive cancer liquid biopsies. Medicare covered.</div>
           <span class="portfolio-card-tag">Diagnostics · Liquid Biopsy</span>
@@ -323,12 +254,10 @@
         <div class="portfolio-card" data-tags="immunology" data-country="germany">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/scirhom.com?size=256" data-fallback="https://www.google.com/s2/favicons?domain=scirhom.com&amp;sz=128" alt="SciRhom logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/scirhom_logo.jpg" alt="SciRhom logo" loading="lazy">
               <span aria-hidden="true">SR</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">SciRhom</div>
-            </div>
+            <div class="portfolio-card-name">SciRhom</div>
           </div>
           <div class="portfolio-card-desc">SciRhom GmbH is a German biotechnology company developing iRhom2 inhibitors for inflammatory and autoimmune diseases.</div>
           <span class="portfolio-card-tag">Immunology</span>
@@ -337,12 +266,10 @@
         <div class="portfolio-card" data-tags="oncology" data-country="france">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/step-ph.com?size=256" data-fallback="https://www.google.com/s2/favicons?domain=step-ph.com&amp;sz=128" alt="Step Pharma logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/step_pharma_logo.jpg" alt="Step Pharma logo" loading="lazy">
               <span aria-hidden="true">SP</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">Step Pharma</div>
-            </div>
+            <div class="portfolio-card-name">Step Pharma</div>
           </div>
           <div class="portfolio-card-desc">Developing novel therapeutics that inhibit the enzyme CTPS1 — the world's most advanced CTPS1 inhibitor programme in T-cell malignancies and solid tumours.</div>
           <span class="portfolio-card-tag">Oncology</span>
@@ -351,12 +278,10 @@
         <div class="portfolio-card" data-tags="oncology" data-country="norway">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/targedbiopharmaceuticals.com?size=256" data-fallback="https://www.google.com/s2/favicons?domain=targedbiopharmaceuticals.com&amp;sz=128" alt="TargED Biopharmaceuticals logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/targed_logo.png" alt="TargED Biopharmaceuticals logo" loading="lazy">
               <span aria-hidden="true">TG</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">TargED Biopharmaceuticals</div>
-            </div>
+            <div class="portfolio-card-name">TargED Biopharmaceuticals</div>
           </div>
           <div class="portfolio-card-desc">A private biotechnology company developing TGD001 for targeted protein degradation in oncology. Phase 1 initiated December 2024.</div>
           <span class="portfolio-card-tag">Oncology · Protein Degradation</span>
@@ -365,31 +290,44 @@
         <div class="portfolio-card" data-tags="exit" data-country="austria">
           <div class="portfolio-card-header">
             <div class="portfolio-card-logo">
-              <img src="https://logo.clearbit.com/themisbio.com?size=256" data-fallback="https://www.google.com/s2/favicons?domain=themisbio.com&amp;sz=128" alt="Themis Bioscience logo" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+              <img src="../portfolio_logos%202/themis_bioscience_logo.png" alt="Themis Bioscience logo" loading="lazy">
               <span aria-hidden="true">TH</span>
             </div>
-            <div class="portfolio-card-brand">
-              <div class="portfolio-card-name">Themis Bioscience</div>
-            </div>
+            <div class="portfolio-card-name">Themis Bioscience</div>
           </div>
           <div class="portfolio-card-desc">A vaccine development company based in Vienna. Acquired by MSD in May 2020 to accelerate coronavirus vaccine development.</div>
-          <span class="portfolio-card-tag" style="background: rgba(206,51,45,0.08); color: var(--accent-dark); border-color: rgba(206,51,45,0.2);">Exit — MSD</span>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section-sm section-alt">
-    <div class="container">
-      <div class="highlight-box">
-        <span class="label" style="color: var(--light-blue);">Submit Your Venture</span>
-        <h2 style="margin-top: 12px;">Building a healthcare breakthrough?</h2>
-        <p>We are always looking for exceptional teams addressing unmet medical needs. If you believe your venture could benefit from Hadean's partnership, we'd like to hear from you.</p>
-        <a href="contact.html" class="btn btn-white btn-lg">Get in Touch</a>
+  <!-- SPLIT CTA PANELS -->
+  <section class="split-cta">
+    <a href="investors.html" class="split-cta-panel">
+      <img src="../PotentialNewImages/Sea.png" alt="Ocean horizon" class="split-cta-bg">
+      <div class="split-cta-overlay"></div>
+      <div class="split-cta-content">
+        <span class="split-cta-label">/ Invest</span>
+        <h2 class="split-cta-heading">Invest with us</h2>
       </div>
-    </div>
+      <div class="split-cta-btn">
+        <span>Contact us</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </a>
+    <a href="contact.html" class="split-cta-panel">
+      <img src="../PotentialNewImages/high_tech_lab.jpg" alt="High-tech laboratory" class="split-cta-bg">
+      <div class="split-cta-overlay"></div>
+      <div class="split-cta-content">
+        <span class="split-cta-label">/ Pitch</span>
+        <h2 class="split-cta-heading">Pitch to us</h2>
+      </div>
+      <div class="split-cta-btn">
+        <span>Pitch to us</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </a>
   </section>
 
   <!-- FOOTER -->
@@ -422,16 +360,32 @@
         </div>
         <div>
           <div class="footer-heading">Contact</div>
-          <div class="footer-contact-item">Oslo, Norway<br><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
-          <div class="footer-contact-item">Stockholm, Sweden<br>Karolinska Institute Science Park</div>
+          <div class="footer-contact-item"><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
         </div>
       </div>
-      <div class="footer-bottom">
+      <div class="footer-bottom footer-bottom-home">
         <span class="footer-copyright">© 2025 Hadean Ventures. All rights reserved.</span>
         <div class="footer-legal">
           <a href="privacy-policy.html" class="footer-disclosures">Privacy Policy</a>
           <span class="footer-legal-sep">|</span>
           <a href="sustainability-related-disclosures.html" class="footer-disclosures">Sustainability-Related Disclosures</a>
+        </div>
+        <div class="footer-membership" aria-label="Member of">
+          <span class="footer-membership-label">Member of</span>
+          <div class="footer-membership-logos">
+            <a href="https://www.investeurope.eu/" target="_blank" rel="noopener noreferrer" aria-label="Invest Europe">
+              <img src="../MemberOFbilder/MemberOF.jpg" alt="Invest Europe">
+            </a>
+            <a href="https://www.kvinnerifinans.com/" target="_blank" rel="noopener noreferrer" aria-label="Kvinner i Finans Charter">
+              <img src="../MemberOFbilder/KvinnerFinans.jpg" alt="Kvinner i Finans Charter">
+            </a>
+            <a href="https://www.nvca.no/" target="_blank" rel="noopener noreferrer" aria-label="NVCA">
+              <img src="../MemberOFbilder/NVCA.jpg" alt="NVCA">
+            </a>
+            <a href="https://www.level20.org/" target="_blank" rel="noopener noreferrer" aria-label="Level20">
+              <img src="../MemberOFbilder/LEVEL20.png" alt="Level20">
+            </a>
+          </div>
         </div>
         <div class="footer-accent"></div>
       </div>
@@ -482,11 +436,13 @@
         cards.forEach(card => {
           if (filter === 'all') {
             card.classList.remove('hidden');
+            card.classList.add('is-visible');
           } else {
             const tags = (card.dataset.tags || '').split(' ');
             const country = card.dataset.country || '';
             if (tags.includes(filter) || country === filter) {
               card.classList.remove('hidden');
+              card.classList.add('is-visible');
             } else {
               card.classList.add('hidden');
             }
@@ -494,6 +450,32 @@
         });
       });
     });
+
+    // Scroll reveal
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const portfolioCards = Array.from(document.querySelectorAll('.portfolio-card'));
+
+    portfolioCards.forEach((card, index) => {
+      card.classList.add('reveal-on-scroll');
+      card.style.setProperty('--reveal-delay', `${Math.min(index % 4, 3) * 80}ms`);
+    });
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      portfolioCards.forEach(card => card.classList.add('is-visible'));
+    } else {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -10% 0px'
+      });
+
+      portfolioCards.forEach(card => revealObserver.observe(card));
+    }
   </script>
 </body>
 </html>

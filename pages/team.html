@@ -11,121 +11,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/main.css">
   <style>
-    html.js .reveal-on-scroll {
-      opacity: 0;
-      transform: translateY(28px);
-      transition:
-        opacity 720ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
-        transform 720ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
-      will-change: opacity, transform;
+    @media (min-width: 769px) {
+      .team-grid {
+        grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+        gap: 32px;
+      }
+
+      .team-card-body {
+        padding: 18px 18px 22px;
+      }
+
+      .team-card-name {
+        font-size: 1rem;
+      }
     }
 
-    html.js .reveal-on-scroll.is-visible {
+    html.js .team-card {
+      opacity: 0;
+      transform: translateY(32px);
+      transition:
+        opacity 540ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+        transform 540ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+    }
+
+    html.js .team-card.is-visible {
       opacity: 1;
       transform: translateY(0);
-      will-change: auto;
-    }
-
-    .team-grid {
-      margin-top: 0;
-    }
-
-    html.js .team-card.reveal-on-scroll {
-      transform: translateY(56px) perspective(1200px) rotateX(10deg);
-      transform-origin: 50% 100%;
-      box-shadow: 0 28px 54px rgba(15, 30, 53, 0.08);
-    }
-
-    html.js .team-card.reveal-on-scroll.is-visible {
-      transform: translateY(0) perspective(1200px) rotateX(0deg);
-      box-shadow: var(--shadow-sm);
-    }
-
-    html.js .team-card.reveal-on-scroll .team-card-photo {
-      isolation: isolate;
-    }
-
-    html.js .team-card.reveal-on-scroll .team-card-photo::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(15, 30, 53, 0.82) 0%, rgba(33, 66, 116, 0.38) 48%, rgba(191, 220, 236, 0.18) 100%);
-      transform: translateY(0);
-      transition:
-        transform 1100ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--reveal-delay, 0ms) + 40ms),
-        opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--reveal-delay, 0ms) + 40ms);
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    html.js .team-card.reveal-on-scroll .team-card-photo img {
-      transform: translate3d(0, 38px, 0) scale(1.16);
-      transition:
-        transform 1200ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--reveal-delay, 0ms) + 10ms),
-        filter 900ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--reveal-delay, 0ms) + 10ms);
-      filter: grayscale(12%);
-      will-change: transform;
-    }
-
-    html.js .team-card.reveal-on-scroll .team-card-body {
-      opacity: 0;
-      transform: translateY(20px);
-      transition:
-        opacity 720ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--reveal-delay, 0ms) + 120ms),
-        transform 720ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--reveal-delay, 0ms) + 120ms);
-    }
-
-    html.js .team-card.reveal-on-scroll.is-visible .team-card-photo::after {
-      transform: translateY(103%);
-      opacity: 0.24;
-    }
-
-    html.js .team-card.reveal-on-scroll.is-visible .team-card-photo img {
-      transform: translate3d(0, var(--scroll-shift, 0px), 0) scale(1.045);
-    }
-
-    html.js .team-card.reveal-on-scroll.is-visible .team-card-body {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    html.js .team-card.reveal-on-scroll.is-visible:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    html.js .team-card.reveal-on-scroll.is-visible:hover .team-card-photo img {
-      transform: translate3d(0, calc(var(--scroll-shift, 0px) - 4px), 0) scale(1.085);
-      filter: grayscale(0%);
-    }
-
-    html.js .team-card.reveal-on-scroll .team-card-initials {
-      transform: translate3d(0, 24px, 0) scale(1.04);
-      transition:
-        transform 1000ms cubic-bezier(0.22, 1, 0.36, 1) calc(var(--reveal-delay, 0ms) + 20ms);
-    }
-
-    html.js .team-card.reveal-on-scroll.is-visible .team-card-initials {
-      transform: translate3d(0, 0, 0) scale(1);
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html.js .reveal-on-scroll,
-      html.js .reveal-on-scroll.is-visible,
-      html.js .team-card.reveal-on-scroll,
-      html.js .team-card.reveal-on-scroll.is-visible,
-      html.js .team-card.reveal-on-scroll .team-card-body,
-      html.js .team-card.reveal-on-scroll.is-visible .team-card-body,
-      html.js .team-card.reveal-on-scroll .team-card-photo::after,
-      html.js .team-card.reveal-on-scroll.is-visible .team-card-photo::after,
-      html.js .team-card.reveal-on-scroll .team-card-photo img,
-      html.js .team-card.reveal-on-scroll.is-visible .team-card-photo img,
-      html.js .team-card.reveal-on-scroll .team-card-initials,
-      html.js .team-card.reveal-on-scroll.is-visible .team-card-initials {
+      html.js .team-card {
         opacity: 1;
         transform: none;
         transition: none;
-        will-change: auto;
       }
     }
   </style>
@@ -152,8 +70,8 @@
         <li><a href="careers.html">Careers</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <div class="nav-cta">
-        <a href="contact.html" class="btn btn-primary btn-sm">Get in Touch</a>
+      <div class="nav-cta nav-cta-placeholder" aria-hidden="true">
+        <a href="contact.html" class="btn btn-primary btn-sm" tabindex="-1">Get in Touch</a>
       </div>
     </div>
   </nav>
@@ -408,16 +326,32 @@
         </div>
         <div>
           <div class="footer-heading">Contact</div>
-          <div class="footer-contact-item">Oslo, Norway<br><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
-          <div class="footer-contact-item">Stockholm, Sweden<br>Karolinska Institute Science Park</div>
+          <div class="footer-contact-item"><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
         </div>
       </div>
-      <div class="footer-bottom">
+      <div class="footer-bottom footer-bottom-home">
         <span class="footer-copyright">© 2025 Hadean Ventures. All rights reserved.</span>
         <div class="footer-legal">
           <a href="privacy-policy.html" class="footer-disclosures">Privacy Policy</a>
           <span class="footer-legal-sep">|</span>
           <a href="sustainability-related-disclosures.html" class="footer-disclosures">Sustainability-Related Disclosures</a>
+        </div>
+        <div class="footer-membership" aria-label="Member of">
+          <span class="footer-membership-label">Member of</span>
+          <div class="footer-membership-logos">
+            <a href="https://www.investeurope.eu/" target="_blank" rel="noopener noreferrer" aria-label="Invest Europe">
+              <img src="../MemberOFbilder/MemberOF.jpg" alt="Invest Europe">
+            </a>
+            <a href="https://www.kvinnerifinans.com/" target="_blank" rel="noopener noreferrer" aria-label="Kvinner i Finans Charter">
+              <img src="../MemberOFbilder/KvinnerFinans.jpg" alt="Kvinner i Finans Charter">
+            </a>
+            <a href="https://www.nvca.no/" target="_blank" rel="noopener noreferrer" aria-label="NVCA">
+              <img src="../MemberOFbilder/NVCA.jpg" alt="NVCA">
+            </a>
+            <a href="https://www.level20.org/" target="_blank" rel="noopener noreferrer" aria-label="Level20">
+              <img src="../MemberOFbilder/LEVEL20.png" alt="Level20">
+            </a>
+          </div>
         </div>
         <div class="footer-accent"></div>
       </div>
@@ -440,75 +374,58 @@
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const teamCards = Array.from(document.querySelectorAll('.team-card'));
+    const profilePages = {
+      'Ingrid Teigland Akay': 'team-ingrid.html',
+      'Markus Dietrich': 'team-markus.html'
+    };
 
-    teamCards.forEach((card, index) => {
-      card.classList.add('reveal-on-scroll');
-      card.style.setProperty('--reveal-delay', `${Math.min(index, 7) * 70}ms`);
+    teamCards.forEach(card => {
+      const nameEl = card.querySelector('.team-card-name');
+      const roleEl = card.querySelector('.team-card-role');
+
+      if (!nameEl) return;
+
+      const profileName = nameEl.textContent.trim();
+      const profileRole = roleEl ? roleEl.textContent.trim() : 'Team Member';
+      const fallbackUrl = `team-profile-placeholder.html?name=${encodeURIComponent(profileName)}&role=${encodeURIComponent(profileRole)}`;
+      const targetUrl = profilePages[profileName] || fallbackUrl;
+
+      card.setAttribute('role', 'link');
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('click', () => {
+        window.location.href = targetUrl;
+      });
+      card.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          window.location.href = targetUrl;
+        }
+      });
     });
 
     if (reduceMotion || !('IntersectionObserver' in window)) {
-      teamCards.forEach((card) => card.classList.add('is-visible'));
+      teamCards.forEach(card => card.classList.add('is-visible'));
     } else {
+      let rowStart = 0;
+      let prevTop = -1;
+
       const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
+        entries.forEach(entry => {
           if (!entry.isIntersecting) return;
-          entry.target.classList.add('is-visible');
-          revealObserver.unobserve(entry.target);
+
+          const card = entry.target;
+          const top = Math.round(card.getBoundingClientRect().top);
+          if (top !== prevTop) { rowStart = 0; prevTop = top; }
+
+          card.style.setProperty('--reveal-delay', `${rowStart * 80}ms`);
+          rowStart++;
+
+          card.classList.add('is-visible');
+          revealObserver.unobserve(card);
         });
-      }, {
-        threshold: 0.16,
-        rootMargin: '0px 0px -12% 0px'
-      });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 
-      teamCards.forEach((card) => revealObserver.observe(card));
-    }
-
-    if (!reduceMotion) {
-      const activeParallaxCards = new Set();
-      let parallaxFrame = null;
-
-      const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
-
-      const updateParallax = () => {
-        parallaxFrame = null;
-        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-
-        activeParallaxCards.forEach((card) => {
-          const rect = card.getBoundingClientRect();
-          const centerOffset = rect.top + (rect.height / 2) - (viewportHeight / 2);
-          const progress = clamp(centerOffset / viewportHeight, -1, 1);
-          const shift = clamp(progress * -20, -20, 20);
-          card.style.setProperty('--scroll-shift', `${shift.toFixed(2)}px`);
-        });
-      };
-
-      const queueParallax = () => {
-        if (parallaxFrame !== null) return;
-        parallaxFrame = window.requestAnimationFrame(updateParallax);
-      };
-
-      if ('IntersectionObserver' in window) {
-        const parallaxObserver = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              activeParallaxCards.add(entry.target);
-            } else {
-              activeParallaxCards.delete(entry.target);
-              entry.target.style.setProperty('--scroll-shift', '0px');
-            }
-          });
-          queueParallax();
-        }, {
-          threshold: 0,
-          rootMargin: '18% 0px'
-        });
-
-        teamCards.forEach((card) => parallaxObserver.observe(card));
-      }
-
-      window.addEventListener('scroll', queueParallax, { passive: true });
-      window.addEventListener('resize', queueParallax);
-      queueParallax();
+      teamCards.forEach(card => revealObserver.observe(card));
     }
   </script>
 </body>

@@ -3,80 +3,192 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fund Disclosures — Hadean Ventures</title>
-  <meta name="description" content="Hadean Ventures fund-level sustainability disclosures under SFDR.">
+  <title>Markus Dietrich, PhD — Hadean Ventures</title>
+  <meta name="description" content="Markus Dietrich, PhD, Senior Investment Associate at Hadean Ventures. Focused on life science start-ups.">
+  <script>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/main.css">
   <style>
-    .disclosure-section {
-      max-width: 1100px;
-      margin: 0 auto;
+    .profile-hero {
+      padding-top: calc(var(--nav-height) + 64px);
+      padding-bottom: 80px;
+      background: linear-gradient(180deg, var(--surface) 0%, var(--white) 100%);
     }
-    .disclosure-back {
+
+    .profile-back {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 32px;
-      font-size: 0.88rem;
-      font-weight: 500;
+      font-size: 0.82rem;
+      font-weight: 600;
       color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 48px;
       transition: color var(--transition);
     }
-    .disclosure-back:hover {
-      color: var(--navy);
+
+    .profile-back:hover {
+      color: var(--accent);
     }
-    .disclosure-back::before {
-      content: "\2190";
+
+    .profile-back svg {
+      width: 16px;
+      height: 16px;
     }
-    .disclosure-grid {
+
+    .profile-layout {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      margin-top: 16px;
+      grid-template-columns: 340px 1fr;
+      gap: 64px;
+      align-items: start;
     }
-    @media (max-width: 1024px) {
-      .disclosure-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+
+    .profile-photo-wrap {
+      position: sticky;
+      top: calc(var(--nav-height) + 32px);
     }
-    @media (max-width: 560px) {
-      .disclosure-grid {
-        grid-template-columns: 1fr;
-      }
+
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
     }
-    .disclosure-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 40px 32px;
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .profile-contact-card {
+      margin-top: 24px;
       background: var(--white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-lg);
+      padding: 20px 24px;
       box-shadow: var(--shadow-sm);
-      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
     }
-    .disclosure-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--light-blue);
+
+    .profile-contact-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
     }
-    .disclosure-card h3 {
-      font-size: 1.05rem;
-      color: var(--navy);
-      margin-bottom: 10px;
-    }
-    .disclosure-card p {
+
+    .profile-contact-email {
       font-size: 0.88rem;
-      color: var(--text-muted);
-      max-width: none;
-      margin-bottom: 24px;
-      line-height: 1.7;
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 500;
+      word-break: break-all;
     }
-    .disclosure-card .btn {
-      margin-top: auto;
+
+    .profile-contact-email:hover {
+      color: var(--accent);
+    }
+
+    .profile-info {
+      padding-top: 4px;
+    }
+
+    .profile-role-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .profile-name {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+
+    .profile-divider {
+      width: 48px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+
+    .profile-bio p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .profile-bio p:last-child {
+      margin-bottom: 0;
+    }
+
+    .profile-education {
+      margin-top: 40px;
+      padding-top: 36px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .profile-education-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .profile-education ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .profile-education li {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text);
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    .profile-education li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    @media (max-width: 860px) {
+      .profile-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .profile-photo-wrap {
+        position: static;
+        max-width: 280px;
+      }
     }
   </style>
 </head>
@@ -94,7 +206,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="../index.html">Home</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="team.html">Team</a></li>
+        <li><a href="team.html" class="active">Team</a></li>
         <li><a href="impact.html">Impact</a></li>
         <li><a href="investors.html">Investors</a></li>
         <li><a href="news.html">News</a></li>
@@ -108,47 +220,47 @@
     </div>
   </nav>
 
-  <!-- PAGE HEADER -->
-  <div class="page-header">
+  <!-- PROFILE -->
+  <section class="profile-hero">
     <div class="container">
-      <span class="label">SFDR — Product Level</span>
-      <h1>Fund Disclosures</h1>
-      <p class="lead">In line with the Sustainable Finance Disclosures Regulation (SFDR)</p>
-    </div>
-  </div>
+      <a href="team.html" class="profile-back">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to Team
+      </a>
 
-  <!-- FUND CARDS -->
-  <section class="section">
-    <div class="container">
-      <div class="disclosure-section">
-        <a href="sustainability-related-disclosures.html" class="disclosure-back">Back to Sustainability-Related Disclosures</a>
+      <div class="profile-layout">
+        <div class="profile-photo-wrap">
+          <div class="profile-photo">
+            <img src="../hadean_images/markus-dietrich-230x230.jpg" alt="Markus Dietrich">
+          </div>
+          <div class="profile-contact-card">
+            <div class="profile-contact-label">Contact</div>
+            <a href="mailto:markus.dietrich@hadeanventures.com" class="profile-contact-email">
+              markus.dietrich@hadeanventures.com
+            </a>
+          </div>
+        </div>
 
-        <div class="disclosure-grid">
+        <div class="profile-info">
+          <span class="profile-role-tag">Senior Investment Associate</span>
+          <h1 class="profile-name">Markus Dietrich, PhD</h1>
+          <div class="profile-divider"></div>
 
-          <a href="https://hadeanventures.com/wp-content/uploads/2024/08/Article-8-Fund-Website-Disclsoure-HCI-1.pdf" target="_blank" class="disclosure-card">
-            <p>Website Disclosure</p>
-            <h3>Hadean Capital I AS / HVentures Capital I AB</h3>
-            <span class="btn btn-outline">View Document</span>
-          </a>
+          <div class="profile-bio">
+            <p>Markus is a senior investment associate focused on life science start-ups. His academic background as PhD in oncology provides him with a good understanding of the field.</p>
+            <p>He has worked with scientific and business development in start-up companies and invested in a variety of early stage companies across various sectors as a business angel investor.</p>
+          </div>
 
-          <a href="https://hadeanventures.com/wp-content/uploads/2024/08/Article-8-Fund-Website-Disclsoure-HCII.pdf" target="_blank" class="disclosure-card">
-            <p>Website Disclosure</p>
-            <h3>Hadean Capital II AS / HVentures Capital II AB</h3>
-            <span class="btn btn-outline">View Document</span>
-          </a>
-
-          <a href="https://hadeanventures.com/wp-content/uploads/2025/03/Article-8-Website-Disclosures-HV-Growth.pdf" target="_blank" class="disclosure-card">
-            <p>Website Disclosures</p>
-            <h3>Hadean Capital Growth I AS</h3>
-            <span class="btn btn-outline">View Document</span>
-          </a>
-
-          <a href="https://hadeanventures.com/wp-content/uploads/2026/02/Website-Disclsoure-Hadean-Blue-Capital-I-AS.pdf" target="_blank" class="disclosure-card">
-            <p>Website Disclosures</p>
-            <h3>Hadean Blue Capital I AS</h3>
-            <span class="btn btn-outline">View Document</span>
-          </a>
-
+          <div class="profile-education">
+            <div class="profile-education-title">Education</div>
+            <ul>
+              <li>PhD in Oncology — University of Oslo</li>
+              <li>Master of Science in Molecular Medicine — NTNU Trondheim</li>
+              <li>Published several articles in peer reviewed journals</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

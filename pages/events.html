@@ -6,306 +6,10 @@
   <title>Events — Hadean Ventures</title>
   <link rel="icon" type="image/png" href="../hadean_images/logo.png">
   <meta name="description" content="Hadean Ventures annual events for registered users and invited guests.">
-  <script>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/main.css">
-  <style>
-    .events-page {
-      background:
-        radial-gradient(circle at top left, rgba(191, 220, 236, 0.18), transparent 24%),
-        linear-gradient(180deg, #f7fbfd 0%, #ffffff 24%, #f5f9fc 100%);
-    }
-
-    .events-page main {
-      overflow: hidden;
-    }
-
-    .events-hero {
-      position: relative;
-      min-height: 68vh;
-      display: flex;
-      align-items: flex-end;
-      padding: calc(var(--nav-height) + 86px) 0 84px;
-      overflow: hidden;
-    }
-
-    .events-hero-bg,
-    .events-hero-overlay,
-    .events-hero-gridline {
-      position: absolute;
-      inset: 0;
-    }
-
-    .events-hero-bg {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .events-hero-overlay {
-      background:
-        linear-gradient(120deg, rgba(15, 30, 53, 0.88) 0%, rgba(23, 45, 80, 0.72) 50%, rgba(33, 66, 116, 0.48) 100%);
-    }
-
-    .events-hero-gridline {
-      background-image:
-        linear-gradient(rgba(191, 220, 236, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(191, 220, 236, 0.08) 1px, transparent 1px);
-      background-size: 72px 72px;
-      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.85), transparent 88%);
-      opacity: 0.42;
-      pointer-events: none;
-    }
-
-    .events-hero .container {
-      position: relative;
-      z-index: 1;
-    }
-
-    .events-hero-copy {
-      max-width: 740px;
-    }
-
-    .events-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
-      font-size: 0.76rem;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(191, 220, 236, 0.94);
-    }
-
-    .events-kicker::before {
-      content: "";
-      width: 36px;
-      height: 1px;
-      background: rgba(191, 220, 236, 0.56);
-    }
-
-    .events-hero h1 {
-      max-width: 10ch;
-      margin: 0;
-      color: var(--white);
-      font-size: clamp(3rem, 6vw, 4.8rem);
-      line-height: 1;
-    }
-
-    .events-hero .lead {
-      margin-top: 20px;
-      max-width: 48ch;
-      color: rgba(231, 241, 248, 0.88);
-      font-size: 1.08rem;
-      line-height: 1.78;
-    }
-
-    .events-section {
-      padding: var(--section-py) 0;
-    }
-
-    .events-intro {
-      max-width: 760px;
-    }
-
-    .events-intro h2 {
-      margin: 0;
-      font-size: clamp(2rem, 3.6vw, 3rem);
-      line-height: 1.04;
-      color: var(--navy-deeper);
-    }
-
-    .events-intro .lead {
-      margin-top: 22px;
-      color: var(--text);
-      font-size: 1.05rem;
-      line-height: 1.82;
-      max-width: 58ch;
-    }
-
-    .events-intro p {
-      margin-top: 18px;
-      max-width: 62ch;
-      color: var(--text-muted);
-      line-height: 1.9;
-    }
-
-    .events-divider {
-      width: 88px;
-      height: 1px;
-      margin: 18px 0 0;
-      border: 0;
-      background: linear-gradient(90deg, var(--accent) 0%, rgba(191, 220, 236, 0.42) 100%);
-    }
-
-    .events-access-stage {
-      padding: 0 0 var(--section-py);
-    }
-
-    .events-access-shell {
-      position: relative;
-      overflow: hidden;
-      min-height: 440px;
-      border-radius: var(--radius-xl);
-      background: linear-gradient(135deg, var(--navy-deeper) 0%, var(--navy) 100%);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .events-access-shell::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(191, 220, 236, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(191, 220, 236, 0.08) 1px, transparent 1px);
-      background-size: 68px 68px;
-      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.86), transparent 92%);
-      opacity: 0.42;
-      pointer-events: none;
-    }
-
-    .events-access-shell::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 86% 18%, rgba(191, 220, 236, 0.2), transparent 24%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0) 100%);
-      pointer-events: none;
-    }
-
-    .events-access-shell .container {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
-      gap: clamp(28px, 4vw, 56px);
-      align-items: center;
-      min-height: 440px;
-      padding-top: 72px;
-      padding-bottom: 72px;
-    }
-
-    .events-access-copy h1 {
-      margin: 0;
-      max-width: 12ch;
-      color: var(--white);
-      font-size: clamp(2.6rem, 4.8vw, 4.1rem);
-      line-height: 1.02;
-    }
-
-    .events-access-copy p {
-      margin-top: 18px;
-      max-width: 56ch;
-      color: rgba(220, 235, 245, 0.82);
-      line-height: 1.84;
-    }
-
-    .events-access-copy .label {
-      display: block;
-      margin-bottom: 16px;
-      color: var(--light-blue);
-    }
-
-    .events-access-card {
-      padding: 30px;
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(191, 220, 236, 0.16);
-      background: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 22px 54px rgba(15, 30, 53, 0.16);
-      backdrop-filter: blur(14px) saturate(120%);
-      -webkit-backdrop-filter: blur(14px) saturate(120%);
-    }
-
-    .events-access-card h2 {
-      margin: 0;
-      color: var(--white);
-      font-size: 1.45rem;
-      line-height: 1.12;
-    }
-
-    .events-access-card p {
-      margin-top: 14px;
-      max-width: none;
-      color: rgba(220, 235, 245, 0.8);
-      line-height: 1.82;
-    }
-
-    .events-access-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 28px;
-    }
-
-    .events-access-card .btn-outline {
-      color: var(--white);
-      border-color: rgba(191, 220, 236, 0.32);
-    }
-
-    .events-access-card .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.14);
-      border-color: rgba(191, 220, 236, 0.5);
-      color: var(--white);
-    }
-
-    .events-reveal {
-      opacity: 0;
-      transform: translateY(26px);
-      transition:
-        opacity 760ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .events-reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .events-delay-1 { transition-delay: 90ms; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .events-reveal,
-      .events-reveal.is-visible {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-    }
-
-    @media (max-width: 980px) {
-      .events-hero {
-        min-height: auto;
-        padding-bottom: 76px;
-      }
-
-      .events-access-shell .container {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .events-hero h1 {
-        font-size: clamp(2.8rem, 16vw, 4.1rem);
-      }
-
-      .events-access-card {
-        padding: 28px 24px;
-      }
-
-      .events-access-actions {
-        flex-direction: column;
-      }
-
-      .events-access-actions .btn {
-        width: 100%;
-      }
-    }
-  </style>
 </head>
 <body class="events-page">
 
@@ -328,56 +32,28 @@
         <li><a href="careers.html">Careers</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <div class="nav-cta">
-        <a href="contact.html" class="btn btn-primary btn-sm">Get in Touch</a>
+      <div class="nav-cta nav-cta-placeholder" aria-hidden="true">
+        <a href="contact.html" class="btn btn-primary btn-sm" tabindex="-1">Get in Touch</a>
       </div>
     </div>
   </nav>
 
+  <div class="page-header-img">
+    <img class="ph-bg" src="../PotentialNewImages/image_6.png" alt="Golden grass stems in warm sunset light">
+    <div class="ph-overlay"></div>
+    <div class="container">
+      <span class="label">Hadean Ventures</span>
+      <h1>Annual Events</h1>
+    </div>
+  </div>
+
   <main>
-    <section class="events-hero">
-      <img class="events-hero-bg" src="../PotentialNewImages/image_6.png" alt="Golden grass stems in warm sunset light">
-      <div class="events-hero-overlay"></div>
-      <div class="events-hero-gridline"></div>
+    <section class="section">
       <div class="container">
-        <div class="events-hero-copy events-reveal is-visible">
-          <span class="events-kicker">Annual Gatherings</span>
-          <h1>Events</h1>
-          <p class="lead">Hadean Ventures brings together its network through private events at the intersection of science, investment, and healthcare innovation.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="events-section">
-      <div class="container">
-        <div class="events-intro events-reveal">
-          <span class="label">Introduction</span>
-          <h2>Focused gatherings for a highly relevant audience</h2>
-          <hr class="events-divider">
-          <p class="lead">Our events are designed to create high-signal conversations across the Hadean network, bringing together founders, portfolio leaders, investors, researchers, and selected operators in healthcare.</p>
-          <p>Rather than broad public programming, Hadean events are intentionally selective. The format is built around depth, relevance, and the quality of the room, not volume.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="events-access-stage">
-      <div class="events-access-shell">
-        <div class="container">
-          <div class="events-access-copy events-reveal is-visible">
-            <span class="label">Private Access</span>
-            <h1>Access is limited to registered users and invited guests</h1>
-            <p>Detailed event information is not published openly. If you have received an invitation, require access, or would like to enquire about participation, please contact the Hadean Ventures team directly.</p>
-          </div>
-
-          <div class="events-access-card events-reveal events-delay-1">
-            <span class="label">Enquiries</span>
-            <h2>Request access or ask about the program</h2>
-            <p>For password requests, access enquiries, or additional information on Hadean events, email us and we will direct the request to the relevant team.</p>
-            <div class="events-access-actions">
-              <a href="mailto:enquiries@hadeanventures.com" class="btn btn-primary btn-lg">Request Access</a>
-              <a href="contact.html" class="btn btn-outline btn-lg">Contact Page</a>
-            </div>
-          </div>
+        <div class="events-card">
+          <a href="https://hadeanventures.com/event/" class="btn btn-primary btn-lg">Log in</a>
+          <p>For password request, please contact:</p>
+          <a href="mailto:enquiries@hadeanventures.com" class="events-email">enquiries@hadeanventures.com</a>
         </div>
       </div>
     </section>
@@ -412,16 +88,32 @@
         </div>
         <div>
           <div class="footer-heading">Contact</div>
-          <div class="footer-contact-item">Oslo, Norway<br><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
-          <div class="footer-contact-item">Stockholm, Sweden<br>Karolinska Institute Science Park</div>
+          <div class="footer-contact-item"><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
         </div>
       </div>
-      <div class="footer-bottom">
+      <div class="footer-bottom footer-bottom-home">
         <span class="footer-copyright">© 2025 Hadean Ventures. All rights reserved.</span>
         <div class="footer-legal">
           <a href="privacy-policy.html" class="footer-disclosures">Privacy Policy</a>
           <span class="footer-legal-sep">|</span>
           <a href="sustainability-related-disclosures.html" class="footer-disclosures">Sustainability-Related Disclosures</a>
+        </div>
+        <div class="footer-membership" aria-label="Member of">
+          <span class="footer-membership-label">Member of</span>
+          <div class="footer-membership-logos">
+            <a href="https://www.investeurope.eu/" target="_blank" rel="noopener noreferrer" aria-label="Invest Europe">
+              <img src="../MemberOFbilder/MemberOF.jpg" alt="Invest Europe">
+            </a>
+            <a href="https://www.kvinnerifinans.com/" target="_blank" rel="noopener noreferrer" aria-label="Kvinner i Finans Charter">
+              <img src="../MemberOFbilder/KvinnerFinans.jpg" alt="Kvinner i Finans Charter">
+            </a>
+            <a href="https://www.nvca.no/" target="_blank" rel="noopener noreferrer" aria-label="NVCA">
+              <img src="../MemberOFbilder/NVCA.jpg" alt="NVCA">
+            </a>
+            <a href="https://www.level20.org/" target="_blank" rel="noopener noreferrer" aria-label="Level20">
+              <img src="../MemberOFbilder/LEVEL20.png" alt="Level20">
+            </a>
+          </div>
         </div>
         <div class="footer-accent"></div>
       </div>
@@ -432,8 +124,6 @@
     const nav = document.getElementById("mainNav");
     const toggle = document.getElementById("navToggle");
     const links = document.getElementById("navLinks");
-    const revealItems = document.querySelectorAll(".events-reveal");
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const syncToggleIcon = () => {
       const spans = toggle.querySelectorAll("span");
@@ -458,23 +148,6 @@
         syncToggleIcon();
       });
     });
-
-    if (reduceMotion || !("IntersectionObserver" in window)) {
-      revealItems.forEach((item) => item.classList.add("is-visible"));
-    } else {
-      const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
-          revealObserver.unobserve(entry.target);
-        });
-      }, {
-        threshold: 0.16,
-        rootMargin: "0px 0px -10% 0px"
-      });
-
-      revealItems.forEach((item) => revealObserver.observe(item));
-    }
 
     nav.classList.toggle("scrolled", window.scrollY > 20);
     syncToggleIcon();

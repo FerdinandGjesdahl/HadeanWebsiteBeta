@@ -3,57 +3,192 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sustainability-Related Disclosures — Hadean Ventures</title>
-  <meta name="description" content="Hadean Ventures sustainability-related disclosures in line with the Sustainable Finance Disclosures Regulation (SFDR).">
+  <title>Team Profile — Hadean Ventures</title>
+  <meta name="description" content="Team profile at Hadean Ventures.">
+  <script>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/main.css">
   <style>
-    .disclosure-section {
-      max-width: 800px;
-      margin: 0 auto;
+    .profile-hero {
+      padding-top: calc(var(--nav-height) + 64px);
+      padding-bottom: 80px;
+      background: linear-gradient(180deg, var(--surface) 0%, var(--white) 100%);
     }
-    .disclosure-subtitle {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-top: 8px;
-      line-height: 1.6;
-    }
-    .disclosure-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      margin-top: 48px;
-    }
-    .disclosure-card {
-      display: flex;
-      flex-direction: column;
+
+    .profile-back {
+      display: inline-flex;
       align-items: center;
-      text-align: center;
-      padding: 48px 36px;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 48px;
+      transition: color var(--transition);
+    }
+
+    .profile-back:hover {
+      color: var(--accent);
+    }
+
+    .profile-back svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .profile-layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .profile-photo-wrap {
+      position: sticky;
+      top: calc(var(--nav-height) + 32px);
+    }
+
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .profile-contact-card {
+      margin-top: 24px;
       background: var(--white);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-lg);
+      padding: 20px 24px;
       box-shadow: var(--shadow-sm);
-      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
     }
-    .disclosure-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--light-blue);
+
+    .profile-contact-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
     }
-    .disclosure-card h3 {
-      font-size: 1.2rem;
+
+    .profile-contact-email {
+      font-size: 0.88rem;
       color: var(--navy);
+      text-decoration: none;
+      font-weight: 500;
+      word-break: break-all;
+    }
+
+    .profile-contact-email:hover {
+      color: var(--accent);
+    }
+
+    .profile-info {
+      padding-top: 4px;
+    }
+
+    .profile-role-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
       margin-bottom: 12px;
     }
-    .disclosure-card p {
-      font-size: 0.9rem;
+
+    .profile-name {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+
+    .profile-divider {
+      width: 48px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+
+    .profile-bio p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .profile-bio p:last-child {
+      margin-bottom: 0;
+    }
+
+    .profile-education {
+      margin-top: 40px;
+      padding-top: 36px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .profile-education-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--text-muted);
-      max-width: none;
-      margin-bottom: 28px;
-      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .profile-education ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .profile-education li {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text);
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    .profile-education li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    @media (max-width: 860px) {
+      .profile-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .profile-photo-wrap {
+        position: static;
+        max-width: 280px;
+      }
     }
   </style>
 </head>
@@ -71,7 +206,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="../index.html">Home</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="team.html">Team</a></li>
+        <li><a href="team.html" class="active">Team</a></li>
         <li><a href="impact.html">Impact</a></li>
         <li><a href="investors.html">Investors</a></li>
         <li><a href="news.html">News</a></li>
@@ -85,33 +220,27 @@
     </div>
   </nav>
 
-  <!-- PAGE HEADER -->
-  <div class="page-header">
+  <!-- PROFILE -->
+  <section class="profile-hero">
     <div class="container">
-      <span class="label">Regulatory</span>
-      <h1>Sustainability-Related Disclosures</h1>
-      <p class="lead">In line with the Sustainable Finance Disclosures Regulation (SFDR)</p>
-    </div>
-  </div>
+      <a href="team.html" class="profile-back">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to Team
+      </a>
 
-  <!-- DISCLOSURE BUTTONS -->
-  <section class="section">
-    <div class="container">
-      <div class="disclosure-section">
-        <div class="disclosure-buttons">
+      <div class="profile-layout">
+        <div class="profile-photo-wrap">
+          <div class="profile-photo">
+            <img src="../hadean_images/DNA-e1570534014726.jpg" alt="Team profile">
+          </div>
+        </div>
 
-          <a href="fund-manager-disclosures.html" class="disclosure-card">
-            <h3>Fund Manager Disclosures</h3>
-            <p>Entity-level sustainability disclosures for Hadean Ventures as fund manager, including sustainability risk integration, principal adverse impacts, and remuneration policies.</p>
-            <span class="btn btn-primary">View Disclosures</span>
-          </a>
-
-          <a href="fund-disclosures.html" class="disclosure-card">
-            <h3>Fund Disclosures</h3>
-            <p>Product-level sustainability disclosures for Hadean Ventures' funds, including pre-contractual and periodic reporting under SFDR.</p>
-            <span class="btn btn-primary">View Disclosures</span>
-          </a>
-
+        <div class="profile-info">
+          <span class="profile-role-tag" id="profileRole">Team Member</span>
+          <h1 class="profile-name" id="profileName">Team Profile</h1>
+          <div class="profile-divider"></div>
         </div>
       </div>
     </div>
@@ -192,6 +321,19 @@
       spans[1].style.opacity = isOpen ? '0' : '';
       spans[2].style.transform = isOpen ? 'translateY(-7px) rotate(-45deg)' : '';
     });
+
+    const params = new URLSearchParams(window.location.search);
+    const profileName = params.get('name');
+    const profileRole = params.get('role');
+
+    if (profileName) {
+      document.getElementById('profileName').textContent = profileName;
+      document.title = `${profileName} — Hadean Ventures`;
+    }
+
+    if (profileRole) {
+      document.getElementById('profileRole').textContent = profileRole;
+    }
   </script>
 </body>
 </html>

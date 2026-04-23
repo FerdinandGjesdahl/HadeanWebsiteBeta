@@ -21,6 +21,44 @@
     .news-item::after {
       border-radius: 0;
     }
+    .news-load-more-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .news-item.news-item-peek {
+      max-height: 76px;
+      overflow: hidden;
+      opacity: 0.26;
+      pointer-events: none;
+      margin-top: -1px;
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.55) 62%, transparent 100%);
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.55) 62%, transparent 100%);
+    }
+    .news-item.news-item-peek::after {
+      opacity: 0;
+    }
+    .news-item[hidden],
+    .news-load-more-wrap[hidden] {
+      display: none;
+    }
+    .news-load-more {
+      min-width: 220px;
+    }
+    .news-load-more-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      line-height: 1;
+      font-weight: 700;
+      flex: 0 0 24px;
+    }
   </style>
 </head>
 <body>
@@ -45,8 +83,8 @@
         <li><a href="careers.html">Careers</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <div class="nav-cta">
-        <a href="contact.html" class="btn btn-primary btn-sm">Get in Touch</a>
+      <div class="nav-cta nav-cta-placeholder" aria-hidden="true">
+        <a href="contact.html" class="btn btn-primary btn-sm" tabindex="-1">Get in Touch</a>
       </div>
     </div>
   </nav>
@@ -66,7 +104,7 @@
   <!-- NEWS LIST -->
   <section class="section">
     <div class="container" style="max-width: 900px;">
-      <div class="news-list">
+      <div class="news-list" id="newsList">
 
         <div class="news-item">
           <div class="news-date">March 11, 2026</div>
@@ -559,6 +597,12 @@
         </div>
 
       </div>
+      <div class="news-load-more-wrap" id="newsLoadMoreWrap" hidden>
+        <button type="button" class="btn btn-outline news-load-more" id="newsLoadMore" aria-controls="newsList">
+          <span class="news-load-more-icon" aria-hidden="true">+</span>
+          <span id="newsLoadMoreLabel">Show 10 more</span>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -592,16 +636,32 @@
         </div>
         <div>
           <div class="footer-heading">Contact</div>
-          <div class="footer-contact-item">Oslo, Norway<br><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
-          <div class="footer-contact-item">Stockholm, Sweden<br>Karolinska Institute Science Park</div>
+          <div class="footer-contact-item"><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
         </div>
       </div>
-      <div class="footer-bottom">
+      <div class="footer-bottom footer-bottom-home">
         <span class="footer-copyright">© 2025 Hadean Ventures. All rights reserved.</span>
         <div class="footer-legal">
           <a href="privacy-policy.html" class="footer-disclosures">Privacy Policy</a>
           <span class="footer-legal-sep">|</span>
           <a href="sustainability-related-disclosures.html" class="footer-disclosures">Sustainability-Related Disclosures</a>
+        </div>
+        <div class="footer-membership" aria-label="Member of">
+          <span class="footer-membership-label">Member of</span>
+          <div class="footer-membership-logos">
+            <a href="https://www.investeurope.eu/" target="_blank" rel="noopener noreferrer" aria-label="Invest Europe">
+              <img src="../MemberOFbilder/MemberOF.jpg" alt="Invest Europe">
+            </a>
+            <a href="https://www.kvinnerifinans.com/" target="_blank" rel="noopener noreferrer" aria-label="Kvinner i Finans Charter">
+              <img src="../MemberOFbilder/KvinnerFinans.jpg" alt="Kvinner i Finans Charter">
+            </a>
+            <a href="https://www.nvca.no/" target="_blank" rel="noopener noreferrer" aria-label="NVCA">
+              <img src="../MemberOFbilder/NVCA.jpg" alt="NVCA">
+            </a>
+            <a href="https://www.level20.org/" target="_blank" rel="noopener noreferrer" aria-label="Level20">
+              <img src="../MemberOFbilder/LEVEL20.png" alt="Level20">
+            </a>
+          </div>
         </div>
         <div class="footer-accent"></div>
       </div>
@@ -621,6 +681,62 @@
       spans[1].style.opacity = isOpen ? '0' : '';
       spans[2].style.transform = isOpen ? 'translateY(-7px) rotate(-45deg)' : '';
     });
+
+    const NEWS_BATCH_SIZE = 10;
+    const newsList = document.getElementById('newsList');
+    const newsItems = newsList ? Array.from(newsList.querySelectorAll('.news-item')) : [];
+    const newsLoadMoreWrap = document.getElementById('newsLoadMoreWrap');
+    const newsLoadMoreBtn = document.getElementById('newsLoadMore');
+    const newsLoadMoreLabel = document.getElementById('newsLoadMoreLabel');
+    let visibleNewsCount = Math.min(NEWS_BATCH_SIZE, newsItems.length);
+
+    const updateNewsVisibility = () => {
+      const peekIndex = visibleNewsCount;
+
+      newsItems.forEach((item, index) => {
+        item.classList.remove('news-item-peek');
+        item.removeAttribute('aria-hidden');
+
+        if (index < visibleNewsCount) {
+          item.hidden = false;
+          return;
+        }
+
+        if (index === peekIndex) {
+          item.hidden = false;
+          item.classList.add('news-item-peek');
+          item.setAttribute('aria-hidden', 'true');
+          return;
+        }
+
+        item.hidden = true;
+      });
+
+      if (!newsLoadMoreWrap || !newsLoadMoreLabel) {
+        return;
+      }
+
+      const remainingNews = newsItems.length - visibleNewsCount;
+
+      if (remainingNews <= 0) {
+        newsLoadMoreWrap.hidden = true;
+        return;
+      }
+
+      newsLoadMoreWrap.hidden = false;
+      newsLoadMoreLabel.textContent = `Show ${Math.min(NEWS_BATCH_SIZE, remainingNews)} more`;
+    };
+
+    if (newsItems.length > 0) {
+      updateNewsVisibility();
+    }
+
+    if (newsLoadMoreBtn) {
+      newsLoadMoreBtn.addEventListener('click', () => {
+        visibleNewsCount = Math.min(visibleNewsCount + NEWS_BATCH_SIZE, newsItems.length);
+        updateNewsVisibility();
+      });
+    }
   </script>
 </body>
 </html>

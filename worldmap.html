@@ -183,20 +183,6 @@
       box-shadow: inset 0 0 14px rgba(191, 220, 236, 0.2);
     }
 
-    .leaflet-control-attribution {
-      margin: 0 14px 12px 0;
-      padding: 3px 8px;
-      border-radius: 7px;
-      border: 1px solid rgba(191, 220, 236, 0.2);
-      background: rgba(10, 20, 38, 0.6);
-      color: rgba(191, 220, 236, 0.65);
-      backdrop-filter: blur(4px);
-    }
-
-    .leaflet-control-attribution a {
-      color: rgba(191, 220, 236, 0.9);
-    }
-
     /* ── Tooltips ── */
     .leaflet-tooltip.country-popup {
       background: rgba(15, 30, 53, 0.96);
@@ -400,7 +386,7 @@
       scrollWheelZoom: false,
       doubleClickZoom: false,
       preferCanvas: true,
-      attributionControl: true,
+      attributionControl: false,
       worldCopyJump: false,
       maxBoundsViscosity: 0.7,
       inertiaDeceleration: 2500
@@ -624,11 +610,6 @@
       });
       marker.bindPopup(infoHtml, { className: "country-popup", offset: [0, -10] });
     });
-
-    L.control
-      .attribution({ prefix: "" })
-      .addAttribution('Leaflet | <a href="https://github.com/datasets/geo-countries" target="_blank" rel="noopener noreferrer">geo-countries</a>')
-      .addTo(map);
   </script>
 </body>
 </html>

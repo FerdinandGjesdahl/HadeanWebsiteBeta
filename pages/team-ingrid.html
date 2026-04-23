@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingrid Teigland Akay — Hadean Ventures</title>
+  <meta name="description" content="Ingrid Teigland Akay, Managing Partner at Hadean Ventures. Medical doctor and experienced investment professional.">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .profile-hero {
+      padding-top: calc(var(--nav-height) + 64px);
+      padding-bottom: 80px;
+      background: linear-gradient(180deg, var(--surface) 0%, var(--white) 100%);
+    }
+
+    .profile-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 48px;
+      transition: color var(--transition);
+    }
+
+    .profile-back:hover {
+      color: var(--accent);
+    }
+
+    .profile-back svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .profile-layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .profile-photo-wrap {
+      position: sticky;
+      top: calc(var(--nav-height) + 32px);
+    }
+
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .profile-contact-card {
+      margin-top: 24px;
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .profile-contact-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .profile-contact-email {
+      font-size: 0.88rem;
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 500;
+      word-break: break-all;
+    }
+
+    .profile-contact-email:hover {
+      color: var(--accent);
+    }
+
+    .profile-info {
+      padding-top: 4px;
+    }
+
+    .profile-role-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .profile-name {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+
+    .profile-divider {
+      width: 48px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+
+    .profile-bio p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .profile-bio p:last-child {
+      margin-bottom: 0;
+    }
+
+    .profile-education {
+      margin-top: 40px;
+      padding-top: 36px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .profile-education-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .profile-education ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .profile-education li {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text);
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    .profile-education li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    @media (max-width: 860px) {
+      .profile-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .profile-photo-wrap {
+        position: static;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <img src="../hadean_images/logo.png" alt="Hadean Ventures">
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="team.html" class="active">Team</a></li>
+        <li><a href="impact.html">Impact</a></li>
+        <li><a href="investors.html">Investors</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-cta nav-cta-placeholder" aria-hidden="true">
+        <a href="contact.html" class="btn btn-primary btn-sm" tabindex="-1">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PROFILE -->
+  <section class="profile-hero">
+    <div class="container">
+      <a href="team.html" class="profile-back">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to Team
+      </a>
+
+      <div class="profile-layout">
+        <div class="profile-photo-wrap">
+          <div class="profile-photo">
+            <img src="../hadean_images/Ingrid-Teigland-Akay-227x230.jpg" alt="Ingrid Teigland Akay">
+          </div>
+          <div class="profile-contact-card">
+            <div class="profile-contact-label">Contact</div>
+            <a href="mailto:ingrid.teigland.akay@hadeanventures.com" class="profile-contact-email">
+              ingrid.teigland.akay@hadeanventures.com
+            </a>
+          </div>
+        </div>
+
+        <div class="profile-info">
+          <span class="profile-role-tag">Managing Partner</span>
+          <h1 class="profile-name">Ingrid Teigland Akay</h1>
+          <div class="profile-divider"></div>
+
+          <div class="profile-bio">
+            <p>Ingrid is a medical doctor and experienced investment professional with background in healthcare, consumer goods and technology. During her investment career, Ingrid has invested into and supported start-up companies globally in different phases of development, from R&amp;D to commercial stage.</p>
+            <p>As a medical doctor, she gained broad clinical experience working in diverse fields such as general medicine, surgery and psychiatry, with exposure to both the public and private sector in several European countries in Scandinavia, Germany and the UK.</p>
+          </div>
+
+          <div class="profile-education">
+            <div class="profile-education-title">Education</div>
+            <ul>
+              <li>Medical Degree — Medizinische Hochschule Hannover, Germany</li>
+              <li>MBA with Finance Concentration — London Business School</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <img src="../hadean_images/logo.png" alt="Hadean Ventures">
+          </a>
+          <p class="footer-tagline">Investing in the future of healthcare since 2017.</p>
+        </div>
+        <div>
+          <div class="footer-heading">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="impact.html">Impact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Company</div>
+          <ul class="footer-links">
+            <li><a href="news.html">News</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Contact</div>
+          <div class="footer-contact-item"><a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a></div>
+        </div>
+      </div>
+      <div class="footer-bottom footer-bottom-home">
+        <span class="footer-copyright">© 2025 Hadean Ventures. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="privacy-policy.html" class="footer-disclosures">Privacy Policy</a>
+          <span class="footer-legal-sep">|</span>
+          <a href="sustainability-related-disclosures.html" class="footer-disclosures">Sustainability-Related Disclosures</a>
+        </div>
+        <div class="footer-membership" aria-label="Member of">
+          <span class="footer-membership-label">Member of</span>
+          <div class="footer-membership-logos">
+            <a href="https://www.investeurope.eu/" target="_blank" rel="noopener noreferrer" aria-label="Invest Europe">
+              <img src="../MemberOFbilder/MemberOF.jpg" alt="Invest Europe">
+            </a>
+            <a href="https://www.kvinnerifinans.com/" target="_blank" rel="noopener noreferrer" aria-label="Kvinner i Finans Charter">
+              <img src="../MemberOFbilder/KvinnerFinans.jpg" alt="Kvinner i Finans Charter">
+            </a>
+            <a href="https://www.nvca.no/" target="_blank" rel="noopener noreferrer" aria-label="NVCA">
+              <img src="../MemberOFbilder/NVCA.jpg" alt="NVCA">
+            </a>
+            <a href="https://www.level20.org/" target="_blank" rel="noopener noreferrer" aria-label="Level20">
+              <img src="../MemberOFbilder/LEVEL20.png" alt="Level20">
+            </a>
+          </div>
+        </div>
+        <div class="footer-accent"></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
+      const spans = toggle.querySelectorAll('span');
+      const isOpen = links.classList.contains('open');
+      spans[0].style.transform = isOpen ? 'translateY(7px) rotate(45deg)' : '';
+      spans[1].style.opacity = isOpen ? '0' : '';
+      spans[2].style.transform = isOpen ? 'translateY(-7px) rotate(-45deg)' : '';
+    });
+  </script>
+</body>
+</html>
