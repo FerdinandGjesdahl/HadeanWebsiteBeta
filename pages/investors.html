@@ -13,7 +13,7 @@
     /* ── Investor page ── */
     .inv-hero {
       position: relative;
-      min-height: 46vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       text-align: center;
@@ -52,37 +52,60 @@
       color: rgba(255,255,255,0.92);
     }
 
-    /* ── Donut charts section ── */
-    .inv-mix {
-      padding: 0 0 64px;
+    /* ── Donut charts inside hero ── */
+    .inv-charts-hero {
+      margin-top: 64px;
       text-align: center;
+    }
+    .inv-contact-hero {
+      margin-top: 72px;
+      text-align: center;
+    }
+    .inv-contact-hero p {
+      font-size: 0.95rem;
+      color: rgba(191,220,236,0.7);
+      margin: 0 0 16px;
+      max-width: none;
+    }
+    .inv-contact-hero a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.92);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.4);
+      padding-bottom: 2px;
+      transition: color 0.28s, border-color 0.28s;
+    }
+    .inv-contact-hero a:hover {
+      color: #fff;
+      border-color: #fff;
     }
     .inv-mix-label {
       display: block;
       text-align: center;
-      font-size: 0.75rem;
+      font-size: 0.68rem;
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 56px;
+      color: rgba(191,220,236,0.7);
+      margin-bottom: 28px;
     }
     .inv-charts {
       display: flex;
       justify-content: center;
-      gap: 40px;
+      gap: 36px;
       flex-wrap: wrap;
     }
     .inv-chart-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
+      gap: 10px;
     }
     .inv-chart-ring {
       position: relative;
-      width: 160px;
-      height: 160px;
+      width: 120px;
+      height: 120px;
     }
     .inv-chart-ring svg {
       transform: rotate(-90deg);
@@ -93,52 +116,45 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: 300;
-      color: var(--navy);
+      color: #ffffff;
       letter-spacing: -0.02em;
     }
     .inv-chart-name {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: rgba(191,220,236,0.7);
     }
 
     /* progress ring animation */
     .ring-track {
       fill: none;
-      stroke: rgba(33,66,116,0.1);
+      stroke: rgba(191,220,236,0.15);
       stroke-width: 3;
     }
     .ring-arc {
       fill: none;
-      stroke: var(--navy);
+      stroke: rgba(255,255,255,0.85);
       stroke-width: 3.5;
       stroke-linecap: round;
-      stroke-dashoffset: -97.4;
+      stroke-dashoffset: -72.3;
       transition: stroke-dasharray 1.2s cubic-bezier(0.4,0,0.2,1);
     }
     .ring-arc.animate-in {
       animation: drawArc 1.4s cubic-bezier(0.4,0,0.2,1) forwards;
     }
     @keyframes drawArc {
-      from { stroke-dasharray: 0 389.6; }
-    }
-
-    /* divider between hero and charts */
-    .inv-divider {
-      width: 1px;
-      height: 32px;
-      background: var(--border);
-      margin: 0 auto 32px;
+      from { stroke-dasharray: 0 289.0; }
     }
 
     @media (max-width: 600px) {
-      .inv-charts { gap: 24px; }
-      .inv-chart-ring { width: 130px; height: 130px; }
-      .inv-chart-pct { font-size: 1.6rem; }
+      .inv-charts { gap: 20px; }
+      .inv-chart-ring { width: 90px; height: 90px; }
+      .inv-chart-pct { font-size: 1.2rem; }
+      .inv-chart-name { font-size: 0.58rem; }
     }
   </style>
 </head>
@@ -164,13 +180,11 @@
         <li><a href="careers.html">Careers</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <div class="nav-cta nav-cta-placeholder" aria-hidden="true">
-        <a href="contact.html" class="btn btn-primary btn-sm" tabindex="-1">Get in Touch</a>
-      </div>
+      <a href="https://portal.entrilia.com/hadeanventures" class="nav-portal-link" target="_blank" rel="noopener noreferrer">CLICK HERE FOR INVESTOR PORTAL</a>
     </div>
   </nav>
 
-  <!-- HERO TEXT -->
+  <!-- HERO TEXT + CHARTS -->
   <section class="inv-hero">
     <div class="inv-hero-bg"></div>
     <div class="inv-hero-overlay"></div>
@@ -178,82 +192,58 @@
       <p class="inv-hero-text">
         Hadean Ventures funds are supported by leading European and US-based institutional and private investors, as well as the government backed fund investors Saminvest AB, Argentum and Investinor
       </p>
-    </div>
-  </section>
-
-  <!-- INVESTOR MIX -->
-  <section class="inv-mix">
-    <div class="container">
-      <div class="inv-divider"></div>
-      <p class="inv-mix-label">Hadean Capital I &amp; Hadean Capital II</p>
-      <div class="inv-charts">
-
-        <!-- 43% Fund of Funds — circumference 389.6, arc = 167.5 -->
-        <div class="inv-chart-item">
-          <div class="inv-chart-ring">
-            <svg viewBox="0 0 160 160" width="160" height="160">
-              <circle class="ring-track" cx="80" cy="80" r="62"/>
-              <circle class="ring-arc" cx="80" cy="80" r="62"
-                stroke-dasharray="167.5 389.6"/>
-            </svg>
-            <div class="inv-chart-pct">43%</div>
+      <div class="inv-charts-hero">
+        <div class="inv-charts">
+          <div class="inv-chart-item">
+            <div class="inv-chart-ring">
+              <svg viewBox="0 0 120 120" width="120" height="120">
+                <circle class="ring-track" cx="60" cy="60" r="46"/>
+                <circle class="ring-arc" cx="60" cy="60" r="46"
+                  stroke-dasharray="124.3 289.0"/>
+              </svg>
+              <div class="inv-chart-pct">43%</div>
+            </div>
+            <div class="inv-chart-name">Fund of Funds</div>
           </div>
-          <div class="inv-chart-name">Fund of Funds</div>
-        </div>
-
-        <!-- 21% Pension Funds — arc = 81.8 -->
-        <div class="inv-chart-item">
-          <div class="inv-chart-ring">
-            <svg viewBox="0 0 160 160" width="160" height="160">
-              <circle class="ring-track" cx="80" cy="80" r="62"/>
-              <circle class="ring-arc" cx="80" cy="80" r="62"
-                stroke-dasharray="81.8 389.6"/>
-            </svg>
-            <div class="inv-chart-pct">21%</div>
+          <div class="inv-chart-item">
+            <div class="inv-chart-ring">
+              <svg viewBox="0 0 120 120" width="120" height="120">
+                <circle class="ring-track" cx="60" cy="60" r="46"/>
+                <circle class="ring-arc" cx="60" cy="60" r="46"
+                  stroke-dasharray="60.7 289.0"/>
+              </svg>
+              <div class="inv-chart-pct">21%</div>
+            </div>
+            <div class="inv-chart-name">Pension Funds</div>
           </div>
-          <div class="inv-chart-name">Pension Funds</div>
-        </div>
-
-        <!-- 27% Family Offices — arc = 105.2 -->
-        <div class="inv-chart-item">
-          <div class="inv-chart-ring">
-            <svg viewBox="0 0 160 160" width="160" height="160">
-              <circle class="ring-track" cx="80" cy="80" r="62"/>
-              <circle class="ring-arc" cx="80" cy="80" r="62"
-                stroke-dasharray="105.2 389.6"/>
-            </svg>
-            <div class="inv-chart-pct">27%</div>
+          <div class="inv-chart-item">
+            <div class="inv-chart-ring">
+              <svg viewBox="0 0 120 120" width="120" height="120">
+                <circle class="ring-track" cx="60" cy="60" r="46"/>
+                <circle class="ring-arc" cx="60" cy="60" r="46"
+                  stroke-dasharray="78.0 289.0"/>
+              </svg>
+              <div class="inv-chart-pct">27%</div>
+            </div>
+            <div class="inv-chart-name">Family Offices</div>
           </div>
-          <div class="inv-chart-name">Family Offices</div>
-        </div>
-
-        <!-- 9% Foundations — arc = 35.1 -->
-        <div class="inv-chart-item">
-          <div class="inv-chart-ring">
-            <svg viewBox="0 0 160 160" width="160" height="160">
-              <circle class="ring-track" cx="80" cy="80" r="62"/>
-              <circle class="ring-arc" cx="80" cy="80" r="62"
-                stroke-dasharray="35.1 389.6"/>
-            </svg>
-            <div class="inv-chart-pct">9%</div>
+          <div class="inv-chart-item">
+            <div class="inv-chart-ring">
+              <svg viewBox="0 0 120 120" width="120" height="120">
+                <circle class="ring-track" cx="60" cy="60" r="46"/>
+                <circle class="ring-arc" cx="60" cy="60" r="46"
+                  stroke-dasharray="26.0 289.0"/>
+              </svg>
+              <div class="inv-chart-pct">9%</div>
+            </div>
+            <div class="inv-chart-name">Foundations</div>
           </div>
-          <div class="inv-chart-name">Foundations</div>
         </div>
-
       </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section section-alt" style="padding-top: 64px; padding-bottom: 64px; text-align: center;">
-    <div class="container">
-      <p style="font-size: 1rem; color: var(--text-muted); margin: 0 0 24px; line-height: 1.7;">
-        Should you require information regarding our fund,<br>
-        please contact:
-      </p>
-      <a href="mailto:enquiries@hadeanventures.com" class="btn btn-outline" style="margin-bottom: 16px;">enquiries@hadeanventures.com</a>
-      <p style="margin: 24px 0 12px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);">Investor Portal</p>
-      <a href="https://portal.entrilia.com/hadeanventures" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Access Investor Portal</a>
+      <div class="inv-contact-hero">
+        <p>Should you require information regarding our fund, please contact:</p>
+        <a href="mailto:enquiries@hadeanventures.com">enquiries@hadeanventures.com</a>
+      </div>
     </div>
   </section>
 
@@ -311,7 +301,7 @@
             <a href="https://www.level20.org/" target="_blank" rel="noopener noreferrer" aria-label="Level20">
               <img src="../MemberOFbilder/LEVEL20.png" alt="Level20">
             </a>
-            <a href="https://www.sustainabilityvcinitiative.com/" target="_blank" rel="noopener noreferrer" aria-label="Sustainability VC Initiative">
+            <a href="https://www.linkedin.com/company/life-science-vc-sustainability-initiative/posts/?feedView=all" target="_blank" rel="noopener noreferrer" aria-label="Sustainability VC Initiative">
               <img src="../MemberOFbilder/Sustainability.jpg" alt="Sustainability VC Initiative">
             </a>
           </div>

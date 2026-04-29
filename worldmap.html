@@ -149,8 +149,8 @@
       height: 7px;
       margin-right: 7px;
       border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 12px rgba(206, 51, 45, 0.7);
+      background: #5ab4f5;
+      box-shadow: 0 0 12px rgba(90, 180, 245, 0.7);
       animation: pulse 2.6s ease-in-out infinite;
       vertical-align: middle;
     }
@@ -219,68 +219,23 @@
       font-weight: 700;
     }
 
-    /* ── Legend ── */
-    .legend {
-      position: absolute;
-      right: 22px;
-      bottom: 34px;
-      z-index: 1200;
-      padding: 13px 15px;
-      border-radius: 12px;
-      border: 1px solid var(--panel-border);
-      background: var(--panel);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 28px rgba(4, 9, 20, 0.38);
-      min-width: 180px;
-    }
-
-    .legend-title {
-      margin: 0 0 10px;
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--light-blue);
-    }
-
-    .legend-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin: 6px 0;
-      color: rgba(255, 255, 255, 0.88);
-      font-size: 0.82rem;
-      font-weight: 600;
-    }
-
-    .legend-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      box-shadow: 0 0 9px currentColor;
-      flex: 0 0 auto;
-    }
-
-    .legend-dot-scandinavia { color: var(--marker-scan); background: var(--marker-scan); }
-    .legend-dot-europe      { color: var(--marker-eu);   background: var(--marker-eu);   }
-    .legend-dot-world       { color: var(--marker-world);background: var(--marker-world);}
-
     /* ── Company markers ── */
     .company-marker {
       width: 13px;
       height: 13px;
       border-radius: 50%;
-      border: 1.8px solid rgba(255, 255, 255, 0.68);
+      border: 1.8px solid rgba(255, 255, 255, 0.8);
       box-shadow:
-        0 0 0 5px color-mix(in srgb, var(--marker-color) 16%, transparent),
-        0 0 18px color-mix(in srgb, var(--marker-color) 66%, transparent);
+        0 0 0 6px rgba(100, 180, 255, 0.18),
+        0 0 24px rgba(100, 180, 255, 0.7),
+        0 0 48px rgba(60, 140, 240, 0.35);
       background: var(--marker-color);
       animation: markerPulse 2.8s ease-in-out infinite;
     }
 
-    .company-marker-scandinavia { --marker-color: var(--accent); }
-    .company-marker-europe      { --marker-color: var(--accent); }
-    .company-marker-world       { --marker-color: var(--accent); }
+    .company-marker-scandinavia { --marker-color: #5ab4f5; }
+    .company-marker-europe      { --marker-color: #5ab4f5; }
+    .company-marker-world       { --marker-color: #5ab4f5; }
 
     /* ── Tooltip content ── */
     .company-tooltip {
@@ -343,11 +298,6 @@
         margin-right: 12px;
       }
 
-      .legend {
-        right: 12px;
-        left: 12px;
-        bottom: 14px;
-      }
     }
   </style>
 </head>
@@ -557,12 +507,6 @@
       return "company-marker company-marker-world";
     }
 
-    function regionLabel(region) {
-      if (region === "scandinavia") return "Scandinavia";
-      if (region === "europe")      return "Europe";
-      return "Rest of World";
-    }
-
     const cityOffsetCounter = new Map();
     function adjustedCoords(company) {
       const key = company.city;
@@ -590,7 +534,7 @@
         `<p class="company-tooltip">` +
         `<strong>${company.name}</strong>` +
         `${company.info}` +
-        `<span class="meta">${company.city} · ${regionLabel(company.region)}</span>` +
+        `<span class="meta">${company.city}</span>` +
         `</p>`;
 
       marker.bindTooltip(infoHtml, {

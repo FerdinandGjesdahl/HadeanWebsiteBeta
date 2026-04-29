@@ -32,9 +32,7 @@
         <li><a href="careers.html">Careers</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <div class="nav-cta nav-cta-placeholder" aria-hidden="true">
-        <a href="contact.html" class="btn btn-primary btn-sm" tabindex="-1">Get in Touch</a>
-      </div>
+      <a href="https://portal.entrilia.com/hadeanventures" class="nav-portal-link" target="_blank" rel="noopener noreferrer">CLICK HERE FOR INVESTOR PORTAL</a>
     </div>
   </nav>
 
@@ -53,7 +51,10 @@
         <div class="events-card">
           <a href="https://hadeanventures.com/event/" class="btn btn-primary btn-lg">Log in</a>
           <p>For password request, please contact:</p>
-          <a href="mailto:enquiries@hadeanventures.com" class="events-email">enquiries@hadeanventures.com</a>
+          <div style="position: relative; display: inline-block;">
+            <a href="mailto:enquiries@hadeanventures.com" class="events-email">enquiries@hadeanventures.com</a>
+            <button type="button" id="copyEmailBtn" title="Copy email" style="position:absolute;left:calc(100% + 8px);top:50%;transform:translateY(-50%);background:none;border:1px solid var(--border);border-radius:4px;padding:4px 8px;cursor:pointer;color:var(--text-muted);transition:color 0.2s,border-color 0.2s;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;" onmouseover="this.style.color='var(--navy)';this.style.borderColor='var(--navy)'" onmouseout="this.style.color='var(--text-muted)';this.style.borderColor='var(--border)'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+          </div>
         </div>
       </div>
     </section>
@@ -112,7 +113,7 @@
             <a href="https://www.level20.org/" target="_blank" rel="noopener noreferrer" aria-label="Level20">
               <img src="../MemberOFbilder/LEVEL20.png" alt="Level20">
             </a>
-            <a href="https://www.sustainabilityvcinitiative.com/" target="_blank" rel="noopener noreferrer" aria-label="Sustainability VC Initiative">
+            <a href="https://www.linkedin.com/company/life-science-vc-sustainability-initiative/posts/?feedView=all" target="_blank" rel="noopener noreferrer" aria-label="Sustainability VC Initiative">
               <img src="../MemberOFbilder/Sustainability.jpg" alt="Sustainability VC Initiative">
             </a>
           </div>
@@ -123,6 +124,15 @@
   </footer>
 
   <script>
+    var copyBtn = document.getElementById('copyEmailBtn');
+    var copySvg = copyBtn.innerHTML;
+    copyBtn.addEventListener('click', function() {
+      navigator.clipboard.writeText('enquiries@hadeanventures.com').then(function() {
+        copyBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+        setTimeout(function() { copyBtn.innerHTML = copySvg; }, 1500);
+      });
+    });
+
     const nav = document.getElementById("mainNav");
     const toggle = document.getElementById("navToggle");
     const links = document.getElementById("navLinks");
