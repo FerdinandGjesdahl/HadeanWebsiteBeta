@@ -14,6 +14,27 @@
     <style>
         #ai-feedback { overflow: hidden; resize: none; }
 
+        .diversity-select {
+            width: 100%;
+            padding: 13px 36px 13px 14px;
+            border: 1px solid #c8d8e4;
+            border-radius: 2px;
+            background: #fafcfd url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23214274' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+            appearance: none;
+            -webkit-appearance: none;
+            color: var(--navy-deeper);
+            font: inherit;
+            font-size: 0.96rem;
+            cursor: pointer;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+        .diversity-select:focus {
+            outline: none;
+            border-color: var(--navy);
+            background-color: var(--white);
+            box-shadow: 0 0 0 3px rgba(33,66,116,0.09);
+        }
+
         .submission-page { background: #f8f9fb; }
 
         /* ── Hero ── */
@@ -735,10 +756,10 @@
             formData.append("ceo-name", document.getElementById("ceo-name").value.trim());
             formData.append("contact-at-company", document.getElementById("contact-at-company").value.trim());
             formData.append("location", document.getElementById("location").value.trim());
-            const ceoGender = document.querySelector("input[name='ceo-gender']:checked");
-            const foundersGender = document.querySelector("input[name='founders-gender']:checked");
-            if (ceoGender) formData.append("ceo-gender", ceoGender.value);
-            if (foundersGender) formData.append("founders-gender", foundersGender.value);
+            const ceoGender = document.getElementById("ceo-gender");
+            const foundersGender = document.getElementById("founders-gender");
+            if (ceoGender && ceoGender.value) formData.append("ceo-gender", ceoGender.value);
+            if (foundersGender && foundersGender.value) formData.append("founders-gender", foundersGender.value);
             formData.append("female-management", document.getElementById("female-management").value);
             formData.append("female-board", document.getElementById("female-board").value);
             if (uploadedFile) formData.append("file", uploadedFile);
@@ -816,8 +837,9 @@
             });
             document.getElementById("error-message").textContent = "";
             document.getElementById("error-message").classList.remove("is-visible");
-            ["ceo-gender","founders-gender"].forEach(name => {
-                document.getElementsByName(name).forEach(r => r.checked = false);
+            ["ceo-gender","founders-gender"].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = "";
             });
             removeFile();
             document.querySelector(".review-table-container").style.display = "none";
@@ -1001,39 +1023,26 @@
                         </div>
                         <div class="form-block-body">
                             <div class="choice-grid">
-                                <div>
-                                    <span class="choice-field-label">Please state the gender of the CEO</span>
-                                    <div class="choice-list">
-                                        <label class="choice-item" for="male-ceo">
-                                            <input type="radio" id="male-ceo" name="ceo-gender" value="male">
-                                            <span>Male</span>
-                                        </label>
-                                        <label class="choice-item" for="female-ceo">
-                                            <input type="radio" id="female-ceo" name="ceo-gender" value="female">
-                                            <span>Female</span>
-                                        </label>
-                                        <label class="choice-item" for="other-ceo">
-                                            <input type="radio" id="other-ceo" name="ceo-gender" value="other">
-                                            <span>Other</span>
-                                        </label>
-                                    </div>
+                                <div class="field-group">
+                                    <label class="field-label" for="ceo-gender">Gender of the CEO</label>
+                                    <select id="ceo-gender" name="ceo-gender" class="diversity-select">
+                                        <option value="">Select…</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                        <option value="prefer-not-to-say">Prefer not to say</option>
+                                    </select>
                                 </div>
-                                <div>
-                                    <span class="choice-field-label">Please state the gender of the founder(s)</span>
-                                    <div class="choice-list">
-                                        <label class="choice-item" for="male-founder">
-                                            <input type="radio" id="male-founder" name="founders-gender" value="male">
-                                            <span>Male</span>
-                                        </label>
-                                        <label class="choice-item" for="female-founder">
-                                            <input type="radio" id="female-founder" name="founders-gender" value="female">
-                                            <span>Female</span>
-                                        </label>
-                                        <label class="choice-item" for="other-founder">
-                                            <input type="radio" id="other-founder" name="founders-gender" value="other">
-                                            <span>Other</span>
-                                        </label>
-                                    </div>
+                                <div class="field-group">
+                                    <label class="field-label" for="founders-gender">Gender of the founder(s)</label>
+                                    <select id="founders-gender" name="founders-gender" class="diversity-select">
+                                        <option value="">Select…</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="mixed">Mixed</option>
+                                        <option value="other">Other</option>
+                                        <option value="prefer-not-to-say">Prefer not to say</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="percentage-grid">
@@ -1120,7 +1129,6 @@
                     <a href="../index.html" class="nav-logo">
                         <img src="../hadean_images/logo.png" alt="Hadean Ventures">
                     </a>
-                    <p class="footer-tagline">Investing in the future of healthcare since 2017.</p>
                 </div>
                 <div>
                     <div class="footer-heading">Navigation</div>
@@ -1166,6 +1174,9 @@
                         </a>
                         <a href="https://www.level20.org/" target="_blank" rel="noopener noreferrer" aria-label="Level20">
                             <img src="../MemberOFbilder/LEVEL20.png" alt="Level20">
+                        </a>
+                        <a href="https://www.sustainabilityvcinitiative.com/" target="_blank" rel="noopener noreferrer" aria-label="Sustainability VC Initiative">
+                            <img src="../MemberOFbilder/Sustainability.jpg" alt="Sustainability VC Initiative">
                         </a>
                     </div>
                 </div>

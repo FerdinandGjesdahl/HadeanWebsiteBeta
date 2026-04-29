@@ -10,6 +10,50 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .portfolio-filters-dropdowns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: flex-end;
+      margin-bottom: 36px;
+    }
+    .filter-dropdown-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .filter-dropdown-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .filter-dropdown {
+      appearance: none;
+      -webkit-appearance: none;
+      padding: 10px 36px 10px 14px;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--navy-deeper);
+      background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23214274' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      cursor: pointer;
+      min-width: 180px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .filter-dropdown:focus {
+      outline: none;
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(33,66,116,0.1);
+    }
+    .filter-dropdown:hover {
+      border-color: var(--navy);
+    }
+  </style>
 </head>
 <body class="portfolio-page">
 
@@ -46,29 +90,52 @@
     <div class="container">
       <span class="label">Our Investments</span>
       <h1>Portfolio</h1>
-      <p class="lead">A selection of companies in which Hadean Ventures has invested — spanning RNA therapeutics, medical devices, diagnostics, and digital health.</p>
     </div>
   </div>
 
   <!-- PORTFOLIO GRID -->
   <section class="section">
     <div class="container">
-      <div class="portfolio-filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="oncology">Oncology</button>
-        <button class="filter-btn" data-filter="cardiovascular">Cardiovascular</button>
-        <button class="filter-btn" data-filter="neurology">Neurology</button>
-        <button class="filter-btn" data-filter="digital-health">Digital Health</button>
-        <button class="filter-btn" data-filter="rare-disease">Rare Disease</button>
-        <button class="filter-btn" data-filter="medical-device">Medical Device</button>
-        <button class="filter-btn" data-filter="diagnostics">Diagnostics</button>
-        <button class="filter-btn" data-filter="immunology">Immunology</button>
-        <button class="filter-btn" data-filter="gene-therapy">Gene Therapy</button>
-        <button class="filter-btn" data-filter="ophthalmology">Ophthalmology</button>
-        <button class="filter-btn" data-filter="norway">Norway</button>
-        <button class="filter-btn" data-filter="sweden">Sweden</button>
-        <button class="filter-btn" data-filter="germany">Germany</button>
-        <button class="filter-btn" data-filter="exit">Exits</button>
+      <div class="portfolio-filters portfolio-filters-dropdowns">
+        <div class="filter-dropdown-group">
+          <label class="filter-dropdown-label" for="filter-indication">Indications</label>
+          <select id="filter-indication" class="filter-dropdown">
+            <option value="all">All Indications</option>
+            <option value="oncology">Oncology</option>
+            <option value="cardiovascular">Cardiovascular</option>
+            <option value="neurology">Neurology</option>
+            <option value="digital-health">Digital Health</option>
+            <option value="rare-disease">Rare Disease</option>
+            <option value="medical-device">Medical Device</option>
+            <option value="diagnostics">Diagnostics</option>
+            <option value="immunology">Immunology</option>
+            <option value="gene-therapy">Gene Therapy</option>
+            <option value="ophthalmology">Ophthalmology</option>
+          </select>
+        </div>
+        <div class="filter-dropdown-group">
+          <label class="filter-dropdown-label" for="filter-status">Status</label>
+          <select id="filter-status" class="filter-dropdown">
+            <option value="all">All</option>
+            <option value="current">Current Portfolio</option>
+            <option value="exit">Exits</option>
+          </select>
+        </div>
+        <div class="filter-dropdown-group">
+          <label class="filter-dropdown-label" for="filter-country">Country</label>
+          <select id="filter-country" class="filter-dropdown">
+            <option value="all">All Countries</option>
+            <option value="norway">Norway</option>
+            <option value="sweden">Sweden</option>
+            <option value="germany">Germany</option>
+            <option value="denmark">Denmark</option>
+            <option value="spain">Spain</option>
+            <option value="finland">Finland</option>
+            <option value="austria">Austria</option>
+            <option value="usa">USA</option>
+            <option value="france">France</option>
+          </select>
+        </div>
       </div>
       <div class="portfolio-grid">
 
@@ -308,7 +375,6 @@
       <img src="../PotentialNewImages/Sea.png" alt="Ocean horizon" class="split-cta-bg">
       <div class="split-cta-overlay"></div>
       <div class="split-cta-content">
-        <span class="split-cta-label">/ Invest</span>
         <h2 class="split-cta-heading">Invest with us</h2>
       </div>
       <div class="split-cta-btn">
@@ -320,7 +386,6 @@
       <img src="../PotentialNewImages/high_tech_lab.jpg" alt="High-tech laboratory" class="split-cta-bg">
       <div class="split-cta-overlay"></div>
       <div class="split-cta-content">
-        <span class="split-cta-label">/ Pitch</span>
         <h2 class="split-cta-heading">Pitch to us</h2>
       </div>
       <div class="split-cta-btn">
@@ -338,7 +403,6 @@
           <a href="../index.html" class="nav-logo">
             <img src="../hadean_images/logo.png" alt="Hadean Ventures">
           </a>
-          <p class="footer-tagline">Investing in the future of healthcare since 2017.</p>
         </div>
         <div>
           <div class="footer-heading">Navigation</div>
@@ -385,6 +449,9 @@
             <a href="https://www.level20.org/" target="_blank" rel="noopener noreferrer" aria-label="Level20">
               <img src="../MemberOFbilder/LEVEL20.png" alt="Level20">
             </a>
+            <a href="https://www.sustainabilityvcinitiative.com/" target="_blank" rel="noopener noreferrer" aria-label="Sustainability VC Initiative">
+              <img src="../MemberOFbilder/Sustainability.jpg" alt="Sustainability VC Initiative">
+            </a>
           </div>
         </div>
         <div class="footer-accent"></div>
@@ -424,32 +491,40 @@
     });
 
     // Portfolio filtering
-    const filterBtns = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.portfolio-card');
+    const filterIndication = document.getElementById('filter-indication');
+    const filterStatus = document.getElementById('filter-status');
+    const filterCountry = document.getElementById('filter-country');
 
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
+    function applyFilters() {
+      const indication = filterIndication ? filterIndication.value : 'all';
+      const status = filterStatus ? filterStatus.value : 'all';
+      const country = filterCountry ? filterCountry.value : 'all';
 
-        cards.forEach(card => {
-          if (filter === 'all') {
-            card.classList.remove('hidden');
-            card.classList.add('is-visible');
-          } else {
-            const tags = (card.dataset.tags || '').split(' ');
-            const country = card.dataset.country || '';
-            if (tags.includes(filter) || country === filter) {
-              card.classList.remove('hidden');
-              card.classList.add('is-visible');
-            } else {
-              card.classList.add('hidden');
-            }
-          }
-        });
+      cards.forEach(card => {
+        const tags = (card.dataset.tags || '').split(' ');
+        const cardCountry = card.dataset.country || '';
+        const isExit = tags.includes('exit');
+
+        const indicationMatch = indication === 'all' || tags.includes(indication);
+        const statusMatch = status === 'all' ||
+          (status === 'exit' && isExit) ||
+          (status === 'current' && !isExit);
+        const countryMatch = country === 'all' || cardCountry === country;
+
+        if (indicationMatch && statusMatch && countryMatch) {
+          card.classList.remove('hidden');
+          card.classList.add('is-visible');
+        } else {
+          card.classList.add('hidden');
+          card.classList.remove('is-visible');
+        }
       });
-    });
+    }
+
+    if (filterIndication) filterIndication.addEventListener('change', applyFilters);
+    if (filterStatus) filterStatus.addEventListener('change', applyFilters);
+    if (filterCountry) filterCountry.addEventListener('change', applyFilters);
 
     // Scroll reveal
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

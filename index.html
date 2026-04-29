@@ -9,6 +9,31 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
+  <style>
+    .hero-cycle-word {
+      display: inline-block;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .hero-cycle-word.fade-out {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    .team-marquee-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--navy);
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 2px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .team-marquee-link:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+  </style>
 </head>
 <body>
 
@@ -49,8 +74,7 @@
     <div class="hero-lines"></div>
     <div class="container">
       <div class="hero-content">
-        <span class="label animate-fade-up animate-delay-1">European Life Science VC</span>
-        <h1 class="animate-fade-up animate-delay-2">Investing in the future of healthcare</h1>
+        <h1 class="animate-fade-up animate-delay-2">Investing in the future of <span id="hero-cycle-word" class="hero-cycle-word">healthcare</span></h1>
         <p class="lead animate-fade-up animate-delay-3">
           We back transformative science and exceptional teams building the next generation of treatments — from discovery through clinical development.
         </p>
@@ -60,11 +84,11 @@
             <div class="hero-stat-label">Assets Under Management</div>
           </div>
           <div>
-            <div class="hero-stat-value" data-count="19" data-suffix="+">0+</div>
+            <div class="hero-stat-value" data-count="20" data-suffix="+">0+</div>
             <div class="hero-stat-label">Portfolio Companies</div>
           </div>
           <div>
-            <div class="hero-stat-value" data-count="2">0</div>
+            <div class="hero-stat-value" data-count="3">0</div>
             <div class="hero-stat-label">Funds</div>
           </div>
         </div>
@@ -78,12 +102,12 @@
       <div class="two-col">
         <div class="reveal from-left">
           <span class="label">Our Story</span>
-          <h2 style="margin-top: 12px; margin-bottom: 24px;">A European partner for life science innovation</h2>
+          <h2 style="margin-top: 12px; margin-bottom: 24px;">A European partner for science-driven innovation</h2>
           <p style="margin-bottom: 20px;">
-            Hadean Ventures is a European life science venture capital fund manager with approximately EUR 230 million of assets under management. The firm invests across all healthcare verticals and stages in products with the potential to address unmet medical needs.
+            Hadean Ventures is a European venture capital fund manager with over EUR 230 million in assets under management. With a strong foundation and track record in life sciences, the firm invests across sectors and stages, backing solutions that address complex, real-world challenges and unmet needs.
           </p>
           <p>
-            The stated purpose of the firm is to make a difference by investing in the future of healthcare — supporting research, development, and the teams behind tomorrow's breakthrough treatments.
+            The firm's purpose is to generate strong returns while making a meaningful impact by investing in the future.
           </p>
           <div style="margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap;">
             <a href="pages/team.html" class="btn btn-outline">Our Team</a>
@@ -263,7 +287,7 @@
       </div>
     </div>
     <div class="reveal scale reveal-delay-2" style="text-align: center; margin-top: 48px;">
-      <a href="pages/team.html" class="btn btn-primary">Meet the Full Team</a>
+      <a href="pages/team.html" class="team-marquee-link">Meet the Full Team →</a>
     </div>
   </section>
 
@@ -273,7 +297,6 @@
       <img src="PotentialNewImages/Sea.png" alt="Ocean horizon" class="split-cta-bg">
       <div class="split-cta-overlay"></div>
       <div class="split-cta-content">
-        <span class="split-cta-label">/ Invest</span>
         <h2 class="split-cta-heading">Invest with us</h2>
       </div>
       <div class="split-cta-btn">
@@ -285,7 +308,6 @@
       <img src="PotentialNewImages/high_tech_lab.jpg" alt="High-tech laboratory" class="split-cta-bg">
       <div class="split-cta-overlay"></div>
       <div class="split-cta-content">
-        <span class="split-cta-label">/ Pitch</span>
         <h2 class="split-cta-heading">Pitch to us</h2>
       </div>
       <div class="split-cta-btn">
@@ -303,7 +325,6 @@
           <a href="index.html" class="nav-logo">
             <img src="hadean_images/logo.png" alt="Hadean Ventures">
           </a>
-          <p class="footer-tagline">Investing in the future of healthcare since 2017.</p>
         </div>
         <div>
           <div class="footer-heading">Navigation</div>
@@ -349,6 +370,9 @@
             </a>
             <a href="https://www.level20.org/" target="_blank" rel="noopener noreferrer" aria-label="Level20">
               <img src="MemberOFbilder/LEVEL20.png" alt="Level20">
+            </a>
+            <a href="https://www.sustainabilityvcinitiative.com/" target="_blank" rel="noopener noreferrer" aria-label="Sustainability VC Initiative">
+              <img src="MemberOFbilder/Sustainability.jpg" alt="Sustainability VC Initiative">
             </a>
           </div>
         </div>
@@ -452,6 +476,21 @@
         });
       }, { threshold: 0.5 });
       counterObserver.observe(statsEl);
+    }
+
+    // Rotating hero word
+    const cycleWords = ['healthcare', 'science', 'innovation', 'patients', 'society'];
+    let cycleIndex = 0;
+    const wordEl = document.getElementById('hero-cycle-word');
+    if (wordEl) {
+      setInterval(() => {
+        wordEl.classList.add('fade-out');
+        setTimeout(() => {
+          cycleIndex = (cycleIndex + 1) % cycleWords.length;
+          wordEl.textContent = cycleWords[cycleIndex];
+          wordEl.classList.remove('fade-out');
+        }, 400);
+      }, 3200);
     }
 
     const profilePages = {
