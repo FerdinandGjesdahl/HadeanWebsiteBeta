@@ -53,6 +53,66 @@
     .filter-dropdown:hover {
       border-color: var(--navy);
     }
+
+    /* Map reveal */
+    .map-reveal-section {
+      background: transparent;
+    }
+    .map-reveal-section .container {
+      display: flex;
+      justify-content: center;
+      padding-top: 12px;
+      padding-bottom: 48px;
+    }
+    .map-reveal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      font-family: "Calibri Light", Calibri, Lato, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: transparent;
+      border: 1.5px solid var(--navy);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+    }
+    .map-reveal-btn:hover {
+      color: var(--white);
+      background: var(--navy);
+      border-color: var(--navy);
+      transform: translateY(-2px);
+    }
+    .map-reveal-btn.is-open {
+      color: var(--white);
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+    .map-btn-arrow {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+    .map-reveal-btn.is-open .map-btn-arrow {
+      transform: rotate(180deg);
+    }
+    .map-reveal-wrap {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+    }
+    .map-reveal-wrap.is-open {
+      max-height: 560px;
+      opacity: 1;
+    }
+    .map-reveal-inner {
+      height: 520px;
+      border-top: 1px solid var(--border-light);
+    }
   </style>
 </head>
 <body class="portfolio-page">
@@ -367,6 +427,37 @@
     </div>
   </section>
 
+  <!-- MAP REVEAL -->
+  <section class="map-reveal-section">
+    <div class="container">
+      <button class="map-reveal-btn" id="mapToggleBtn" aria-expanded="false">
+        <span class="map-btn-globe">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </span>
+        <span class="map-btn-text">Here is our map</span>
+        <span class="map-btn-arrow">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 5l5 5 5-5"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+    <div class="map-reveal-wrap" id="mapRevealWrap">
+      <div class="map-reveal-inner">
+        <iframe
+          src="../worldmap.html"
+          style="width:100%; height:100%; border:none; display:block;"
+          title="Hadean Ventures portfolio map"
+          loading="lazy"
+          id="mapIframe"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
   <!-- SPLIT CTA PANELS -->
   <section class="split-cta">
     <a href="investors.html" class="split-cta-panel">
@@ -549,6 +640,22 @@
 
       portfolioCards.forEach(card => revealObserver.observe(card));
     }
+  </script>
+
+  <script>
+    const mapBtn = document.getElementById('mapToggleBtn');
+    const mapWrap = document.getElementById('mapRevealWrap');
+
+    mapBtn.addEventListener('click', () => {
+      const isOpen = mapWrap.classList.toggle('is-open');
+      mapBtn.classList.toggle('is-open', isOpen);
+      mapBtn.setAttribute('aria-expanded', isOpen);
+      if (isOpen) {
+        setTimeout(() => {
+          mapWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 80);
+      }
+    });
   </script>
 </body>
 </html>

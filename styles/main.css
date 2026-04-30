@@ -226,7 +226,7 @@ p {
   text-decoration: none;
   border-bottom: 1px solid var(--blue);
   padding-bottom: 1px;
-  transition: color var(--transition), border-color var(--transition);
+  transition: color var(--transition), border-color var(--transition), transform var(--transition);
   white-space: nowrap;
   text-transform: uppercase;
 }
@@ -234,6 +234,7 @@ p {
 .nav-portal-link:hover {
   color: var(--navy);
   border-color: var(--navy);
+  transform: translateY(calc(-50% - 2px));
 }
 
 /* Mobile menu button */
@@ -277,14 +278,15 @@ p {
   border-bottom: 2px solid var(--navy);
   border-radius: 0;
   cursor: pointer;
-  transition: color var(--transition), border-color var(--transition);
+  transition: color var(--transition), border-color var(--transition), transform var(--transition);
   white-space: nowrap;
   line-height: 1.4;
 }
 
 .btn:hover {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
+  color: var(--blue-mid);
+  border-bottom-color: var(--blue-mid);
+  transform: translateY(-2px);
 }
 
 .btn-primary {
@@ -293,8 +295,9 @@ p {
 }
 
 .btn-primary:hover {
-  color: var(--blue);
-  border-bottom-color: var(--blue);
+  color: var(--blue-mid);
+  border-bottom-color: var(--blue-mid);
+  transform: translateY(-2px);
 }
 
 .btn-outline {
@@ -303,8 +306,9 @@ p {
 }
 
 .btn-outline:hover {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
+  color: var(--blue-mid);
+  border-bottom-color: var(--blue-mid);
+  transform: translateY(-2px);
 }
 
 .btn-white {
@@ -315,6 +319,7 @@ p {
 .btn-white:hover {
   color: var(--light-blue-soft);
   border-bottom-color: var(--light-blue-soft);
+  transform: translateY(-2px);
 }
 
 .btn-ghost {
@@ -325,6 +330,7 @@ p {
 .btn-ghost:hover {
   color: var(--white);
   border-bottom-color: var(--white);
+  transform: translateY(-2px);
 }
 
 .btn-sm {
@@ -1373,13 +1379,14 @@ html.js .portfolio-page .portfolio-card.reveal-on-scroll.hidden {
 .office-card address a {
   color: var(--navy);
   font-weight: 600;
-  transition: color var(--transition);
+  transition: color var(--transition), border-color var(--transition), transform var(--transition);
   border-bottom: 1px solid transparent;
 }
 
 .office-card address a:hover {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
+  color: var(--blue-mid);
+  border-bottom-color: var(--blue-mid);
+  transform: translateY(-1px);
 }
 
 .contact-info-card {
@@ -1453,12 +1460,13 @@ html.js .portfolio-page .portfolio-card.reveal-on-scroll.hidden {
 .contact-page .contact-office-card a {
   color: var(--navy);
   border-bottom: 1px solid transparent;
-  transition: color var(--transition), border-color var(--transition);
+  transition: color var(--transition), border-color var(--transition), transform var(--transition);
 }
 
 .contact-page .contact-office-card a:hover {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
+  color: var(--blue-mid);
+  border-bottom-color: var(--blue-mid);
+  transform: translateY(-1px);
 }
 
 .contact-page .contact-venture-cta {
@@ -1540,12 +1548,13 @@ html.js .portfolio-page .portfolio-card.reveal-on-scroll.hidden {
   color: var(--navy);
   font-weight: 600;
   border-bottom: 1px solid var(--light-blue);
-  transition: border-color var(--transition), color var(--transition);
+  transition: border-color var(--transition), color var(--transition), transform var(--transition);
 }
 
 .restricted-box a:hover {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
+  color: var(--blue-mid);
+  border-bottom-color: var(--blue-mid);
+  transform: translateY(-1px);
 }
 
 /* === EVENTS PAGE === */
@@ -1627,7 +1636,8 @@ html.js .portfolio-page .portfolio-card.reveal-on-scroll.hidden {
 }
 
 .events-page .events-email:hover {
-  color: var(--accent);
+  color: var(--blue-mid);
+  transform: translateY(-1px);
 }
 
 .events-page .events-members-section {
@@ -1748,6 +1758,37 @@ html.js .portfolio-page .portfolio-card.reveal-on-scroll.hidden {
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+}
+
+.policy-content a {
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 1px solid var(--light-blue);
+  display: inline-block;
+  transition: color var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+.policy-content a:hover {
+  color: var(--blue-mid);
+  border-bottom-color: var(--blue-mid);
+  transform: translateY(-1px);
+}
+
+.disclosure-back {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+  border-bottom: 1px solid var(--light-blue);
+  margin-bottom: 32px;
+  transition: color var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+.disclosure-back:hover {
+  color: var(--blue-mid);
+  border-bottom-color: var(--blue-mid);
+  transform: translateY(-1px);
 }
 
 .footer-disclosures {
@@ -2143,6 +2184,28 @@ body.js-scroll-animate .scroll-section.scroll-tilt {
 .team-marquee-header .label {
   display: block;
   margin-bottom: 12px;
+}
+
+.team-marquee-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  padding: 4px 0;
+  font-family: "Calibri Light", Calibri, Lato, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy);
+  border-bottom: 2px solid var(--navy);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+.team-marquee-link:hover {
+  color: var(--blue-mid);
+  border-bottom-color: var(--blue-mid);
+  transform: translateY(-2px);
 }
 
 .marquee-track-wrapper {
