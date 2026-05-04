@@ -23,6 +23,8 @@
     }
 
     .careers-hero {
+      --page-header-x-padding: 40px;
+      --page-header-reference-lead-height: 4.2rem;
       position: relative;
       min-height: 480px;
       display: flex;
@@ -63,16 +65,19 @@
     .careers-hero .container {
       position: relative;
       z-index: 1;
+      width: min(100%, calc(58ch + var(--page-header-x-padding) + var(--page-header-x-padding)));
     }
 
     .careers-hero-copy {
-      max-width: 740px;
+      display: grid;
+      grid-template-rows: auto auto var(--page-header-reference-lead-height);
+      max-width: none;
     }
 
     .careers-kicker {
+      grid-row: 1;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
       margin-bottom: 16px;
       font-size: 0.76rem;
       font-weight: 400;
@@ -82,26 +87,24 @@
     }
 
     .careers-kicker::before {
-      content: "";
-      width: 36px;
-      height: 1px;
-      background: rgba(191, 220, 236, 0.56);
+      content: none;
     }
 
     .careers-hero h1 {
-      max-width: 10ch;
-      margin: 0;
+      grid-row: 2;
+      max-width: none;
+      margin: 0 0 20px;
       color: var(--white);
-      font-size: clamp(3rem, 6vw, 4.8rem);
-      line-height: 1;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      line-height: 1.2;
     }
 
     .careers-hero .lead {
-      margin-top: 20px;
-      max-width: 48ch;
+      grid-row: 3;
+      margin: 0;
+      max-width: 58ch;
       color: rgba(231, 241, 248, 0.88);
-      font-size: 1.08rem;
-      line-height: 1.78;
+      min-height: 0;
     }
 
     .careers-section {
@@ -187,8 +190,16 @@
 
     @media (max-width: 768px) {
       .careers-hero {
+        --page-header-x-padding: 20px;
+        --page-header-reference-lead-height: 6.3rem;
         min-height: 380px;
         padding-bottom: 48px;
+      }
+    }
+
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .careers-hero {
+        --page-header-x-padding: 32px;
       }
     }
 
@@ -198,7 +209,7 @@
       }
 
       .careers-hero h1 {
-        font-size: clamp(2.8rem, 16vw, 4.1rem);
+        font-size: clamp(2.4rem, 5vw, 3.8rem);
       }
 
       .careers-actions {
