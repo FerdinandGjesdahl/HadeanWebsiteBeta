@@ -171,6 +171,9 @@
       width: 3px;
       height: 96px;
       background: var(--accent);
+      transform: scaleY(1);
+      transform-origin: top;
+      transition: transform 700ms var(--ease);
     }
 
     .impact-story-label {
@@ -187,6 +190,15 @@
 
     .impact-story-card:nth-child(2)::before {
       background: var(--blue-mid);
+    }
+
+    .js .impact-story-card::before {
+      transform: scaleY(0);
+    }
+
+    .js .impact-story-card.is-visible::before {
+      transform: scaleY(1);
+      transition-delay: 180ms;
     }
 
     .impact-story-card h3 {
@@ -292,11 +304,51 @@
       display: none;
     }
 
-    .impact-page .impact-reveal,
-    .impact-page .impact-reveal.is-visible {
+    .js .impact-page .impact-reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity 800ms var(--ease),
+        transform 800ms var(--ease),
+        box-shadow var(--transition),
+        border-color var(--transition);
+      will-change: opacity, transform;
+    }
+
+    .js .impact-page .impact-reveal.is-visible {
       opacity: 1;
       transform: none;
-      transition: none;
+    }
+
+    .js .impact-page .impact-pillar.impact-reveal {
+      transform: translateY(28px) scale(0.985);
+    }
+
+    .js .impact-page .impact-pillar.impact-reveal.is-visible {
+      transform: none;
+    }
+
+    .js .impact-page .sdg-img.impact-reveal {
+      transform: translateY(18px) scale(0.92);
+    }
+
+    .js .impact-page .sdg-img.impact-reveal.is-visible {
+      transform: none;
+    }
+
+    .impact-delay-1 { transition-delay: 90ms; }
+    .impact-delay-2 { transition-delay: 180ms; }
+    .impact-delay-3 { transition-delay: 270ms; }
+    .impact-delay-4 { transition-delay: 360ms; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .impact-page .impact-reveal,
+      .impact-page .impact-reveal.is-visible,
+      .impact-story-card::before {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
     }
 
     /* ── Responsive ── */
