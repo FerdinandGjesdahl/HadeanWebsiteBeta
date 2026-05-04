@@ -2362,9 +2362,16 @@ body.js-scroll-animate .scroll-section.scroll-tilt {
   padding-bottom: 72px;
   position: relative;
   overflow: hidden;
-  min-height: 440px;
+  height: 480px;
   display: flex;
   align-items: flex-end;
+}
+
+@media (max-width: 768px) {
+  .page-header-img {
+    height: 380px;
+    padding-bottom: 48px;
+  }
 }
 
 .page-header-img .ph-bg {
