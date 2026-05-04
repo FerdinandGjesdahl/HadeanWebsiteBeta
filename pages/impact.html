@@ -5,12 +5,406 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Impact — Hadean Ventures</title>
   <link rel="icon" type="image/png" href="../hadean_images/logo.png">
-  <meta name="description" content="Hadean Ventures is committed to responsible investing, ESG integration, diversity, and the UN Sustainable Development Goals.">
+  <meta name="description" content="Hadean Ventures is committed to turning science into real-world impact — investing in companies addressing unmet medical needs with active ownership and deep sector expertise.">
   <script>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    .impact-page {
+      --impact-blue: #1f3764;
+      --impact-copy: #000000;
+      --impact-muted: #315385;
+      --impact-red: #ce332d;
+      --impact-border: #9db4d8;
+      background: #fff;
+      color: var(--impact-copy);
+    }
+
+    .impact-page .container {
+      max-width: 1184px;
+    }
+
+    .impact-page main > section {
+      position: relative;
+    }
+
+    .impact-page .page-header-img {
+      min-height: 300px;
+      padding-top: calc(var(--nav-height) + 28px);
+      padding-bottom: 0;
+      align-items: flex-start;
+      margin-top: 0;
+    }
+
+    .impact-page .page-header-img .ph-bg {
+      object-position: center 42%;
+      filter: saturate(0.88) contrast(0.92);
+    }
+
+    .impact-page .page-header-img .ph-overlay {
+      background:
+        linear-gradient(90deg, rgba(20, 43, 78, 0.9) 0%, rgba(34, 64, 105, 0.72) 48%, rgba(25, 55, 94, 0.86) 100%),
+        rgba(28, 58, 96, 0.45);
+    }
+
+    .impact-page .page-header-img .container {
+      max-width: 720px;
+      padding-left: 0;
+      transform: none;
+    }
+
+    .impact-page .page-header-img .label {
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 0.55rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      margin-bottom: 16px;
+    }
+
+    .impact-page .page-header-img h1 {
+      color: #fff;
+      font-size: 3.35rem;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: 0;
+      margin-bottom: 30px;
+    }
+
+    .impact-page .page-header-img .lead {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 2;
+      max-width: 650px;
+    }
+
+    /* ── Impact intro ── */
+    .impact-intro-section {
+      padding: 64px 0 28px;
+      background: var(--white);
+    }
+
+    .impact-intro-section .container,
+    .impact-pillars-section .container,
+    .impact-stories-section .container {
+      max-width: none;
+      padding-left: 42px;
+      padding-right: 42px;
+    }
+
+    .impact-intro-text {
+      max-width: 880px;
+    }
+    .impact-intro-label {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--impact-blue);
+      margin-bottom: 18px;
+      display: block;
+    }
+    .impact-intro-text p {
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.5;
+      color: var(--impact-copy);
+      max-width: 880px;
+    }
+    .impact-intro-text p + p {
+      margin-top: 20px;
+    }
+
+    /* ── HOW WE CREATE IMPACT pillars ── */
+    .impact-pillars-section {
+      padding: 10px 0 64px;
+      background: #fff;
+    }
+
+    .impact-section-label {
+      font-size: 1.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--impact-blue);
+      margin-bottom: 26px;
+      display: block;
+      line-height: 1.1;
+    }
+    .impact-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 318px));
+      justify-content: space-between;
+      gap: 48px;
+      align-items: start;
+    }
+    .impact-pillar {
+      position: relative;
+      min-height: 376px;
+      background: #fff;
+      border: 1px solid var(--impact-border);
+      border-radius: 0;
+      padding: 76px 24px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .impact-pillar-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 20px;
+      left: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 0;
+      background: #dfe8f2;
+      color: var(--impact-red);
+      font-size: 1.32rem;
+      font-weight: 700;
+    }
+    .impact-pillar:nth-child(2) .impact-pillar-icon {
+      background: #dfe8f2;
+      color: #d9534f;
+    }
+    .impact-pillar:nth-child(3) .impact-pillar-icon {
+      background: #dfe8f2;
+      color: #d9534f;
+      left: 36px;
+    }
+    .impact-pillar h3 {
+      font-size: 1.48rem;
+      font-weight: 700;
+      color: #162846;
+      line-height: 1.08;
+      letter-spacing: 0.06em;
+      margin: 0;
+    }
+    .impact-pillar p {
+      font-size: 1.18rem;
+      font-weight: 400;
+      color: #244f8a;
+      line-height: 1.36;
+      letter-spacing: 0;
+      margin: 0;
+    }
+
+    /* ── SUCCESS STORIES ── */
+    .impact-stories-section {
+      padding: 0 0 76px;
+      background: var(--white);
+    }
+    .impact-stories-header {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0 8px;
+      margin-bottom: 34px;
+    }
+    .impact-stories-header-label {
+      font-size: 1.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--impact-blue);
+      line-height: 1.1;
+    }
+    .impact-stories-subtitle {
+      font-size: 1.55rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: #c95551;
+      font-style: italic;
+      line-height: 1.1;
+    }
+    .impact-stories-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 106px;
+    }
+    .impact-story-card {
+      position: relative;
+      border: none;
+      border-radius: 0;
+      padding: 0 0 8px 38px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .impact-story-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 136px;
+      background: #000;
+    }
+
+    .impact-story-label {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .impact-story-card:nth-child(2) .impact-story-label {
+      color: #2f6f9d;
+    }
+
+    .impact-story-card h3 {
+      font-size: clamp(3rem, 4.6vw, 3.75rem);
+      font-weight: 300;
+      color: #152946;
+      margin: 0;
+      line-height: 1;
+      letter-spacing: 0.04em;
+    }
+    .impact-story-card p {
+      font-size: 1.32rem;
+      font-weight: 400;
+      line-height: 1.45;
+      color: #647da5;
+      letter-spacing: 0.04em;
+      margin: 0;
+    }
+    .impact-story-card p + p {
+      margin-top: 2px;
+    }
+
+    /* ── SDG section ── */
+    .impact-sdg-divider {
+      border: none;
+      border-top: 0;
+      margin: 0;
+    }
+
+    /* ── Disclaimer ── */
+    .impact-disclaimer {
+      padding: 0 0 42px;
+      text-align: center;
+    }
+    .impact-disclaimer p {
+      font-size: 0;
+      color: var(--text-muted);
+    }
+
+    .impact-page .impact-sdg-section {
+      padding: 16px 0 20px;
+      border-top: 0;
+      background: #fff;
+      text-align: center;
+    }
+
+    .impact-page .impact-sdg-section .container,
+    .impact-page .impact-sdg-text-section .container,
+    .impact-page .impact-link-section .container {
+      max-width: 730px;
+    }
+
+    .impact-page .impact-sdg-section h2 {
+      margin: 0 0 10px;
+      color: #152946;
+      font-size: 0.5rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .impact-page .impact-sdg-section h2 em {
+      display: inline;
+      padding: 0;
+      background: transparent;
+      color: inherit;
+      font-size: inherit;
+      font-style: normal;
+      transform: none;
+    }
+
+    .impact-page .impact-sdg-icons {
+      gap: 6px;
+      flex-wrap: nowrap;
+    }
+
+    .impact-page .sdg-img {
+      width: 62px;
+      height: 62px;
+      border-radius: 0;
+    }
+
+    .impact-page .impact-sdg-text-section {
+      padding: 0 0 24px;
+      background: #fff;
+    }
+
+    .impact-page .impact-sdg-text-section p {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #9aaac2;
+      font-size: 0.45rem;
+      font-weight: 700;
+      line-height: 1.9;
+    }
+
+    .impact-link-section {
+      padding: 0 0 72px;
+      text-align: center;
+    }
+
+    .impact-link-section .btn {
+      color: #1f3764;
+      border-bottom-color: #1f3764;
+      font-size: 0.48rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      padding-bottom: 1px;
+      text-transform: none;
+    }
+
+    .impact-page .impact-reveal,
+    .impact-page .impact-reveal.is-visible {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .impact-pillars {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .impact-stories-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+    @media (max-width: 640px) {
+      .impact-page .container {
+        padding: 0 24px;
+      }
+      .impact-page .page-header-img {
+        min-height: 320px;
+        padding-top: calc(var(--nav-height) + 38px);
+      }
+      .impact-page .page-header-img .container {
+        max-width: none;
+        padding-left: 24px;
+        transform: none;
+      }
+      .impact-intro-section { padding: 56px 0 48px; }
+      .impact-pillars-section { padding: 48px 0 56px; }
+      .impact-stories-section { padding: 56px 0 64px; }
+      .impact-pillar { padding: 28px 24px; }
+      .impact-story-card { padding: 28px 24px; }
+    }
+  </style>
 </head>
 <body class="impact-page">
 
@@ -50,45 +444,78 @@
 
   <main>
 
-    <!-- Two-column text -->
-    <section class="impact-columns-section">
+    <!-- INTRO -->
+    <section class="impact-intro-section">
       <div class="container">
-        <div class="impact-columns">
+        <div class="impact-intro-text impact-reveal">
+          <span class="impact-intro-label">Turning science into real-world impact</span>
+          <p>At Hadean Ventures, impact starts with the science. We invest in companies developing products with the potential to address unmet medical needs — and support them with capital, deep sector expertise, strong networks and active ownership.</p>
+          <p>Our role goes beyond funding. We work closely with management teams to help translate research into clinical and commercial progress, with the aim of supporting better outcomes for patients and society.</p>
+        </div>
+      </div>
+    </section>
 
-          <div class="impact-col impact-reveal">
-            <h3>Responsible investing = Value creation</h3>
-            <p>
-              We contribute to increased wealth, better health and living conditions across the globe through support of research and development, and with strong focus on environmental, social and governance (ESG) matters.
-            </p>
-            <p>
-              We are welcoming the Sustainable Finance Disclosure Regulation (SFDR), linking the UN's 2030 Agenda for Sustainable Framework and Paris Agreement on Climate Change to the financial due diligence processes and investment-making decisions. The regulations make finance a powerful tool in creation of overall value.
-            </p>
-            <p>
-              We have tailored our investment due diligence process, to meet high ESG standards, and will going forward implement applicable technical standards. Through impactful positions such as board directorships we purposefully use our influence to implement ESG policies and standard operating procedures in our portfolio companies.
-            </p>
+    <!-- HOW WE CREATE IMPACT -->
+    <section class="impact-pillars-section">
+      <div class="container">
+        <span class="impact-section-label impact-reveal">How we create impact</span>
+        <div class="impact-pillars">
+
+          <div class="impact-pillar impact-reveal">
+            <div class="impact-pillar-icon">+</div>
+            <h3>Unmet medical needs</h3>
+            <p>We back companies developing new therapies, diagnostics and technologies for areas of significant unmet medical need, contributing to better health and wellbeing.</p>
           </div>
 
-          <div class="impact-col impact-reveal impact-delay-2">
-            <h3>Strong focus on diversity and gender equality</h3>
-            <p>
-              Our ESG policy guides us in regards to environmental, social and government factors both within our investment firm and within the companies we invest into.
-            </p>
-            <p>
-              We have a strong focus on diversity and gender equality, as we have identified lack of those to be a major challenge, both in the investment industry and start-up community. We work for an inclusive and diverse environment, within our firm and portfolio companies. We promote this view internally and externally, as we work for diversity and equal opportunity in recruitment processes.
-            </p>
-            <p>
-              We also have programs in place to help increase diversity both in start-ups and in investment roles. We are active in cross-firm, cross-border initiatives such as Level20 which we launched in the Nordics in 2019 together with several other PE-firms.
-            </p>
+          <div class="impact-pillar impact-reveal impact-delay-2">
+            <div class="impact-pillar-icon">Sci</div>
+            <h3>Scientific and technical depth</h3>
+            <p>We participate in boards and apply specialist expertise and strong networks to support research, development and innovation.</p>
+          </div>
+
+          <div class="impact-pillar impact-reveal impact-delay-3">
+            <div class="impact-pillar-icon">ESG</div>
+            <h3>Responsible investing</h3>
+            <p>We integrate ESG throughout our investment process and portfolio support, with a focus on environmental awareness, gender equality and inclusion, and good governance.</p>
           </div>
 
         </div>
       </div>
     </section>
 
+    <!-- RECENT SUCCESS STORIES -->
+    <section class="impact-stories-section">
+      <div class="container">
+        <div class="impact-stories-header impact-reveal">
+          <span class="impact-stories-header-label">Recent success stories:&nbsp;</span>
+          <span class="impact-stories-subtitle">From breakthrough science to tangible outcomes.</span>
+        </div>
+        <div class="impact-stories-grid">
+
+          <div class="impact-story-card impact-reveal">
+            <div class="impact-story-label">Rare Disease Therapeutics</div>
+            <h3>Abliva</h3>
+            <p>Abliva is a strong example of how specialist venture capital can help advance Nordic science toward global impact. Hadean backed the company from 2020 and supported its development through active board work, helping drive strategic progress, regulatory milestones and clinical momentum in primary mitochondrial disease.</p>
+            <p>Abliva's lead asset, KL1333, is being developed for patients with mitochondrial DNA-driven primary mitochondrial diseases, where treatment options remain limited. Following positive clinical progress, Pharming completed its acquisition of Abliva in 2025.</p>
+          </div>
+
+          <div class="impact-story-card impact-reveal impact-delay-2">
+            <div class="impact-story-label">Precision Cancer Monitoring</div>
+            <h3>Saga Diagnostics</h3>
+            <p>Saga Diagnostics demonstrates the impact potential of precision diagnostics. The company has developed Pathlight™, a tumor-informed molecular residual disease platform designed to detect and monitor cancer recurrence with high sensitivity.</p>
+            <p>Roche / Foundation Medicine has announced an agreement to acquire Saga Diagnostics, with Pathlight expected to strengthen Foundation Medicine's monitoring portfolio and support treatment response and recurrence monitoring.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <hr class="impact-sdg-divider">
+
     <!-- SDG icons -->
     <section class="impact-sdg-section">
       <div class="container">
-        <h2 class="impact-reveal">The UN Sustainability Goals we directly impact are:</h2>
+        <h2 class="impact-reveal">The UN Sustainability Goals we are: <em>contribute to</em></h2>
         <div class="impact-sdg-icons">
           <img class="sdg-img impact-reveal impact-delay-1" src="../Bilder/Good-health-rgb-03-120x120.png" alt="SDG 3 — Good Health &amp; Well-Being">
           <img class="sdg-img impact-reveal impact-delay-2" src="../Bilder/Gender-Equality-rgb-05-120x120.png" alt="SDG 5 — Gender Equality">
@@ -108,9 +535,16 @@
     </section>
 
     <!-- Sustainability VC Initiative -->
-    <section style="padding: 0 0 64px; text-align: center;">
+    <section class="impact-link-section">
       <div class="container">
         <a href="https://www.linkedin.com/company/life-science-vc-sustainability-initiative/posts/?feedView=all" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Follow the Sustainability VC Initiative on LinkedIn</a>
+      </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <section class="impact-disclaimer">
+      <div class="container">
+        <p>Illustrative layout for discussion. Webpage copy should be reviewed against final transaction status and legal/ compliance requirements before publication.</p>
       </div>
     </section>
 

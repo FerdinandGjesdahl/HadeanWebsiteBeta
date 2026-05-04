@@ -2358,7 +2358,7 @@ body.js-scroll-animate .scroll-section.scroll-tilt {
   padding-bottom: 72px;
   position: relative;
   overflow: hidden;
-  min-height: 320px;
+  min-height: 440px;
   display: flex;
   align-items: flex-end;
 }
