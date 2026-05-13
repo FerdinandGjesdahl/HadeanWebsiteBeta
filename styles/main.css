@@ -2972,9 +2972,22 @@ body.js-scroll-animate .scroll-section.scroll-tilt {
       rgba(15,30,53,0.88) 100%);
   }
 
+  .portfolio-page .page-header-img {
+    min-height: 340px;
+    padding-bottom: 34px;
+  }
+
+  .portfolio-page .page-header-img h1 {
+    font-size: clamp(2.25rem, 13vw, 3rem);
+  }
+
   .section,
   .contact-page .contact-section {
     padding: var(--section-py) 0;
+  }
+
+  .portfolio-page .section {
+    padding-top: 34px;
   }
 
   .section-header {
@@ -3032,6 +3045,32 @@ body.js-scroll-animate .scroll-section.scroll-tilt {
   .portfolio-page .filter-btn {
     flex: 0 0 auto;
     min-height: 40px;
+  }
+
+  .portfolio-page .portfolio-filters.portfolio-filters-dropdowns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    overflow: visible;
+    margin: 0 0 24px;
+    padding: 0;
+  }
+
+  .portfolio-page .filter-dropdown-group {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .portfolio-page .filter-dropdown {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 9px 34px 9px 12px;
+    font-size: 0.9rem;
+  }
+
+  .portfolio-page .filter-dropdown-group:first-child {
+    grid-column: 1 / -1;
   }
 
   .portfolio-page .portfolio-card {
