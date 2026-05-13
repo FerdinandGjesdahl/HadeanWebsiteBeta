@@ -538,7 +538,7 @@
 
     const marqueeWrapper = document.querySelector('.marquee-track-wrapper');
     const marqueeTrack = document.querySelector('.marquee-track');
-    let suppressMarqueeClick = false;
+    let suppressMarqueeClickUntil = 0;
 
     if (marqueeWrapper && marqueeTrack) {
       const marqueeDuration = 48000;
@@ -609,7 +609,7 @@
         if (!isHovered || event.button !== 0) return;
         isDragging = true;
         didDrag = false;
-        suppressMarqueeClick = false;
+        suppressMarqueeClickUntil = 0;
         dragStartX = event.clientX;
         dragStartPosition = position;
         marqueeWrapper.classList.add('is-dragging');
@@ -628,8 +628,7 @@
         isDragging = false;
         marqueeWrapper.classList.remove('is-dragging');
         if (didDrag) {
-          suppressMarqueeClick = true;
-          window.setTimeout(() => { suppressMarqueeClick = false; }, 180);
+          suppressMarqueeClickUntil = performance.now() + 500;
         }
         if (event.pointerId !== undefined && marqueeWrapper.hasPointerCapture(event.pointerId)) {
           marqueeWrapper.releasePointerCapture(event.pointerId);
@@ -644,6 +643,20 @@
         event.preventDefault();
         moveMarqueeBy(event.key === 'ArrowRight' ? 80 : -80);
       });
+
+      marqueeTrack.addEventListener('click', event => {
+        const clickedElement = event.target instanceof Element ? event.target : event.target.parentElement;
+        const item = clickedElement ? clickedElement.closest('.marquee-item') : null;
+        if (!item || !marqueeTrack.contains(item)) return;
+
+        if (performance.now() < suppressMarqueeClickUntil) {
+          event.preventDefault();
+          event.stopPropagation();
+          return;
+        }
+
+        window.location.assign(item.dataset.profileUrl || 'pages/team.html');
+      });
     }
 
     document.querySelectorAll('.marquee-item').forEach(item => {
@@ -657,18 +670,10 @@
 
       item.setAttribute('role', 'link');
       item.setAttribute('tabindex', '0');
-      item.addEventListener('click', event => {
-        if (suppressMarqueeClick) {
-          event.preventDefault();
-          suppressMarqueeClick = false;
-          return;
-        }
-        window.location.href = targetUrl;
-      });
       item.addEventListener('keydown', event => {
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
-          window.location.href = targetUrl;
+          window.location.assign(targetUrl);
         }
       });
     });
