@@ -550,6 +550,11 @@
       let didDrag = false;
       let dragStartX = 0;
       let dragStartPosition = 0;
+      let pressItem = null;
+      let pressPointerId = null;
+      let pressStartX = 0;
+      let pressStartY = 0;
+      let pressMoved = false;
 
       marqueeTrack.classList.add('is-js-marquee');
       marqueeWrapper.tabIndex = 0;
@@ -584,6 +589,22 @@
         setMarqueePosition(position + delta);
       };
 
+      const getMarqueeItem = event => {
+        const clickedElement = event.target instanceof Element ? event.target : event.target.parentElement;
+        const item = clickedElement ? clickedElement.closest('.marquee-item') : null;
+        return item && marqueeTrack.contains(item) ? item : null;
+      };
+
+      const navigateToMarqueeItem = item => {
+        window.location.assign(item.getAttribute('href') || item.dataset.profileUrl || 'pages/team.html');
+      };
+
+      const resetPress = () => {
+        pressItem = null;
+        pressPointerId = null;
+        pressMoved = false;
+      };
+
       measureMarquee();
       window.addEventListener('resize', measureMarquee);
       requestAnimationFrame(stepMarquee);
@@ -595,6 +616,7 @@
       marqueeWrapper.addEventListener('mouseleave', () => {
         isHovered = false;
         isDragging = false;
+        resetPress();
         marqueeWrapper.classList.remove('is-dragging');
       });
 
@@ -606,7 +628,18 @@
       }, { passive: false });
 
       marqueeWrapper.addEventListener('pointerdown', event => {
-        if (!isHovered || event.button !== 0) return;
+        if (event.button !== 0) return;
+
+        const item = getMarqueeItem(event);
+        if (item) {
+          pressItem = item;
+          pressPointerId = event.pointerId;
+          pressStartX = event.clientX;
+          pressStartY = event.clientY;
+          pressMoved = false;
+        }
+
+        if (!isHovered) return;
         isDragging = true;
         didDrag = false;
         suppressMarqueeClickUntil = 0;
@@ -617,6 +650,12 @@
       });
 
       marqueeWrapper.addEventListener('pointermove', event => {
+        if (pressItem && event.pointerId === pressPointerId) {
+          const pressDeltaX = event.clientX - pressStartX;
+          const pressDeltaY = event.clientY - pressStartY;
+          if (Math.hypot(pressDeltaX, pressDeltaY) > 6) pressMoved = true;
+        }
+
         if (!isDragging) return;
         const dragDelta = event.clientX - dragStartX;
         if (Math.abs(dragDelta) > 4) didDrag = true;
@@ -624,19 +663,39 @@
       });
 
       const stopDrag = event => {
-        if (!isDragging) return;
-        isDragging = false;
-        marqueeWrapper.classList.remove('is-dragging');
-        if (didDrag) {
-          suppressMarqueeClickUntil = performance.now() + 500;
+        const wasDragging = isDragging;
+        if (wasDragging) {
+          isDragging = false;
+          marqueeWrapper.classList.remove('is-dragging');
+          if (didDrag) {
+            suppressMarqueeClickUntil = performance.now() + 500;
+          }
         }
+
+        if (
+          pressItem &&
+          event.pointerId === pressPointerId &&
+          !pressMoved &&
+          !didDrag &&
+          performance.now() >= suppressMarqueeClickUntil
+        ) {
+          event.preventDefault();
+          suppressMarqueeClickUntil = performance.now() + 500;
+          navigateToMarqueeItem(pressItem);
+        }
+
+        resetPress();
+
         if (event.pointerId !== undefined && marqueeWrapper.hasPointerCapture(event.pointerId)) {
           marqueeWrapper.releasePointerCapture(event.pointerId);
         }
       };
 
       marqueeWrapper.addEventListener('pointerup', stopDrag);
-      marqueeWrapper.addEventListener('pointercancel', stopDrag);
+      marqueeWrapper.addEventListener('pointercancel', event => {
+        resetPress();
+        stopDrag(event);
+      });
 
       document.addEventListener('keydown', event => {
         if (!isHovered || (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight')) return;
@@ -645,17 +704,10 @@
       });
 
       marqueeTrack.addEventListener('click', event => {
-        const clickedElement = event.target instanceof Element ? event.target : event.target.parentElement;
-        const item = clickedElement ? clickedElement.closest('.marquee-item') : null;
-        if (!item || !marqueeTrack.contains(item)) return;
-
         if (performance.now() < suppressMarqueeClickUntil) {
           event.preventDefault();
           event.stopPropagation();
-          return;
         }
-
-        window.location.assign(item.dataset.profileUrl || 'pages/team.html');
       });
     }
 
