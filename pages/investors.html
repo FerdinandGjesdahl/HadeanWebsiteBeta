@@ -106,14 +106,18 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 14px;
     }
     .inv-chart-ring {
       position: relative;
       width: 120px;
       height: 120px;
+      aspect-ratio: 1;
     }
     .inv-chart-ring svg {
+      width: 100%;
+      height: 100%;
+      display: block;
       transform: rotate(-90deg);
     }
     .inv-chart-pct {
@@ -126,6 +130,7 @@
       font-weight: 300;
       color: #ffffff;
       letter-spacing: -0.02em;
+      line-height: 1;
     }
     .inv-chart-name {
       font-size: 0.65rem;
@@ -133,6 +138,8 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: rgba(191,220,236,0.7);
+      text-align: center;
+      line-height: 1.3;
     }
 
     /* progress ring animation */
@@ -175,7 +182,10 @@
         display: grid;
         grid-template-columns: repeat(2, auto);
         justify-content: center;
-        gap: 32px 44px;
+        gap: 36px 44px;
+      }
+      .inv-chart-item {
+        gap: 18px;
       }
       .inv-chart-ring {
         width: 100px;
@@ -201,7 +211,10 @@
 
     @media (max-width: 430px) {
       .inv-charts {
-        gap: 26px 28px;
+        gap: 30px 28px;
+      }
+      .inv-chart-item {
+        gap: 16px;
       }
       .inv-chart-ring {
         width: 92px;
@@ -259,7 +272,7 @@
         <div class="inv-charts">
           <div class="inv-chart-item">
             <div class="inv-chart-ring">
-              <svg viewBox="0 0 120 120" width="120" height="120">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
                 <circle class="ring-track" cx="60" cy="60" r="46"/>
                 <circle class="ring-arc" cx="60" cy="60" r="46"
                   stroke-dasharray="124.3 289.0"/>
@@ -270,7 +283,7 @@
           </div>
           <div class="inv-chart-item">
             <div class="inv-chart-ring">
-              <svg viewBox="0 0 120 120" width="120" height="120">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
                 <circle class="ring-track" cx="60" cy="60" r="46"/>
                 <circle class="ring-arc" cx="60" cy="60" r="46"
                   stroke-dasharray="60.7 289.0"/>
@@ -281,7 +294,7 @@
           </div>
           <div class="inv-chart-item">
             <div class="inv-chart-ring">
-              <svg viewBox="0 0 120 120" width="120" height="120">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
                 <circle class="ring-track" cx="60" cy="60" r="46"/>
                 <circle class="ring-arc" cx="60" cy="60" r="46"
                   stroke-dasharray="78.0 289.0"/>
@@ -292,7 +305,7 @@
           </div>
           <div class="inv-chart-item">
             <div class="inv-chart-ring">
-              <svg viewBox="0 0 120 120" width="120" height="120">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
                 <circle class="ring-track" cx="60" cy="60" r="46"/>
                 <circle class="ring-arc" cx="60" cy="60" r="46"
                   stroke-dasharray="26.0 289.0"/>
