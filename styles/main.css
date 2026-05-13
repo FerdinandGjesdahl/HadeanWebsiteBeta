@@ -2275,6 +2275,8 @@ body.js-scroll-animate .scroll-section.scroll-tilt {
   flex: 0 0 auto;
   text-align: center;
   width: 140px;
+  color: inherit;
+  text-decoration: none;
 }
 
 .marquee-item[role='link'] {
