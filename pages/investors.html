@@ -156,11 +156,60 @@
       from { stroke-dasharray: 0 289.0; }
     }
 
-    @media (max-width: 600px) {
-      .inv-charts { gap: 20px; }
-      .inv-chart-ring { width: 90px; height: 90px; }
-      .inv-chart-pct { font-size: 1.2rem; }
-      .inv-chart-name { font-size: 0.58rem; }
+    /* ── Responsive: tablets and phones ── */
+    @media (max-width: 768px) {
+      .inv-hero {
+        min-height: auto;
+        padding-top: calc(var(--nav-height) + 56px);
+        padding-bottom: 56px;
+      }
+      .inv-hero-text {
+        font-size: 1.02rem;
+        line-height: 1.6;
+        padding: 0 4px;
+      }
+      .inv-charts-hero {
+        margin-top: 44px;
+      }
+      .inv-charts {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        justify-content: center;
+        gap: 32px 44px;
+      }
+      .inv-chart-ring {
+        width: 100px;
+        height: 100px;
+      }
+      .inv-chart-pct {
+        font-size: 1.3rem;
+      }
+      .inv-chart-name {
+        font-size: 0.6rem;
+      }
+      .inv-contact-hero {
+        margin-top: 48px;
+      }
+      .inv-contact-hero p,
+      .inv-contact-hero a {
+        font-size: 0.88rem;
+      }
+      .inv-contact-hero a {
+        overflow-wrap: anywhere;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .inv-charts {
+        gap: 26px 28px;
+      }
+      .inv-chart-ring {
+        width: 92px;
+        height: 92px;
+      }
+      .inv-chart-pct {
+        font-size: 1.2rem;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
