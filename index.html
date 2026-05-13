@@ -536,16 +536,133 @@
     }
 
 
+    const marqueeWrapper = document.querySelector('.marquee-track-wrapper');
+    const marqueeTrack = document.querySelector('.marquee-track');
+    let suppressMarqueeClick = false;
+
+    if (marqueeWrapper && marqueeTrack) {
+      const marqueeDuration = 48000;
+      let loopWidth = 0;
+      let position = 0;
+      let lastFrameTime = performance.now();
+      let isHovered = false;
+      let isDragging = false;
+      let didDrag = false;
+      let dragStartX = 0;
+      let dragStartPosition = 0;
+
+      marqueeTrack.classList.add('is-js-marquee');
+      marqueeWrapper.tabIndex = 0;
+
+      const measureMarquee = () => {
+        loopWidth = marqueeTrack.scrollWidth / 2;
+        position = normalizeMarqueePosition(position);
+      };
+
+      const normalizeMarqueePosition = value => {
+        if (!loopWidth) return value;
+        return ((value % loopWidth) + loopWidth) % loopWidth;
+      };
+
+      const setMarqueePosition = value => {
+        position = normalizeMarqueePosition(value);
+        marqueeTrack.style.transform = `translateX(${-position}px)`;
+      };
+
+      const stepMarquee = now => {
+        const elapsed = now - lastFrameTime;
+        lastFrameTime = now;
+
+        if (!isHovered && loopWidth) {
+          setMarqueePosition(position + (loopWidth * elapsed / marqueeDuration));
+        }
+
+        requestAnimationFrame(stepMarquee);
+      };
+
+      const moveMarqueeBy = delta => {
+        setMarqueePosition(position + delta);
+      };
+
+      measureMarquee();
+      window.addEventListener('resize', measureMarquee);
+      requestAnimationFrame(stepMarquee);
+
+      marqueeWrapper.addEventListener('mouseenter', () => {
+        isHovered = true;
+      });
+
+      marqueeWrapper.addEventListener('mouseleave', () => {
+        isHovered = false;
+        isDragging = false;
+        marqueeWrapper.classList.remove('is-dragging');
+      });
+
+      marqueeWrapper.addEventListener('wheel', event => {
+        if (!isHovered) return;
+        event.preventDefault();
+        const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+        moveMarqueeBy(delta);
+      }, { passive: false });
+
+      marqueeWrapper.addEventListener('pointerdown', event => {
+        if (!isHovered || event.button !== 0) return;
+        isDragging = true;
+        didDrag = false;
+        suppressMarqueeClick = false;
+        dragStartX = event.clientX;
+        dragStartPosition = position;
+        marqueeWrapper.classList.add('is-dragging');
+        marqueeWrapper.setPointerCapture(event.pointerId);
+      });
+
+      marqueeWrapper.addEventListener('pointermove', event => {
+        if (!isDragging) return;
+        const dragDelta = event.clientX - dragStartX;
+        if (Math.abs(dragDelta) > 4) didDrag = true;
+        setMarqueePosition(dragStartPosition - dragDelta);
+      });
+
+      const stopDrag = event => {
+        if (!isDragging) return;
+        isDragging = false;
+        marqueeWrapper.classList.remove('is-dragging');
+        if (didDrag) {
+          suppressMarqueeClick = true;
+          window.setTimeout(() => { suppressMarqueeClick = false; }, 180);
+        }
+        if (event.pointerId !== undefined && marqueeWrapper.hasPointerCapture(event.pointerId)) {
+          marqueeWrapper.releasePointerCapture(event.pointerId);
+        }
+      };
+
+      marqueeWrapper.addEventListener('pointerup', stopDrag);
+      marqueeWrapper.addEventListener('pointercancel', stopDrag);
+
+      document.addEventListener('keydown', event => {
+        if (!isHovered || (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight')) return;
+        event.preventDefault();
+        moveMarqueeBy(event.key === 'ArrowRight' ? 80 : -80);
+      });
+    }
+
     document.querySelectorAll('.marquee-item').forEach(item => {
       const nameEl = item.querySelector('.marquee-item-name');
+      const imageEl = item.querySelector('img');
 
       if (!nameEl) return;
+      if (imageEl) imageEl.draggable = false;
 
       const targetUrl = item.dataset.profileUrl || 'pages/team.html';
 
       item.setAttribute('role', 'link');
       item.setAttribute('tabindex', '0');
-      item.addEventListener('click', () => {
+      item.addEventListener('click', event => {
+        if (suppressMarqueeClick) {
+          event.preventDefault();
+          suppressMarqueeClick = false;
+          return;
+        }
         window.location.href = targetUrl;
       });
       item.addEventListener('keydown', event => {

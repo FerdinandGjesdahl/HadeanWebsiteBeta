@@ -2224,6 +2224,13 @@ body.js-scroll-animate .scroll-section.scroll-tilt {
 .marquee-track-wrapper {
   overflow: hidden;
   position: relative;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.marquee-track-wrapper.is-dragging {
+  cursor: grabbing;
 }
 
 .marquee-track-wrapper::before,
@@ -2254,8 +2261,9 @@ body.js-scroll-animate .scroll-section.scroll-tilt {
   animation: marquee 48s linear infinite;
 }
 
-.marquee-track:hover {
-  animation-play-state: paused;
+.marquee-track.is-js-marquee {
+  animation: none;
+  will-change: transform;
 }
 
 @keyframes marquee {
