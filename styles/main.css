@@ -2832,8 +2832,8 @@ body.js-scroll-animate .scroll-section.scroll-tilt {
   flex: 1;
   overflow: hidden;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   padding: 40px 44px;
   text-decoration: none;
   color: #fff;
@@ -2870,6 +2870,7 @@ body.js-scroll-animate .scroll-section.scroll-tilt {
 .split-cta-content {
   position: relative;
   z-index: 1;
+  text-align: center;
 }
 
 .split-cta-label {
