@@ -1963,16 +1963,22 @@ html.js .portfolio-page .portfolio-card.reveal-on-scroll.hidden {
   min-width: 66px;
   height: 48px;
   padding: 8px 12px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.98);
-  border: 1px solid rgba(191,220,236,0.2);
-  box-shadow: 0 10px 24px rgba(5,14,29,0.18);
-  transition: transform var(--transition), box-shadow var(--transition);
+  border-radius: 4px;
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+  transform-origin: center;
+  transition: transform var(--transition), opacity var(--transition);
 }
 
-.footer-membership-logos a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(5,14,29,0.22);
+.footer-membership-logos:hover a,
+.footer-membership-logos:focus-within a {
+  transform: scale(0.94);
+}
+
+.footer-membership-logos a:hover,
+.footer-membership-logos a:focus-visible {
+  transform: scale(1.08);
 }
 
 .footer-membership-logos img {
@@ -1981,6 +1987,11 @@ html.js .portfolio-page .portfolio-card.reveal-on-scroll.hidden {
   height: 28px;
   max-width: 96px;
   object-fit: contain;
+}
+
+.footer-membership-logos img.footer-logo-kvinner {
+  height: 34px;
+  max-width: 116px;
 }
 
 .footer-accent {
@@ -2910,6 +2921,17 @@ body.js-scroll-animate .scroll-section.scroll-tilt {
     height: 320px;
   }
 
+  .split-cta-btn {
+    background: transparent;
+    color: var(--white);
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .split-cta-panel:hover .split-cta-btn {
+    background: transparent;
+  }
+
   .split-cta-panel:first-child {
     border-right: none;
     border-bottom: 1px solid rgba(255,255,255,0.12);
@@ -3349,6 +3371,11 @@ body.js-scroll-animate .scroll-section.scroll-tilt {
   .footer-membership-logos img {
     height: 24px;
     max-width: 82px;
+  }
+
+  .footer-membership-logos img.footer-logo-kvinner {
+    height: 30px;
+    max-width: 102px;
   }
 
   .image-break {
