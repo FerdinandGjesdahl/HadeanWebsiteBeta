@@ -1275,7 +1275,7 @@ html.js .portfolio-page .portfolio-card.reveal-on-scroll.hidden {
 }
 
 .events-page .page-header-img .ph-bg {
-  object-position: center 70%;
+  object-position: center top;
 }
 
 .impact-page .impact-reveal {
@@ -1579,6 +1579,88 @@ html.js .portfolio-page .portfolio-card.reveal-on-scroll.hidden {
   gap: 32px;
 }
 
+.events-page .events-carousel {
+  max-width: 1100px;
+  margin: 0 auto 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.events-page .events-carousel .events-video {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 900px;
+}
+
+.events-page .events-nav {
+  flex: 0 0 auto;
+  min-width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 8px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--navy);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.events-page .events-nav:not(.is-disabled):hover {
+  color: var(--blue-mid);
+}
+
+.events-page .events-nav-prev:not(.is-disabled):hover {
+  transform: translateX(-3px);
+}
+
+.events-page .events-nav-next:not(.is-disabled):hover {
+  transform: translateX(3px);
+}
+
+.events-page .events-nav.is-disabled {
+  cursor: default;
+  color: var(--text-muted);
+  opacity: 0.55;
+}
+
+.events-page .events-nav.is-disabled .events-nav-arrow {
+  display: none;
+}
+
+.events-page .events-nav-arrow {
+  width: 26px;
+  height: 26px;
+}
+
+.events-page .events-nav-year {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.events-page .events-nav-year:empty {
+  display: none;
+}
+
+.events-page .events-nav-note {
+  writing-mode: vertical-rl;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.events-page .events-nav-note:empty {
+  display: none;
+}
+
 .events-page .events-video {
   margin: 0;
 }
@@ -1612,9 +1694,31 @@ html.js .portfolio-page .portfolio-card.reveal-on-scroll.hidden {
 }
 
 @media (max-width: 720px) {
-  .events-page .events-video-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+  .events-page .events-carousel {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .events-page .events-carousel .events-video {
+    order: -1;
+    flex: 1 0 100%;
+    max-width: 100%;
+  }
+
+  .events-page .events-nav {
+    flex-direction: row;
+    gap: 8px;
+    padding: 8px 14px;
+  }
+
+  .events-page .events-nav-next {
+    margin-left: auto;
+  }
+
+  .events-page .events-nav-year,
+  .events-page .events-nav-note {
+    writing-mode: horizontal-tb;
+    letter-spacing: 0.08em;
   }
 }
 
