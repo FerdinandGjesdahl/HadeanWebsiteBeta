@@ -1,0 +1,12 @@
+Neuro Event Labs (June 10, 2020)
+
+Neuro Event Labs is a digital health company based in Tampere, Finland, focused on neurological conditions.  Its lead product is a video‑based epileptic seizure detection system that enables neurologists to monitor epileptic patients with recurring seizures both in hospital and at home.  The company uses artificial‑intelligence algorithms to automatically detect and classify seizure type.  The system also allows much longer monitoring times than current video‑EEG solutions【240702607570415†L26-L32】.
+
+Key facts:
+
+- **Year of investment:** 2020【240702607570415†L36-L37】  
+- **Sector:** Digital health【240702607570415†L39-L40】  
+- **Location:** Tampere, Finland【240702607570415†L42-L43】  
+- **Website:** neuroeventlabs.com【240702607570415†L45-L46】
+
+Source: Hadean Ventures portfolio page【240702607570415†L26-L32】.

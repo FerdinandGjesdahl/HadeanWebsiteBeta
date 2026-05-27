@@ -4,14 +4,497 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Careers — Hadean Ventures</title>
-  <link rel="icon" type="image/png" href="../hadean_images/logo.png">
+  <link rel="icon" type="image/png" href="https://hadeanventures.com/wp-content/uploads/2026/05/logo.png">
   <meta name="description" content="Career opportunities at Hadean Ventures.">
   <script>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles/main.css">
   <style>
+    @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 300;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/lato/v25/S6u9w4BMUTPHh7USew8.ttf) format('truetype');
+    }
+    @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/lato/v25/S6uyw4BMUTPHvxk.ttf) format('truetype');
+    }
+    @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/lato/v25/S6u9w4BMUTPHh6UVew8.ttf) format('truetype');
+    }
+  </style>
+  <style>
+    :root {
+      --navy: #214274;
+      --navy-dark: #172d50;
+      --navy-deeper: #0f1e35;
+      --blue: #3F5A83;
+      --blue-mid: #4a6a96;
+      --light-blue: #BFDCEC;
+      --light-blue-soft: #daedf7;
+      --surface: #F7FBFD;
+      --surface-alt: #eef6fb;
+      --white: #FFFFFF;
+      --accent: #CE332D;
+      --text: #1a2f4a;
+      --text-muted: #5a7396;
+      --border: #d0e4ef;
+      --border-light: #e8f2f8;
+      --shadow-sm: 0 1px 4px rgba(33,66,116,0.07), 0 1px 2px rgba(33,66,116,0.05);
+      --shadow-md: 0 4px 20px rgba(33,66,116,0.10), 0 2px 8px rgba(33,66,116,0.06);
+      --shadow-lg: 0 12px 40px rgba(33,66,116,0.14), 0 4px 16px rgba(33,66,116,0.08);
+      --radius-sm: 2px;
+      --radius-lg: 4px;
+      --radius-xl: 6px;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition: 0.28s var(--ease);
+      --max-width: 1240px;
+      --nav-height: 80px;
+      --section-py: 96px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-y: scroll;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: "Calibri Light", Calibri, Lato, system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--white);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .wp-page-wrapper {
+      width: 100vw;
+      max-width: none;
+      min-height: 100vh;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wp-page-wrapper > main {
+      flex: 1;
+    }
+
+    img,
+    video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Calibri Light", Calibri, Lato, system-ui, -apple-system, sans-serif;
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+    }
+
+    p {
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 72ch;
+    }
+
+    .label {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-bottom: 1px solid var(--border-light);
+      transition: box-shadow var(--transition);
+    }
+
+    .nav.scrolled {
+      box-shadow: var(--shadow-md);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 80px;
+    }
+
+    .nav-logo {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo img {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      min-width: 0;
+      gap: 4px;
+      padding-right: 220px;
+    }
+
+    .nav-links a {
+      display: block;
+      min-width: 86px;
+      padding: 6px 10px;
+      text-align: center;
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      transition: color var(--transition), background var(--transition);
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      color: var(--navy);
+      background: var(--surface);
+    }
+
+    .nav-links a.active {
+      color: var(--navy);
+      background: var(--light-blue-soft);
+    }
+
+    .nav-portal-link {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      padding-bottom: 1px;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--blue);
+      border-bottom: 1px solid var(--blue);
+      transition: color var(--transition), border-color var(--transition), transform var(--transition);
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    .nav-portal-link:hover {
+      color: var(--navy);
+      border-color: var(--navy);
+      transform: translateY(calc(-50% - 2px));
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      border: none;
+      background: none;
+      border-radius: var(--radius-sm);
+      transition: background var(--transition);
+    }
+
+    .nav-toggle:hover {
+      background: var(--surface);
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 0;
+      font-family: "Calibri Light", Calibri, Lato, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--navy);
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid var(--navy);
+      border-radius: 0;
+      cursor: pointer;
+      transition: color var(--transition), border-color var(--transition), transform var(--transition);
+      white-space: nowrap;
+      line-height: 1.4;
+    }
+
+    .btn:hover,
+    .btn-primary:hover {
+      color: var(--blue-mid);
+      border-bottom-color: var(--blue-mid);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: var(--navy);
+      border-bottom-color: var(--navy);
+    }
+
+    .btn-lg {
+      padding: 6px 0;
+      font-size: 1rem;
+    }
+
+    .footer {
+      background: linear-gradient(150deg, var(--navy-deeper) 0%, var(--navy-dark) 100%);
+      color: var(--white);
+      padding: 72px 0 40px;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 60px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(191,220,236,0.12);
+      margin-bottom: 40px;
+    }
+
+    .footer-brand .nav-logo {
+      margin-bottom: 20px;
+    }
+
+    .footer-brand .nav-logo img {
+      height: 36px;
+    }
+
+    .footer-heading {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--light-blue);
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a,
+    .footer-contact-item {
+      font-size: 0.88rem;
+      color: rgba(191,220,236,0.65);
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .footer-links a {
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    .footer-contact-item {
+      margin-bottom: 12px;
+    }
+
+    .footer-contact-item a {
+      color: var(--light-blue);
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+
+    .footer-contact-item a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-copyright {
+      font-size: 0.82rem;
+      color: rgba(191,220,236,0.4);
+    }
+
+    .footer-legal {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-disclosures {
+      font-size: 0.82rem;
+      color: rgba(191,220,236,0.5);
+      transition: color var(--transition);
+    }
+
+    .footer-disclosures:hover {
+      color: var(--white);
+    }
+
+    .footer-legal-sep {
+      font-size: 0.82rem;
+      color: rgba(191,220,236,0.3);
+    }
+
+    .footer-bottom-home {
+      justify-content: flex-start;
+      gap: 18px 24px;
+    }
+
+    .footer-bottom-home .footer-copyright {
+      margin-right: auto;
+    }
+
+    .footer-membership {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding-left: 22px;
+      border-left: 1px solid rgba(191,220,236,0.16);
+    }
+
+    .footer-membership-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--light-blue);
+    }
+
+    .footer-membership-logos {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-membership-logos a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 66px;
+      height: 48px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      background: transparent;
+      border: 1px solid transparent;
+      transform-origin: center;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    .footer-membership-logos:hover a,
+    .footer-membership-logos:focus-within a {
+      transform: scale(0.94);
+    }
+
+    .footer-membership-logos a:hover,
+    .footer-membership-logos a:focus-visible {
+      transform: scale(1.08);
+    }
+
+    .footer-membership-logos img {
+      display: block;
+      width: auto;
+      height: 28px;
+      max-width: 96px;
+      object-fit: contain;
+    }
+
+    .footer-membership-logos img.footer-logo-kvinner {
+      height: 34px;
+      max-width: 116px;
+    }
+
+    .footer-accent {
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 1px;
+    }
+
     .careers-page {
       background:
         radial-gradient(circle at top left, rgba(191, 220, 236, 0.18), transparent 24%),
@@ -187,12 +670,107 @@
       }
     }
 
+    @media (max-width: 1099px) {
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background: var(--white);
+        border-bottom: 1px solid var(--border-light);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px 20px 24px;
+        gap: 4px;
+        box-shadow: var(--shadow-lg);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 12px 16px;
+        font-size: 1rem;
+        min-width: 0;
+        text-align: left;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-portal-link {
+        position: static;
+        transform: none;
+        font-size: 0.6rem;
+        margin-top: 4px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      :root {
+        --section-py: 72px;
+      }
+
+      .container,
+      .nav-inner {
+        padding: 0 32px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
     @media (max-width: 768px) {
+      :root {
+        --section-py: 56px;
+        --nav-height: 68px;
+      }
+
+      .container,
+      .nav-inner {
+        padding: 0 20px;
+      }
+
+      .nav-portal-link {
+        position: static;
+        transform: none;
+        font-size: 0.55rem;
+        margin-top: 4px;
+      }
+
       .careers-hero {
         --page-header-x-padding: 20px;
         --page-header-reference-lead-height: 6.3rem;
         min-height: 380px;
         padding-bottom: 48px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .footer-bottom-home .footer-copyright {
+        margin-right: 0;
+      }
+
+      .footer-membership {
+        width: 100%;
+        padding-left: 0;
+        padding-top: 12px;
+        border-left: 0;
+        border-top: 1px solid rgba(191,220,236,0.16);
       }
     }
 
@@ -219,14 +797,60 @@
         width: 100%;
       }
     }
+
+    @media (max-width: 430px) {
+      .footer {
+        padding: 52px 0 34px;
+      }
+
+      .footer-inner {
+        padding-bottom: 36px;
+        margin-bottom: 30px;
+      }
+
+      .footer-brand .nav-logo img {
+        height: 32px;
+      }
+
+      .footer-links {
+        gap: 8px;
+      }
+
+      .footer-bottom,
+      .footer-legal {
+        align-items: flex-start;
+      }
+
+      .footer-membership-logos {
+        gap: 10px;
+      }
+
+      .footer-membership-logos a {
+        min-width: 58px;
+        height: 42px;
+        padding: 7px 10px;
+        border-radius: var(--radius-lg);
+      }
+
+      .footer-membership-logos img {
+        height: 24px;
+        max-width: 82px;
+      }
+
+      .footer-membership-logos img.footer-logo-kvinner {
+        height: 30px;
+        max-width: 102px;
+      }
+    }
   </style>
 </head>
 <body class="careers-page">
 
-  <nav class="nav" id="mainNav">
+  <div class="wp-page-wrapper careers-page">
+<nav class="nav" id="mainNav">
     <div class="nav-inner">
       <a href="../index.html" class="nav-logo">
-        <img src="../hadean_images/logo.png" alt="Hadean Ventures">
+        <img src="https://hadeanventures.com/wp-content/uploads/2026/05/logo.png" alt="Hadean Ventures">
       </a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -249,7 +873,7 @@
   <main>
     <section class="careers-hero">
       <video class="careers-hero-bg" autoplay muted loop playsinline>
-        <source src="../HadeanVideo/336755.mp4" type="video/mp4">
+        <source src="https://hadeanventures.com/wp-content/uploads/2026/05/336755.mp4" type="video/mp4">
       </video>
       <div class="careers-hero-overlay"></div>
       <div class="container">
@@ -282,7 +906,7 @@
       <div class="footer-inner">
         <div class="footer-brand">
           <a href="../index.html" class="nav-logo">
-            <img src="../hadean_images/logo.png" alt="Hadean Ventures">
+            <img src="https://hadeanventures.com/wp-content/uploads/2026/05/logo.png" alt="Hadean Ventures">
           </a>
         </div>
         <div>
@@ -319,19 +943,19 @@
           <span class="footer-membership-label">Member of</span>
           <div class="footer-membership-logos">
             <a href="https://www.investeurope.eu/" target="_blank" rel="noopener noreferrer" aria-label="Invest Europe">
-              <img loading="lazy" decoding="async" src="../MemberOFbilder/MemberOf_InvestEurope_white_transparent_final.png" alt="Invest Europe">
+              <img loading="lazy" decoding="async" src="https://hadeanventures.com/wp-content/uploads/2026/05/MemberOf_InvestEurope_white_transparent_final.png" alt="Invest Europe">
             </a>
             <a href="https://www.kvinnerifinans.com/" target="_blank" rel="noopener noreferrer" aria-label="Kvinner i Finans Charter">
-              <img class="footer-logo-kvinner" loading="lazy" decoding="async" src="../MemberOFbilder/ChatGPT%20Image%2019.%20mai%202026,%2014_58_18.png" alt="Kvinner i Finans Charter">
+              <img class="footer-logo-kvinner" loading="lazy" decoding="async" src="https://hadeanventures.com/wp-content/uploads/2026/05/ChatGPT%20Image%2019.%20mai%202026%2C%2014_58_18.png" alt="Kvinner i Finans Charter">
             </a>
             <a href="https://www.nvca.no/" target="_blank" rel="noopener noreferrer" aria-label="NVCA">
-              <img loading="lazy" decoding="async" src="../MemberOFbilder/NVCA_white_transparent_final.png" alt="NVCA">
+              <img loading="lazy" decoding="async" src="https://hadeanventures.com/wp-content/uploads/2026/05/NVCA_white_transparent_final.png" alt="NVCA">
             </a>
             <a href="https://www.level20.org/" target="_blank" rel="noopener noreferrer" aria-label="Level20">
-              <img loading="lazy" decoding="async" src="../MemberOFbilder/LEVEL20_white_transparent_final.png" alt="Level20">
+              <img loading="lazy" decoding="async" src="https://hadeanventures.com/wp-content/uploads/2026/05/LEVEL20_white_transparent_final.png" alt="Level20">
             </a>
             <a href="https://www.linkedin.com/company/life-science-vc-sustainability-initiative/posts/?feedView=all" target="_blank" rel="noopener noreferrer" aria-label="Sustainability VC Initiative">
-              <img loading="lazy" decoding="async" src="../MemberOFbilder/LSVC_white_transparent_final.png" alt="Sustainability VC Initiative">
+              <img loading="lazy" decoding="async" src="https://hadeanventures.com/wp-content/uploads/2026/05/LSVC_white_transparent_final.png" alt="Sustainability VC Initiative">
             </a>
           </div>
         </div>
@@ -339,6 +963,8 @@
       </div>
     </div>
   </footer>
+  </div>
+
 
   <script>
     const nav = document.getElementById("mainNav");
